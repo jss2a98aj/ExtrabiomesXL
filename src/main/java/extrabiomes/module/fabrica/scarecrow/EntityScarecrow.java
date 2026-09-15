@@ -5,6 +5,7 @@
 
 package extrabiomes.module.fabrica.scarecrow;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
@@ -35,9 +36,9 @@ public class EntityScarecrow extends EntityGolem {
         return false;
     }
 
-    private class EntityAIScareClosest extends EntityAIWatchClosest {
+    private static class EntityAIScareClosest extends EntityAIWatchClosest {
 
-        public EntityAIScareClosest(EntityLiving par1EntityLiving, Class<?> par2Class, float par3) {
+        public EntityAIScareClosest(EntityLiving par1EntityLiving, Class<? extends Entity> par2Class, float par3) {
             super(par1EntityLiving, par2Class, par3);
         }
 
@@ -46,13 +47,8 @@ public class EntityScarecrow extends EntityGolem {
             super.startExecuting();
             if (closestEntity instanceof EntityCreature && !(closestEntity instanceof EntityGolem)) {
                 ((EntityCreature) closestEntity).tasks.addTask(
-                        1,
-                        new EntityAIAvoidEntity(
-                                (EntityCreature) closestEntity,
-                                EntityScarecrow.class,
-                                10.0F,
-                                0.3F,
-                                0.4F));
+                    1,
+                    new EntityAIAvoidEntity((EntityCreature) closestEntity, EntityScarecrow.class, 10.0F, 0.3F, 0.4F));
             }
         }
     }
