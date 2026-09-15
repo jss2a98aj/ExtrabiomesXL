@@ -29,16 +29,18 @@ class WorldGenEelGrass extends WorldGenerator {
             y--;
         }
 
-        Block b = world.getBlock(x, y, z);
-        while ((b.equals(Blocks.water) || b.equals(Blocks.flowing_water)) && y > 0 && maxDepth > 0) {
+        Block checkBlock = world.getBlock(x, y, z);
+        int depth = 0;
+        while ((checkBlock.equals(Blocks.water) || checkBlock.equals(Blocks.flowing_water)) && y > 0 && maxDepth > 0) {
+            depth++;
             y--;
             maxDepth--;
-            b = world.getBlock(x, y, z);
+            checkBlock = world.getBlock(x, y, z);
         }
 
         y++;
 
-        if (block.canBlockStay(world, x, y, z)) {
+        if (depth > 1 && block.canBlockStay(world, x, y, z)) {
             world.setBlock(x, y, z, block, metaData, 0);
         }
 
