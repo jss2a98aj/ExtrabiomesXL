@@ -5,12 +5,14 @@
 
 package extrabiomes.lib;
 
+import extrabiomes.Tags;
+
 public abstract class Reference {
 
     // Mod information
     public static final String MOD_ID = "ExtrabiomesXL";
     public static final String MOD_NAME = "ExtrabiomesXL";
-    public static final String MOD_VERSION = "GRADLETOKEN_VERSION";
+    public static final String MOD_VERSION = Tags.VERSION;
     public static final String CONFIG_VERSION = "3.16"; // only update on config file changes
     public static final String CLIENT_PROXY = "extrabiomes.proxy.ClientProxy";
     public static final String SERVER_PROXY = "extrabiomes.proxy.CommonProxy";
