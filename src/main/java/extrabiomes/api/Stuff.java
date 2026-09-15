@@ -6,10 +6,10 @@ import net.minecraft.item.Item;
 import com.google.common.base.Optional;
 
 /**
- * This class contains all of the custom items and blocks.
- * 
+ * This class contains all the custom items and blocks.
+ *
  * @author ScottKillen
- * 
+ *
  */
 public enum Stuff {
 

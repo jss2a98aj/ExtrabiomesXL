@@ -1119,11 +1119,7 @@ public enum BlockManager {
     private static void createBlocks() throws Exception {
         for (final BlockManager block : BlockManager.values()) if (block.getSettings()
             .getEnabled()) {
-                try {
-                    block.create();
-                } catch (final Exception e) {
-                    throw e;
-                }
+                block.create();
                 block.blockCreated = true;
             }
     }

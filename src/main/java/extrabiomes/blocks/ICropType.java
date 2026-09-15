@@ -8,19 +8,19 @@ import net.minecraft.util.IIcon;
 
 public interface ICropType {
 
-    public IIcon getStageIIcon(int stage);
+    IIcon getStageIIcon(int stage);
 
-    public void setStageIIcons(ArrayList<IIcon> IIcons);
+    void setStageIIcons(ArrayList<IIcon> IIcons);
 
-    public ItemStack getSeedItem();
+    ItemStack getSeedItem();
 
-    public Item getCropItem();
+    Item getCropItem();
 
-    public void setSeedItem(ItemStack seed);
+    void setSeedItem(ItemStack seed);
 
-    public void setCropItem(Item crop);
+    void setCropItem(Item crop);
 
-    public int getRenderType();
+    int getRenderType();
 
-    public String name();
+    String name();
 }

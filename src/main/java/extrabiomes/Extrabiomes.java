@@ -135,7 +135,7 @@ public class Extrabiomes {
         Module.postEvent(new ModuleInitEvent());
 
         // just in case anything else updated config settings
-        if (config.hasChanged()) {
+        if (config != null && config.hasChanged()) {
             config.save();
         }
     }

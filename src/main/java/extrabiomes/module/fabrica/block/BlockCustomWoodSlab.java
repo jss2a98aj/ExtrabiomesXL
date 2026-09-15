@@ -52,10 +52,10 @@ public class BlockCustomWoodSlab extends BlockWoodSlab {
         }
     }
 
-    private BlockSettings settings;
+    private final BlockSettings settings;
     private static Block singleSlab = null;
 
-    private IIcon[] textures = { null, null, null, null, null, null, null, null };
+    private final IIcon[] textures = { null, null, null, null, null, null, null, null };
 
     public BlockCustomWoodSlab(BlockSettings settings, boolean isDouble) {
         super(isDouble);
@@ -65,6 +65,7 @@ public class BlockCustomWoodSlab extends BlockWoodSlab {
         setStepSound(soundTypeWood);
         // Blocks.fire.setFireInfo(this, 5, 20);
         setLightOpacity(0);
+        this.settings = settings;
         setCreativeTab(Extrabiomes.tabsEBXL);
     }
 
@@ -94,32 +95,16 @@ public class BlockCustomWoodSlab extends BlockWoodSlab {
     @Override
     /* Deobf name: getFullSlabName */
     public String func_150002_b(int metadata) {
-        String woodType;
-        switch (metadata & 7) {
-            case 1:
-                woodType = BlockType.FIR.toString();
-                break;
-            case 2:
-                woodType = BlockType.ACACIA.toString();
-                break;
-            case 3:
-                woodType = BlockType.CYPRESS.toString();
-                break;
-            case 4:
-                woodType = BlockType.JAPANESE_MAPLE.toString();
-                break;
-            case 5:
-                woodType = BlockType.RAINBOW_EUCALYPTUS.toString();
-                break;
-            case 6:
-                woodType = BlockType.AUTUMN.toString();
-                break;
-            case 7:
-                woodType = BlockType.BALD_CYPRESS.toString();
-                break;
-            default:
-                woodType = BlockType.REDWOOD.toString();
-        }
+        String woodType = switch (metadata & 7) {
+            case 1 -> BlockType.FIR.toString();
+            case 2 -> BlockType.ACACIA.toString();
+            case 3 -> BlockType.CYPRESS.toString();
+            case 4 -> BlockType.JAPANESE_MAPLE.toString();
+            case 5 -> BlockType.RAINBOW_EUCALYPTUS.toString();
+            case 6 -> BlockType.AUTUMN.toString();
+            case 7 -> BlockType.BALD_CYPRESS.toString();
+            default -> BlockType.REDWOOD.toString();
+        };
 
         return super.getUnlocalizedName() + "." + woodType;
     }

@@ -35,7 +35,7 @@ public enum SaplingSettings {
     }
 
     private String chanceKey() {
-        return toString() + ".chance";
+        return this + ".chance";
     }
 
     public void load(EnhancedConfiguration configuration) {

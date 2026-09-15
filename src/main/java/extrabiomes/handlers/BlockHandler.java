@@ -673,9 +673,11 @@ public abstract class BlockHandler {
         BiomeHelper.addTerrainBlockstoBiome(BiomeSettings.MOUNTAINRIDGE, block, block);
 
         ForestryModHelper.addToDiggerBackpack(new ItemStack(block, 1, Short.MAX_VALUE));
-        for (final BlockRedRock.BlockType type : BlockRedRock.BlockType.values()) {
-            // FacadeHelper.addBuildcraftFacade(block, type.metadata());
-        }
+        /*
+         * for (final BlockRedRock.BlockType type : BlockRedRock.BlockType.values()) {
+         * FacadeHelper.addBuildcraftFacade(block, type.metadata());
+         * }
+         */
 
         OreDictionary.registerOre("cobblestone", new ItemStack(block, 1, 1));
     }
@@ -798,9 +800,11 @@ public abstract class BlockHandler {
         Element.LOG_JAPANESE_MAPLE.set(new ItemStack(block, 1, BlockCustomLog.BlockType.JAPANESE_MAPLE.metadata()));
 
         ForestryModHelper.addToForesterBackpack(new ItemStack(block, 1, Short.MAX_VALUE));
-        for (final BlockCustomLog.BlockType type : BlockCustomLog.BlockType.values()) {
-            // FacadeHelper.addBuildcraftFacade(block, type.metadata());
-        }
+        /*
+         * for (final BlockCustomLog.BlockType type : BlockCustomLog.BlockType.values()) {
+         * FacadeHelper.addBuildcraftFacade(block, type.metadata());
+         * }
+         */
 
         if (!ModuleControlSettings.SUMMA.isEnabled() || !BlockSettings.NEWLOG.getEnabled()) return;
 
@@ -824,8 +828,10 @@ public abstract class BlockHandler {
         Element.LOG_REDWOOD.set(new ItemStack(block2, 1, BlockNewLog.BlockType.REDWOOD.metadata()));
 
         ForestryModHelper.addToForesterBackpack(new ItemStack(block2, 1, Short.MAX_VALUE));
-        for (final BlockNewLog.BlockType type : BlockNewLog.BlockType.values()) {
-            // FacadeHelper.addBuildcraftFacade(block2, type.metadata());
-        }
+        /*
+         * for (final BlockNewLog.BlockType type : BlockNewLog.BlockType.values()) {
+         * FacadeHelper.addBuildcraftFacade(block2, type.metadata());
+         * }
+         */
     }
 }

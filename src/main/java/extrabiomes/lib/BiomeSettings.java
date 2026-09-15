@@ -90,7 +90,7 @@ public enum BiomeSettings {
 
     private final int defaultID;
 
-    private int biomeID = 0;
+    private int biomeID;
     private int weight = Weights.NORMAL.value;
     private boolean enabled = true;
     private boolean allowVillages = true;
@@ -122,22 +122,22 @@ public enum BiomeSettings {
         }
     }
 
-    private BiomeSettings() {
+    BiomeSettings() {
         this(0, null);
     }
 
-    private BiomeSettings(int defaultID, Class<? extends BiomeGenBase> biomeClass) {
+    BiomeSettings(int defaultID, Class<? extends BiomeGenBase> biomeClass) {
         this.defaultID = defaultID;
         this.biomeID = this.defaultID;
         this.biomeClass = biomeClass;
     }
 
-    private BiomeSettings(int defaultID, Class<? extends BiomeGenBase> biomeClass, Weights defaultWeight) {
+    BiomeSettings(int defaultID, Class<? extends BiomeGenBase> biomeClass, Weights defaultWeight) {
         this(defaultID, biomeClass);
         this.weight = defaultWeight.value;
     }
 
-    private BiomeSettings(int defaultID, Class<? extends BiomeGenBase> biomeClass, boolean defaultGen) {
+    BiomeSettings(int defaultID, Class<? extends BiomeGenBase> biomeClass, boolean defaultGen) {
         this(defaultID, biomeClass);
         this.enabled = defaultGen;
         if (!this.enabled) {
@@ -207,19 +207,19 @@ public enum BiomeSettings {
     }
 
     private String keyWeight() {
-        return keyVanillaPrefix() + toString() + ".weight";
+        return keyVanillaPrefix() + this + ".weight";
     }
 
     private String keyAllowVillages() {
-        return keyVanillaPrefix() + toString() + ".allowvillages";
+        return keyVanillaPrefix() + this + ".allowvillages";
     }
 
     private String keyEnabled() {
-        return keyVanillaPrefix() + toString() + ".enablegeneration";
+        return keyVanillaPrefix() + this + ".enablegeneration";
     }
 
     private String keyID() {
-        return toString() + ".id";
+        return this + ".id";
     }
 
     private String keyVanillaPrefix() {

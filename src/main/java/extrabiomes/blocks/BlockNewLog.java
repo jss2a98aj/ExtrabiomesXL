@@ -15,7 +15,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.IBlockAccess;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
@@ -44,8 +43,8 @@ public class BlockNewLog extends BlockLog {
         }
     }
 
-    private BlockSettings settings;
-    private IIcon[] textures = new IIcon[8];
+    private final BlockSettings settings;
+    private final IIcon[] textures = new IIcon[8];
 
     public BlockNewLog(BlockSettings settings) {
         super();
@@ -117,15 +116,5 @@ public class BlockNewLog extends BlockLog {
             }
             event.setHandled();
         }
-    }
-
-    @Override
-    public boolean canSustainLeaves(IBlockAccess world, int x, int y, int z) {
-        return true;
-    }
-
-    @Override
-    public boolean isWood(IBlockAccess world, int x, int y, int z) {
-        return true;
     }
 }

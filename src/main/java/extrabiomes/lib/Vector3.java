@@ -23,13 +23,11 @@ public class Vector3 {
     }
 
     public int[] array() {
-        return (int[]) xyz.clone();
+        return xyz.clone();
     }
 
     public boolean equals(Object obj) {
-        if (obj instanceof Vector3) {
-            Vector3 rhs = (Vector3) obj;
-
+        if (obj instanceof Vector3 rhs) {
             return xyz[0] == rhs.xyz[0] && xyz[1] == rhs.xyz[1] && xyz[2] == rhs.xyz[2];
         } else {
             return false;
@@ -53,5 +51,5 @@ public class Vector3 {
         return "( " + xyz[0] + " " + xyz[1] + " " + xyz[2] + " )";
     }
 
-    int xyz[] = new int[3];
+    int[] xyz = new int[3];
 }

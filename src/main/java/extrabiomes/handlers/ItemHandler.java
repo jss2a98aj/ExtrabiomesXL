@@ -48,9 +48,9 @@ public abstract class ItemHandler {
 
     private static void createDye() {
         if (!ItemSettings.DYE.getEnabled()) {
-            final String dyetype = "etfuturum:dye";
-            if (Item.itemRegistry.containsKey(dyetype)) {
-                final Item dye = (Item) Item.itemRegistry.getObject(dyetype);
+            final String dyeType = "etfuturum:dye";
+            if (Item.itemRegistry.containsKey(dyeType)) {
+                final Item dye = (Item) Item.itemRegistry.getObject(dyeType);
                 Element.DYE_BLACK.set(new ItemStack(dye, 1, 3));
                 Element.DYE_BLUE.set(new ItemStack(dye, 1, 1));
                 Element.DYE_BROWN.set(new ItemStack(dye, 1, 2));

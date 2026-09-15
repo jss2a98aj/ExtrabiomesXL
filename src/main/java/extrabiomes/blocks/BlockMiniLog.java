@@ -42,8 +42,8 @@ public class BlockMiniLog extends BlockLog {
         }
     }
 
-    private BlockSettings settings;
-    private IIcon[] textures = new IIcon[6];
+    private final BlockSettings settings;
+    private final IIcon[] textures = new IIcon[6];
     private static int renderId = 33;
 
     public BlockMiniLog(BlockSettings settings) {
@@ -133,17 +133,6 @@ public class BlockMiniLog extends BlockLog {
         }
     }
 
-    @Override
-    public boolean canSustainLeaves(IBlockAccess world, int x, int y, int z) {
-        return true;
-    }
-
-    @Override
-    public boolean isWood(IBlockAccess world, int x, int y, int z) {
-        return true;
-    }
-
-    //
     public boolean canConnect(IBlockAccess world, int x, int y, int z) {
         Block block = world.getBlock(x, y, z);
 

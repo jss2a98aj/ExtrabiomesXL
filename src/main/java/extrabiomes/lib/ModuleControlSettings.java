@@ -43,7 +43,7 @@ public enum ModuleControlSettings {
     }
 
     private String keyEnabled() {
-        return toString() + ".enabled";
+        return this + ".enabled";
     }
 
     public void load(EnhancedConfiguration configuration) {

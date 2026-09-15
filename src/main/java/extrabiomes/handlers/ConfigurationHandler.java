@@ -112,7 +112,7 @@ public abstract class ConfigurationHandler {
             Property useLegacyRedwoods = configuration.get(
                 Configuration.CATEGORY_GENERAL,
                 "UseLegacyRedwoods",
-                autoUpgrade ? true : GeneralSettings.useLegacyRedwoods);
+                autoUpgrade || GeneralSettings.useLegacyRedwoods);
             useLegacyRedwoods.comment = "Set to true to enable old redwood tree generation.";
             GeneralSettings.useLegacyRedwoods = useLegacyRedwoods.getBoolean(false);
 

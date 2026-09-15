@@ -22,7 +22,7 @@ public class BlockCropRegrow extends BlockCropBasic {
         private Item crop;
         private final int renderType;
 
-        private CropType(Integer renderType) {
+        CropType(Integer renderType) {
             this.renderType = (renderType == null ? DEFAULT_RENDER_TYPE : renderType);
         }
 
@@ -68,7 +68,7 @@ public class BlockCropRegrow extends BlockCropBasic {
 
     @Override
     public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int meta, int fortune) {
-        ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
+        ArrayList<ItemStack> ret = new ArrayList<>();
 
         // for now, regrowers only ever produce one item
         if (meta >= MAX_GROWTH_STAGE) {
@@ -91,7 +91,7 @@ public class BlockCropRegrow extends BlockCropBasic {
 
     /**
      * Handle harvesting this crop if it is ready.
-     * 
+     *
      * @return False if a server chose not to harvest.
      */
     public boolean doHarvest(World world, int x, int y, int z, EntityPlayer player) {
@@ -132,7 +132,7 @@ public class BlockCropRegrow extends BlockCropBasic {
      * Replace the block at half growth.
      */
     public void doRegrow(World world, int x, int y, int z, int meta) {
-        final int newMeta = meta > REGROW_META ? REGROW_META : meta;
+        final int newMeta = Math.min(meta, REGROW_META);
         world.setBlock(x, y, z, this, newMeta, 3);
     }
 }

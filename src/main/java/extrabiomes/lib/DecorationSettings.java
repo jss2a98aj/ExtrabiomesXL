@@ -127,14 +127,13 @@ public enum DecorationSettings {
         if (!settings.containsKey(decoration)) return;
 
         Property property = configuration
-            .get(EnhancedConfiguration.CATEGORY_DECORATION, toString() + decoration.key, settings.get(decoration));
+            .get(EnhancedConfiguration.CATEGORY_DECORATION, this + decoration.key, settings.get(decoration));
         settings.put(decoration, property.getInt());
     }
 
     public int getSetting(Decoration decoration) {
         if (settings.containsKey(decoration)) {
-            return settings.get(decoration)
-                .intValue();
+            return settings.get(decoration);
         } else {
             return decoration.def;
         }

@@ -13,7 +13,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -25,9 +24,9 @@ import extrabiomes.lib.BlockSettings;
 
 public class BlockKneeLog extends BlockLog {
 
-    private BlockSettings settings;
+    private final BlockSettings settings;
 
-    private IIcon[] textures = new IIcon[9];
+    private final IIcon[] textures = new IIcon[9];
     private static int renderId = 32;
     private String treeType = "knee";
     private ItemStack droppedItem;
@@ -63,211 +62,99 @@ public class BlockKneeLog extends BlockLog {
 
     @Override
     public IIcon getIcon(int side, int metadata) {
-        final int orientation = metadata;
 
-        switch (side) {
-            case 0:
-                return textures[bottopIIcon(orientation)];
-            case 1:
-                return textures[topIIcon(orientation)];
-            case 2:
-                return textures[southIIcon(orientation)];
-            case 3:
-                return textures[northIIcon(orientation)];
-            case 4:
-                return textures[eastIIcon(orientation)];
-            case 5:
-                return textures[westIIcon(orientation)];
-            default:
-                return textures[4];
-        }
+        return switch (side) {
+            case 0 -> textures[bottopIIcon(metadata)];
+            case 1 -> textures[topIIcon(metadata)];
+            case 2 -> textures[southIIcon(metadata)];
+            case 3 -> textures[northIIcon(metadata)];
+            case 4 -> textures[eastIIcon(metadata)];
+            case 5 -> textures[westIIcon(metadata)];
+            default -> textures[4];
+        };
     }
 
     private int topIIcon(int orientation) {
-        switch (orientation) {
-            case 0:
-                return 0;
-            case 1:
-                return 1;
-            case 2:
-                return 2;
-            case 3:
-                return 3;
-            case 4:
-                return 4;
-            case 5:
-                return 5;
-            case 6:
-                return 7;
-            case 7:
-                return 6;
-            case 8:
-                return 4;
-            case 9:
-                return 5;
-            case 10:
-                return 6;
-            case 11:
-                return 7;
-            default:
-                return 8;
-        }
+        return switch (orientation) {
+            case 0 -> 0;
+            case 1 -> 1;
+            case 2 -> 2;
+            case 3 -> 3;
+            case 4, 8 -> 4;
+            case 5, 9 -> 5;
+            case 6, 11 -> 7;
+            case 7, 10 -> 6;
+            default -> 8;
+        };
     }
 
     private int bottopIIcon(int orientation) {
-        switch (orientation) {
-            case 0:
-                return 0;
-            case 1:
-                return 1;
-            case 2:
-                return 2;
-            case 3:
-                return 3;
-            case 4:
-                return 6;
-            case 5:
-                return 7;
-            case 6:
-                return 4;
-            case 7:
-                return 5;
-            case 8:
-                return 6;
-            case 9:
-                return 7;
-            case 10:
-                return 5;
-            case 11:
-                return 4;
-
-            default:
-                return 8;
-        }
+        return switch (orientation) {
+            case 0 -> 0;
+            case 1 -> 1;
+            case 2 -> 2;
+            case 3 -> 3;
+            case 4, 8 -> 6;
+            case 5, 9 -> 7;
+            case 6, 11 -> 4;
+            case 7, 10 -> 5;
+            default -> 8;
+        };
     }
 
     private int eastIIcon(int orientation) {
-        switch (orientation) {
-            case 0:
-                return 5;
-            case 1:
-                return 7;
-            case 2:
-                return 6;
-            case 3:
-                return 4;
-            case 4:
-                return 7;
-            case 5:
-                return 4;
-            case 6:
-                return 5;
-            case 7:
-                return 6;
-            case 8:
-                return 0;
-            case 9:
-                return 1;
-            case 10:
-                return 2;
-            case 11:
-                return 3;
-            default:
-                return 8;
-        }
+        return switch (orientation) {
+            case 0, 6 -> 5;
+            case 1, 4 -> 7;
+            case 2, 7 -> 6;
+            case 3, 5 -> 4;
+            case 8 -> 0;
+            case 9 -> 1;
+            case 10 -> 2;
+            case 11 -> 3;
+            default -> 8;
+        };
     }
 
     private int westIIcon(int orientation) {
-        switch (orientation) {
-            case 0:
-                return 6;
-            case 1:
-                return 4;
-            case 2:
-                return 5;
-            case 3:
-                return 7;
-            case 4:
-                return 4;
-            case 5:
-                return 6;
-            case 6:
-                return 7;
-            case 7:
-                return 5;
-            case 8:
-                return 1;
-            case 9:
-                return 0;
-            case 10:
-                return 3;
-            case 11:
-                return 2;
-            default:
-                return 8;
-        }
+        return switch (orientation) {
+            case 0, 5 -> 6;
+            case 1, 4 -> 4;
+            case 2, 7 -> 5;
+            case 3, 6 -> 7;
+            case 8 -> 1;
+            case 9 -> 0;
+            case 10 -> 3;
+            case 11 -> 2;
+            default -> 8;
+        };
     }
 
     private int southIIcon(int orientation) {
-        switch (orientation) {
-            case 0:
-                return 4;
-            case 1:
-                return 5;
-            case 2:
-                return 7;
-            case 3:
-                return 6;
-            case 4:
-                return 0;
-            case 5:
-                return 1;
-            case 6:
-                return 2;
-            case 7:
-                return 1;
-            case 8:
-                return 4;
-            case 9:
-                return 7;
-            case 10:
-                return 6;
-            case 11:
-                return 5;
-            default:
-                return 8;
-        }
+        return switch (orientation) {
+            case 0, 8 -> 4;
+            case 1, 11 -> 5;
+            case 2, 9 -> 7;
+            case 3, 10 -> 6;
+            case 4 -> 0;
+            case 5, 7 -> 1;
+            case 6 -> 2;
+            default -> 8;
+        };
     }
 
     private int northIIcon(int orientation) {
-        switch (orientation) {
-            case 0:
-                return 7;
-            case 1:
-                return 6;
-            case 2:
-                return 4;
-            case 3:
-                return 5;
-            case 4:
-                return 1;
-            case 5:
-                return 0;
-            case 6:
-                return 3;
-            case 7:
-                return 2;
-            case 8:
-                return 6;
-            case 9:
-                return 4;
-            case 10:
-                return 5;
-            case 11:
-                return 7;
-            default:
-                return 8;
-        }
+        return switch (orientation) {
+            case 0, 11 -> 7;
+            case 1, 8 -> 6;
+            case 2, 9 -> 4;
+            case 3, 10 -> 5;
+            case 4 -> 1;
+            case 5 -> 0;
+            case 6 -> 3;
+            case 7 -> 2;
+            default -> 8;
+        };
     }
 
     public static void setRenderId(int renderId) {
@@ -327,124 +214,46 @@ public class BlockKneeLog extends BlockLog {
             if (!event.world.isRemote) {
                 int metadata = event.world.getBlockMetadata(event.x, event.y, event.z);
 
-                if (event.entityPlayer.isSneaking() == true) {
-                    switch (BlockPistonBase
+                if (event.entityPlayer.isSneaking()) {
+                    metadata = switch (BlockPistonBase
                         .determineOrientation(event.world, event.x, event.y, event.z, event.entityLiving)) {
-                        case 0:
-                            switch (metadata) {
-                                case 9:
-                                    metadata = 4;
-                                    break;
-                                case 4:
-                                    metadata = 8;
-                                    break;
-                                case 8:
-                                    metadata = 5;
-                                    break;
-                                case 5:
-                                    metadata = 9;
-                                    break;
-                                default:
-                                    metadata = 9;
-                                    break;
-                            }
-                            break;
-                        case 1:
-                            switch (metadata) {
-                                case 6:
-                                    metadata = 11;
-                                    break;
-                                case 7:
-                                    metadata = 10;
-                                    break;
-                                case 10:
-                                    metadata = 6;
-                                    break;
-                                case 11:
-                                    metadata = 7;
-                                    break;
-                                default:
-                                    metadata = 10;
-                                    break;
-                            }
-                            break;
-                        case 2:
-                            switch (metadata) {
-                                case 3:
-                                    metadata = 10;
-                                    break;
-                                case 10:
-                                    metadata = 2;
-                                    break;
-                                case 2:
-                                    metadata = 9;
-                                    break;
-                                case 9:
-                                    metadata = 3;
-                                    break;
-                                default:
-                                    metadata = 3;
-                                    break;
-                            }
-                            break;
-                        case 3:
-                            switch (metadata) {
-                                case 1:
-                                    metadata = 11;
-                                    break;
-                                case 11:
-                                    metadata = 0;
-                                    break;
-                                case 0:
-                                    metadata = 8;
-                                    break;
-                                case 8:
-                                    metadata = 1;
-                                    break;
-                                default:
-                                    metadata = 1;
-                                    break;
-                            }
-                            break;
-                        case 4:
-                            switch (metadata) {
-                                case 2:
-                                    metadata = 7;
-                                    break;
-                                case 7:
-                                    metadata = 1;
-                                    break;
-                                case 1:
-                                    metadata = 4;
-                                    break;
-                                case 4:
-                                    metadata = 2;
-                                    break;
-                                default:
-                                    metadata = 2;
-                                    break;
-                            }
-                            break;
-                        default:
-                            switch (metadata) {
-                                case 0:
-                                    metadata = 6;
-                                    break;
-                                case 6:
-                                    metadata = 3;
-                                    break;
-                                case 3:
-                                    metadata = 5;
-                                    break;
-                                case 5:
-                                    metadata = 0;
-                                    break;
-                                default:
-                                    metadata = 0;
-                                    break;
-                            }
-                            break;
-                    }
+                        case 0 -> switch (metadata) {
+                                case 9 -> 4;
+                                case 4 -> 8;
+                                case 8 -> 5;
+                                default -> 9;
+                            };
+                        case 1 -> switch (metadata) {
+                                case 6 -> 11;
+                                case 10 -> 6;
+                                case 11 -> 7;
+                                default -> 10;
+                            };
+                        case 2 -> switch (metadata) {
+                                case 3 -> 10;
+                                case 10 -> 2;
+                                case 2 -> 9;
+                                default -> 3;
+                            };
+                        case 3 -> switch (metadata) {
+                                case 1 -> 11;
+                                case 11 -> 0;
+                                case 0 -> 8;
+                                default -> 1;
+                            };
+                        case 4 -> switch (metadata) {
+                                case 2 -> 7;
+                                case 7 -> 1;
+                                case 1 -> 4;
+                                default -> 2;
+                            };
+                        default -> switch (metadata) {
+                                case 0 -> 6;
+                                case 6 -> 3;
+                                case 3 -> 5;
+                                default -> 0;
+                            };
+                    };
                 } else {
                     // Increment the orentation
                     if (BlockPistonBase.determineOrientation(event.world, event.x, event.y, event.z, event.entityLiving)
@@ -473,13 +282,4 @@ public class BlockKneeLog extends BlockLog {
         world.setBlock(x, y, z, this, 3, 3);
     }
 
-    @Override
-    public boolean canSustainLeaves(IBlockAccess world, int x, int y, int z) {
-        return true;
-    }
-
-    @Override
-    public boolean isWood(IBlockAccess world, int x, int y, int z) {
-        return true;
-    }
 }

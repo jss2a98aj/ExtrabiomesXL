@@ -87,16 +87,21 @@ public class LogTurner extends ItemTool {
     }
 
     @Override
-    public void addInformation(ItemStack stack, EntityPlayer player, List tooltip, boolean sneaking) {
+    public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean sneaking) {
         String unlocalizedName = getUnlocalizedName() + ".description";
         String localizedName = LanguageRegistry.instance()
             .getStringLocalization(unlocalizedName);
 
         if (!localizedName.equals(unlocalizedName)) {
-            if (tooltip.isEmpty() || ((String) tooltip.get(0)).length() <= 20) {
+            if (tooltip.isEmpty() || tooltip.get(0)
+                .length() <= 20) {
                 ToolTipStringFormatter.Format(localizedName, tooltip);
             } else {
-                ToolTipStringFormatter.Format(localizedName, tooltip, ((String) tooltip.get(0)).length() + 5);
+                ToolTipStringFormatter.Format(
+                    localizedName,
+                    tooltip,
+                    tooltip.get(0)
+                        .length() + 5);
             }
         }
     }

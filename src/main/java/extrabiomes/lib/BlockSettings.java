@@ -95,9 +95,6 @@ public enum BlockSettings {
     private boolean			enabled;
     private Item			item;
 
-    private static boolean	clearedQuarterLogs = false;
-    private static boolean	clearedWoodSlabs   = false;
-
     BlockSettings()
     {
     	this.enabled = true;
@@ -123,7 +120,7 @@ public enum BlockSettings {
 
     private String enabledKey()
     {
-        return toString() + ".enabled";
+        return this + ".enabled";
     }
 
     private boolean isQuarterLog()
@@ -137,7 +134,7 @@ public enum BlockSettings {
     		// case REDROCK:
 	    	case CRACKEDSAND:
 	    	case QUICKSAND:
-	    		final Property property = configuration.get(configuration.CATEGORY_BLOCK, enabledKey(), true);
+	    		final Property property = configuration.get(EnhancedConfiguration.CATEGORY_BLOCK, enabledKey(), true);
 	    		this.enabled = property.getBoolean();
 	    		break;
 			default:

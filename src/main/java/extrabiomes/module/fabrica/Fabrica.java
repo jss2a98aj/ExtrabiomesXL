@@ -32,9 +32,6 @@ import extrabiomes.module.fabrica.scarecrow.ItemScarecrow;
 
 public class Fabrica {
 
-    private int scarecrowID = 0;
-    private int pasteID = 0;
-
     @SubscribeEvent(priority = EventPriority.LOW)
     public void init(ModuleInitEvent event) throws InstantiationException, IllegalAccessException {
         BlockManager.init();
@@ -45,7 +42,7 @@ public class Fabrica {
             // Extrabiomes.proxy.registerEntity(EntityScarecrow.class, ItemScarecrow.NAME, Extrabiomes.instance,
             // scarecrowEntityID, 300, 2, true);
             Extrabiomes.proxy.registerEntity(EntityScarecrow.class, "scarecrow", Extrabiomes.instance, 0, 300, 2, true);
-            ItemScarecrow.ID = (String) EntityList.classToStringMapping.get(EntityScarecrow.class);
+            ItemScarecrow.ID = EntityList.classToStringMapping.get(EntityScarecrow.class);
 
             final IRecipe recipe = new ShapedOreRecipe(
                 Stuff.scarecrow.get(),

@@ -48,7 +48,7 @@ public class BlockCustomTallGrass extends BlockFlower implements IShearable {
         }
     }
 
-    private IIcon[] textures = { null, null, null, null, null };
+    private final IIcon[] textures = { null, null, null, null, null };
 
     public BlockCustomTallGrass(int index, Material material) {
         super(0);
@@ -121,11 +121,6 @@ public class BlockCustomTallGrass extends BlockFlower implements IShearable {
     @Override
     public Item getItemDropped(int par1, Random par2Random, int par3) {
         return null;
-    }
-
-    @Override
-    public int damageDropped(int metadata) {
-        return metadata;
     }
 
     @Override

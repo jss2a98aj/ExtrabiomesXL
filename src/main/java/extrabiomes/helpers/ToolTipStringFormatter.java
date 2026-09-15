@@ -1,6 +1,5 @@
 package extrabiomes.helpers;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,35 +14,20 @@ public class ToolTipStringFormatter {
     private static boolean underline = false;
     private static boolean italic = false;
 
-    private static String unicodeControlCode = "\u00A7";
-    private static Pattern controlCode = Pattern.compile("\\\\");
-    private static Pattern codes = Pattern.compile("\\\\.");
-    private static Pattern resetCode = Pattern.compile("\\\\r");
-    private static Pattern codesGood = Pattern.compile("\\\\[0123456789abcdefklmnor]");
-    private static Pattern codesBad = Pattern.compile("\\\\[^0123456789abcdefklmnor]");
+    private static final Pattern controlCode = Pattern.compile("\\\\");
+    private static final Pattern codes = Pattern.compile("\\\\.");
+    private static final Pattern resetCode = Pattern.compile("\\\\r");
+    private static final Pattern codesGood = Pattern.compile("\\\\[0123456789abcdefklmnor]");
+    private static final Pattern codesBad = Pattern.compile("\\\\[^0123456789abcdefklmnor]");
 
-    private static Pattern codeObf = Pattern.compile("\\\\k");
-    private static Pattern codeBold = Pattern.compile("\\\\l");
-    private static Pattern codeStrike = Pattern.compile("\\\\m");
-    private static Pattern codeUnder = Pattern.compile("\\\\n");
-    private static Pattern codeItilic = Pattern.compile("\\\\o");
-    private static Pattern codeReset = Pattern.compile("\\\\r");
-
-    public static List Format(String text) {
-        List tmp = new ArrayList<String>();
-        Format(text, tmp);
-
-        return tmp;
-    }
-
-    public static void Format(String text, List lines) {
+    public static void Format(String text, List<String> lines) {
         Format(text, lines, 20);
     }
 
-    public static void Format(String text, List lines, int targetLength) {
+    public static void Format(String text, List<String> lines, int targetLength) {
         String format = "7";
 
-        if (text.length() > 0 && text.charAt(0) == 92) {
+        if (!text.isEmpty() && text.charAt(0) == 92) {
             format = String.valueOf(text.charAt(1));
             text = text.substring(2);
         }
@@ -51,16 +35,16 @@ public class ToolTipStringFormatter {
         Format(text, lines, targetLength, format);
     }
 
-    public static void Format(String text, List lines, String color) {
+    public static void Format(String text, List<String> lines, String color) {
         Format(text, lines, 20, color);
     }
 
-    public static void Format(String text, List lines, int targetLength, String color) {
+    public static void Format(String text, List<String> lines, int targetLength, String color) {
         String[] wordArray = text.split(" ");
         int words = wordArray.length;
 
         int curLineLength = 0;
-        int wordLength = 0;
+        int wordLength;
         int maxLength = targetLength + 5;
         String curLine = "";
 
@@ -90,7 +74,7 @@ public class ToolTipStringFormatter {
         }
 
         if (curLineLength > 0) {
-            lines.add(curLine + unicodeControlCode + "r");
+            lines.add(curLine + "§r");
         }
     }
 
@@ -101,14 +85,14 @@ public class ToolTipStringFormatter {
     }
 
     private static String LineFormatHeader() {
-        String tmp = unicodeControlCode + colorVal;
+        String tmp = "§" + colorVal;
 
         // Add t
-        if (obfuscated) tmp += unicodeControlCode + "k";
-        if (bold) tmp += unicodeControlCode + "l";
-        if (strikethrough) tmp += unicodeControlCode + "m";
-        if (underline) tmp += unicodeControlCode + "n";
-        if (italic) tmp += unicodeControlCode + "o";
+        if (obfuscated) tmp += "§k";
+        if (bold) tmp += "§l";
+        if (strikethrough) tmp += "§m";
+        if (underline) tmp += "§n";
+        if (italic) tmp += "§o";
 
         return tmp;
     }
@@ -155,10 +139,10 @@ public class ToolTipStringFormatter {
 
         // Reset needs to rest the color to the default
         word = resetCode.matcher(word)
-            .replaceAll(unicodeControlCode + "r" + unicodeControlCode + defaultColorVal);
+            .replaceAll("§r§" + defaultColorVal);
 
         // Replace good codes
         return controlCode.matcher(word)
-            .replaceAll(unicodeControlCode);
+            .replaceAll("§");
     }
 }

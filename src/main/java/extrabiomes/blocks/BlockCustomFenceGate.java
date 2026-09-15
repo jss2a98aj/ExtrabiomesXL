@@ -10,7 +10,7 @@ import extrabiomes.Extrabiomes;
 
 public class BlockCustomFenceGate extends BlockFenceGate {
 
-    private String textureName;
+    private final String textureName;
     private IIcon texture;
 
     public BlockCustomFenceGate(String name) {

@@ -5,6 +5,7 @@
 
 package extrabiomes.blocks;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -76,7 +77,7 @@ public class BlockCustomSapling extends BlockFlower {
     Block sapling;
     static int saplingLifespan = 5000;
 
-    private IIcon[] textures = new IIcon[8];
+    private final IIcon[] textures = new IIcon[8];
 
     private static final int METADATA_BITMASK = 0x7;
     private static final int METADATA_MARKBIT = 0x8;
@@ -337,7 +338,7 @@ public class BlockCustomSapling extends BlockFlower {
     }
 
     public static void setSaplingLifespan(int life) {
-        saplingLifespan = (life > 0) ? life : 0;
+        saplingLifespan = Math.max(life, 0);
     }
 
     @SubscribeEvent
@@ -492,7 +493,7 @@ public class BlockCustomSapling extends BlockFlower {
         }
     }
 
-    public static void addInformation(int metaData, List listOfLines) {
+    public static void addInformation(int metaData, List<String> listOfLines) {
         BlockType test = BlockType.values()[metaData];
 
         if (test != null) {
@@ -500,16 +501,16 @@ public class BlockCustomSapling extends BlockFlower {
             if (lines.length < 1) return;
 
             if (lines.length > 1) {
-                for (int line = 1; line < lines.length; line++) {
-                    listOfLines.add(lines[line]);
-                }
+                listOfLines.addAll(
+                    Arrays.asList(lines)
+                        .subList(1, lines.length));
 
-                if (lines[0] != "") {
+                if (!lines[0].isEmpty()) {
                     listOfLines.add("");
                 }
             }
 
-            if (lines[0] != "") {
+            if (!lines[0].isEmpty()) {
                 ToolTipStringFormatter.Format(
                     LanguageRegistry.instance()
                         .getStringLocalization("extrabiomes.planting_guide"),

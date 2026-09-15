@@ -23,7 +23,6 @@ public class BiomeAutumnWoods extends ExtrabiomeGenBase {
         return DecorationSettings.AUTUMNWOODS;
     }
 
-    @SuppressWarnings("unchecked")
     public BiomeAutumnWoods() {
         super(BiomeSettings.AUTUMNWOODS, Type.FOREST);
         setColor(0xF29C11);

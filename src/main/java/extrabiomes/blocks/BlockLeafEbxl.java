@@ -47,7 +47,7 @@ public class BlockLeafEbxl extends BlockLeaves {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubBlocks(Item itemIn, CreativeTabs tab, List itemList) {
+    public void getSubBlocks(Item itemIn, CreativeTabs tab, List<ItemStack> itemList) {
         for (int meta = 0; meta < types.length; ++meta) {
             itemList.add(new ItemStack(itemIn, 1, meta));
         }

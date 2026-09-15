@@ -299,8 +299,7 @@ public class BlockCustomFlower extends Block implements IPlantable {
         checkFlowerChange(world, x, y, z);
     }
 
-    @SuppressWarnings("rawtypes")
-    public void addInformation(int metadata, List tooltip) {
+    public void addInformation(int metadata, List<String> tooltip) {
         if (!groupMap.containsKey(metadata)) {
             return;
         }
@@ -313,10 +312,15 @@ public class BlockCustomFlower extends Block implements IPlantable {
             .getStringLocalization(unlocalizedName);
 
         if (!localizedName.equals(unlocalizedName)) {
-            if (tooltip.isEmpty() || ((String) tooltip.get(0)).length() <= 20) {
+            if (tooltip.isEmpty() || tooltip.get(0)
+                .length() <= 20) {
                 ToolTipStringFormatter.Format(localizedName, tooltip);
             } else {
-                ToolTipStringFormatter.Format(localizedName, tooltip, ((String) tooltip.get(0)).length() + 5);
+                ToolTipStringFormatter.Format(
+                    localizedName,
+                    tooltip,
+                    tooltip.get(0)
+                        .length() + 5);
             }
         }
 

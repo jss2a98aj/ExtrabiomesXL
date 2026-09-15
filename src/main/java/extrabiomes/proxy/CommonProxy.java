@@ -50,7 +50,6 @@ public class CommonProxy {
         }
     }
 
-    @SuppressWarnings("unchecked")
     public void addRecipe(IRecipe recipe) {
         CraftingManager.getInstance()
             .getRecipeList()

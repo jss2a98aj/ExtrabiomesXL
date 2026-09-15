@@ -24,7 +24,7 @@ public enum ItemSettings {
     private boolean enabled;
 
     ItemSettings() {
-        this.enabled = true;
+        enabled = true;
     }
 
     public boolean getEnabled() {
@@ -32,12 +32,7 @@ public enum ItemSettings {
     }
 
     public void load(EnhancedConfiguration configuration, boolean update) {
-        /*
-         * if(update || itemID == 0) { itemID = configuration.get(Configuration.CATEGORY_ITEM, toString() + ".id",
-         * itemID).getInt(0); } else { itemID = configuration.getItem(toString() + ".id", itemID).getInt(0); }
-         */
-
-        this.enabled = configuration.get("item", toString() + ".enabled", this.enabled)
+        enabled = configuration.get("item", this + ".enabled", this.enabled)
             .getBoolean();
     }
 

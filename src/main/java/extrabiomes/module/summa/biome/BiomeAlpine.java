@@ -19,7 +19,6 @@ public class BiomeAlpine extends ExtrabiomeGenBase {
         return DecorationSettings.ALPINE;
     }
 
-    @SuppressWarnings("unchecked")
     public BiomeAlpine() {
         super(BiomeSettings.ALPINE, Type.SNOWY, Type.MOUNTAIN);
         topBlock = Blocks.stone;

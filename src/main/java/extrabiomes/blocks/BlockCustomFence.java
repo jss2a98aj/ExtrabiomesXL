@@ -18,7 +18,6 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import extrabiomes.Extrabiomes;
-import extrabiomes.module.fabrica.block.BlockCustomWall.BlockType;
 
 public class BlockCustomFence extends BlockFence {
 

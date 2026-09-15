@@ -52,371 +52,423 @@ public class EBXLCommandHandler extends CommandBase {
             if (cmds.length == 0) {
                 sendChatMessage(player, "use \"/ebxl help\" for the list of valid commands.");
             } else {
-                if (cmds[0].equals("help")) {
-                    if (cmds.length == 1) {
-                        helpList(player);
-                    } else {
-                        // Give instructions about a command
-                        if (cmds[1].equals("help")) {
-                            sendChatMessage(player, "§2-ExtrabiomesXl help Command-§r");
-                            sendChatMessage(player, "§o/ebxl help [command]§r");
-                            sendChatMessage(player, "If [command] is blank or an invalid command then the list of");
-                            sendChatMessage(player, "valid commands will be displayed. If [command] is a valid");
-                            sendChatMessage(player, "command then details about that command will be dispalyed.");
-                        } else if (cmds[1].equals("spawntree")) {
-                            sendChatMessage(player, "§2-ExtrabiomesXl spawntree Command-§r");
-                            sendChatMessage(player, "§o/ebxl spawntree <treetype> <x> <y> <z> [seed]§r");
-                            sendChatMessage(player, "Forces a tree of the specified <type> to spawn at");
-                            sendChatMessage(player, "<x>,<y>,<z> in the world. [command] is optional and if a");
-                            sendChatMessage(player, "number is provided will force the tree to use the same random");
-                            sendChatMessage(player, "numbers for tree generation for any giver seed. For example");
-                            sendChatMessage(player, "\"/ebxl spawntree fur 0 100 0 100\" will cause the exact same");
-                            sendChatMessage(player, "fur tree to spawn at 0,100,0 no matter how many times you run");
-                            sendChatMessage(player, "the command.");
-                        } else if (cmds[1].equals("version")) {
-                            sendChatMessage(player, "§2-ExtrabiomesXl version Command-§r");
-                            sendChatMessage(player, "§o/ebxl version§r");
-                            sendChatMessage(player, "Displays the change log for the current");
-                            sendChatMessage(player, "version of ExtrabiomesXL.");
-                        } else if (cmds[1].equals("lastseed")) {
-                            sendChatMessage(player, "§2-ExtrabiomesXl lastseed Command-§r");
-                            sendChatMessage(player, "§o/ebxl lastseed <treetype>§r");
-                            sendChatMessage(player, "Displays the last random number that was used to generate");
-                            sendChatMessage(player, "the specified tree type for use with the spawntree command.");
-                        } else if (cmds[1].equals("saplingdespawntime")) {
-                            sendChatMessage(player, "§2-ExtrabiomesXl saplingdespawntime Command-§r");
-                            sendChatMessage(player, "§o/ebxl saplingdespawntime [ticks]§r");
-                            sendChatMessage(player, "Display/set the number of ticks that a sapling will exist");
-                            sendChatMessage(player, "on the ground before it despawns.");
-                        } else if (cmds[1].equals("killtree")) {
-                            sendChatMessage(player, "§2-ExtrabiomesXl killtree Command-§r");
-                            sendChatMessage(player, "§o/ebxl killtree <x> <y> <z>§r");
-                            sendChatMessage(player, "Kills the tree at the specified coords.");
-                        } else {
+                switch (cmds[0]) {
+                    case "help" -> {
+                        if (cmds.length == 1) {
                             helpList(player);
-                        }
-                    }
-                } else if (cmds[0].equals("kill")) {
-                    killTree(player, 0, 4, 0);
-                } else if (cmds[0].equals("spawn")) {
-                    (new WorldGenSakuraBlossomTree(true)).generate(player.worldObj, player.worldObj.rand, 0, 4, 0);
-                } else if (cmds[0].equals("killtree")) {
-                    if (cmds.length == 4) {
-                        try {
-                            int x = Integer.parseInt(cmds[1]);
-                            int y = Integer.parseInt(cmds[2]);
-                            int z = Integer.parseInt(cmds[3]);
-
-                            killTree(player, x, y, z);
-                        } catch (Exception e) {
-                            sendChatMessage(player, "X, Y and Z must be valid numbers.");
-                        }
-
-                    } else if (cmds.length == 2 && cmds[1].equals("here")) {
-                        killTree(player, (int) player.posX, (int) player.posY - 1, (int) player.posZ);
-                    } else {
-                        sendChatMessage(player, "Incorrect format. /ebxl killtree <x> <y> <z>");
-                    }
-                } else if (cmds[0].equals("saplingdespawntime")) {
-                    if (cmds.length == 1) {
-                        sendChatMessage(
-                            player,
-                            "Sapling despawn time is currently: " + BlockCustomSapling.getSaplingLifespan() + " ticks");
-                    } else if (cmds.length == 2) {
-                        int newTime = Integer.parseInt(cmds[1]);
-
-                        if (newTime >= 0 && newTime <= 10000) {
-                            BlockCustomSapling.setSaplingLifespan(newTime);
-                            BlockNewSapling.setSaplingLifespan(newTime);
-                            sendChatMessage(player, "Sapling despawn time set to: " + cmds[1] + " ticks");
                         } else {
-                            sendChatMessage(player, "Sapling despawn time must be between 0 and 10000.");
+                            // Give instructions about a command
+                            switch (cmds[1]) {
+                                case "help" -> {
+                                    sendChatMessage(player, "§2-ExtrabiomesXl help Command-§r");
+                                    sendChatMessage(player, "§o/ebxl help [command]§r");
+                                    sendChatMessage(
+                                        player,
+                                        "If [command] is blank or an invalid command then the list of");
+                                    sendChatMessage(
+                                        player,
+                                        "valid commands will be displayed. If [command] is a valid");
+                                    sendChatMessage(
+                                        player,
+                                        "command then details about that command will be dispalyed.");
+                                }
+                                case "spawntree" -> {
+                                    sendChatMessage(player, "§2-ExtrabiomesXl spawntree Command-§r");
+                                    sendChatMessage(player, "§o/ebxl spawntree <treetype> <x> <y> <z> [seed]§r");
+                                    sendChatMessage(player, "Forces a tree of the specified <type> to spawn at");
+                                    sendChatMessage(player, "<x>,<y>,<z> in the world. [command] is optional and if a");
+                                    sendChatMessage(
+                                        player,
+                                        "number is provided will force the tree to use the same random");
+                                    sendChatMessage(
+                                        player,
+                                        "numbers for tree generation for any giver seed. For example");
+                                    sendChatMessage(
+                                        player,
+                                        "\"/ebxl spawntree fur 0 100 0 100\" will cause the exact same");
+                                    sendChatMessage(
+                                        player,
+                                        "fur tree to spawn at 0,100,0 no matter how many times you run");
+                                    sendChatMessage(player, "the command.");
+                                }
+                                case "version" -> {
+                                    sendChatMessage(player, "§2-ExtrabiomesXl version Command-§r");
+                                    sendChatMessage(player, "§o/ebxl version§r");
+                                    sendChatMessage(player, "Displays the change log for the current");
+                                    sendChatMessage(player, "version of ExtrabiomesXL.");
+                                }
+                                case "lastseed" -> {
+                                    sendChatMessage(player, "§2-ExtrabiomesXl lastseed Command-§r");
+                                    sendChatMessage(player, "§o/ebxl lastseed <treetype>§r");
+                                    sendChatMessage(
+                                        player,
+                                        "Displays the last random number that was used to generate");
+                                    sendChatMessage(
+                                        player,
+                                        "the specified tree type for use with the spawntree command.");
+                                }
+                                case "saplingdespawntime" -> {
+                                    sendChatMessage(player, "§2-ExtrabiomesXl saplingdespawntime Command-§r");
+                                    sendChatMessage(player, "§o/ebxl saplingdespawntime [ticks]§r");
+                                    sendChatMessage(
+                                        player,
+                                        "Display/set the number of ticks that a sapling will exist");
+                                    sendChatMessage(player, "on the ground before it despawns.");
+                                }
+                                case "killtree" -> {
+                                    sendChatMessage(player, "§2-ExtrabiomesXl killtree Command-§r");
+                                    sendChatMessage(player, "§o/ebxl killtree <x> <y> <z>§r");
+                                    sendChatMessage(player, "Kills the tree at the specified coords.");
+                                }
+                                default -> helpList(player);
+                            }
                         }
-                    } else {
-                        sendChatMessage(player, "Incorrect format. /ebxl saplingDespawn [newtime]");
                     }
-                } else if (cmds[0].equals("lastseed")) {
-                    if (cmds.length == 1) {
-                        treeNames(player);
-                    } else {
-                        if (cmds[1].equals("acacia")) {
-                            sendChatMessage(player, "The last seed used was: " + WorldGenAcacia.getLastSeed());
-                        } else if (cmds[1].equals("cypress")) {
-                            sendChatMessage(player, "The last seed used was: " + WorldGenCypressTree.getLastSeed());
-                        } else if (cmds[1].equals("baldcypress")) {
-                            sendChatMessage(player, "The last seed used was: " + WorldGenBaldCypressTree.getLastSeed());
-                        } else if (cmds[1].equals("rainbow")) {
-                            sendChatMessage(
-                                player,
-                                "The last seed used was: " + WorldGenRainbowEucalyptusTree.getLastSeed());
-                        } else if (cmds[1].equals("japanesemaple")) {
-                            sendChatMessage(
-                                player,
-                                "The last seed used was: " + WorldGenJapaneseMapleTree.getLastSeed());
-                        } else if (cmds[1].equals("japanesemapleshrub")) {
-                            sendChatMessage(
-                                player,
-                                "The last seed used was: " + WorldGenJapaneseMapleShrub.getLastSeed());
-                        } else if (cmds[1].equals("fir")) {
-                            sendChatMessage(player, "The last seed used was: " + WorldGenFirTree.getLastSeed());
-                        } else if (cmds[1].equals("redwood")) {
-                            sendChatMessage(player, "The last seed used was: " + WorldGenNewRedwood.getLastSeed());
-                        } else if (cmds[1].equals("largefir")) {
-                            sendChatMessage(player, "The last seed used was: " + WorldGenFirTreeHuge.getLastSeed());
-                        } else if (cmds[1].equals("brown")) {
-                            sendChatMessage(player, "The last seed used was: " + WorldGenAutumnTree.getLastSeed());
-                        } else if (cmds[1].equals("orange")) {
-                            sendChatMessage(player, "The last seed used was: " + WorldGenAutumnTree.getLastSeed());
-                        } else if (cmds[1].equals("red")) {
-                            sendChatMessage(player, "The last seed used was: " + WorldGenAutumnTree.getLastSeed());
-                        } else if (cmds[1].equals("yellow")) {
-                            sendChatMessage(player, "The last seed used was: " + WorldGenAutumnTree.getLastSeed());
-                        } else if (cmds[1].equals("largebrown")) {
-                            sendChatMessage(player, "The last seed used was: " + WorldGenBigAutumnTree.getLastSeed());
-                        } else if (cmds[1].equals("largeorange")) {
-                            sendChatMessage(player, "The last seed used was: " + WorldGenBigAutumnTree.getLastSeed());
-                        } else if (cmds[1].equals("largered")) {
-                            sendChatMessage(player, "The last seed used was: " + WorldGenBigAutumnTree.getLastSeed());
-                        } else if (cmds[1].equals("largeyellow")) {
-                            sendChatMessage(player, "The last seed used was: " + WorldGenBigAutumnTree.getLastSeed());
-                        } else if (cmds[1].equals("sakura")) {
-                            sendChatMessage(
-                                player,
-                                "The last seed used was: " + WorldGenSakuraBlossomTree.getLastSeed());
-                        } else if (cmds[1].equals("legend")) {
-                            sendChatMessage(player, "The Legend Oak does not currently support seeding.");
+                    case "kill" -> killTree(player, 0, 4, 0);
+                    case "spawn" -> (new WorldGenSakuraBlossomTree(true))
+                        .generate(player.worldObj, player.worldObj.rand, 0, 4, 0);
+                    case "killtree" -> {
+                        if (cmds.length == 4) {
+                            try {
+                                int x = Integer.parseInt(cmds[1]);
+                                int y = Integer.parseInt(cmds[2]);
+                                int z = Integer.parseInt(cmds[3]);
+
+                                killTree(player, x, y, z);
+                            } catch (Exception e) {
+                                sendChatMessage(player, "X, Y and Z must be valid numbers.");
+                            }
+
+                        } else if (cmds.length == 2 && cmds[1].equals("here")) {
+                            killTree(player, (int) player.posX, (int) player.posY - 1, (int) player.posZ);
                         } else {
+                            sendChatMessage(player, "Incorrect format. /ebxl killtree <x> <y> <z>");
+                        }
+                    }
+                    case "saplingdespawntime" -> {
+                        if (cmds.length == 1) {
+                            sendChatMessage(
+                                player,
+                                "Sapling despawn time is currently: " + BlockCustomSapling.getSaplingLifespan()
+                                    + " ticks");
+                        } else if (cmds.length == 2) {
+                            int newTime = Integer.parseInt(cmds[1]);
+
+                            if (newTime >= 0 && newTime <= 10000) {
+                                BlockCustomSapling.setSaplingLifespan(newTime);
+                                BlockNewSapling.setSaplingLifespan(newTime);
+                                sendChatMessage(player, "Sapling despawn time set to: " + cmds[1] + " ticks");
+                            } else {
+                                sendChatMessage(player, "Sapling despawn time must be between 0 and 10000.");
+                            }
+                        } else {
+                            sendChatMessage(player, "Incorrect format. /ebxl saplingDespawn [newtime]");
+                        }
+                    }
+                    case "lastseed" -> {
+                        if (cmds.length == 1) {
                             treeNames(player);
+                        } else {
+                            switch (cmds[1]) {
+                                case "acacia" -> sendChatMessage(
+                                    player,
+                                    "The last seed used was: " + WorldGenAcacia.getLastSeed());
+                                case "cypress" -> sendChatMessage(
+                                    player,
+                                    "The last seed used was: " + WorldGenCypressTree.getLastSeed());
+                                case "baldcypress" -> sendChatMessage(
+                                    player,
+                                    "The last seed used was: " + WorldGenBaldCypressTree.getLastSeed());
+                                case "rainbow" -> sendChatMessage(
+                                    player,
+                                    "The last seed used was: " + WorldGenRainbowEucalyptusTree.getLastSeed());
+                                case "japanesemaple" -> sendChatMessage(
+                                    player,
+                                    "The last seed used was: " + WorldGenJapaneseMapleTree.getLastSeed());
+                                case "japanesemapleshrub" -> sendChatMessage(
+                                    player,
+                                    "The last seed used was: " + WorldGenJapaneseMapleShrub.getLastSeed());
+                                case "fir" -> sendChatMessage(
+                                    player,
+                                    "The last seed used was: " + WorldGenFirTree.getLastSeed());
+                                case "redwood" -> sendChatMessage(
+                                    player,
+                                    "The last seed used was: " + WorldGenNewRedwood.getLastSeed());
+                                case "largefir" -> sendChatMessage(
+                                    player,
+                                    "The last seed used was: " + WorldGenFirTreeHuge.getLastSeed());
+                                case "brown", "orange", "red", "yellow" -> sendChatMessage(
+                                    player,
+                                    "The last seed used was: " + WorldGenAutumnTree.getLastSeed());
+                                case "largebrown", "largeorange", "largered", "largeyellow" -> sendChatMessage(
+                                    player,
+                                    "The last seed used was: " + WorldGenBigAutumnTree.getLastSeed());
+                                case "sakura" -> sendChatMessage(
+                                    player,
+                                    "The last seed used was: " + WorldGenSakuraBlossomTree.getLastSeed());
+                                case "legend" -> sendChatMessage(
+                                    player,
+                                    "The Legend Oak does not currently support seeding.");
+                                default -> treeNames(player);
+                            }
                         }
                     }
-                } else if (cmds[0].equals("spawntree")) {
-                    if (cmds.length == 5) {
-                        try {
-                            int x = Integer.parseInt(cmds[2]);
-                            int y = Integer.parseInt(cmds[3]);
-                            int z = Integer.parseInt(cmds[4]);
+                    case "spawntree" -> {
+                        if (cmds.length == 5) {
+                            try {
+                                int x = Integer.parseInt(cmds[2]);
+                                int y = Integer.parseInt(cmds[3]);
+                                int z = Integer.parseInt(cmds[4]);
 
-                            if (cmds[1].equals("acacia")) {
-                                (new WorldGenAcacia(true)).generate(player.worldObj, player.worldObj.rand, x, y, z);
-                            } else if (cmds[1].equals("cypress")) {
-                                (new WorldGenCypressTree(true))
-                                    .generate(player.worldObj, player.worldObj.rand, x, y, z);
-                            } else if (cmds[1].equals("baldcypress")) {
-                                (new WorldGenBaldCypressTree(true))
-                                    .generate(player.worldObj, player.worldObj.rand, x, y, z);
-                            } else if (cmds[1].equals("rainbow")) {
-                                (new WorldGenRainbowEucalyptusTree(true))
-                                    .generate(player.worldObj, player.worldObj.rand, x, y, z);
-                            } else if (cmds[1].equals("japanesemaple")) {
-                                (new WorldGenJapaneseMapleTree(true))
-                                    .generate(player.worldObj, player.worldObj.rand, x, y, z);
-                            } else if (cmds[1].equals("japanesemapleshrub")) {
-                                (new WorldGenJapaneseMapleShrub(true))
-                                    .generate(player.worldObj, player.worldObj.rand, x, y, z);
-                            } else if (cmds[1].equals("fir")) {
-                                (new WorldGenFirTree(true)).generate(player.worldObj, player.worldObj.rand, x, y, z);
-                            } else if (cmds[1].equals("redwood")) {
-                                (new WorldGenNewRedwood(true)).generate(player.worldObj, player.worldObj.rand, x, y, z);
-                            } else if (cmds[1].equals("largeFir")) {
-                                (new WorldGenFirTreeHuge(true))
-                                    .generate(player.worldObj, player.worldObj.rand, x, y, z);
-                            } else if (cmds[1].equals("brown")) {
-                                WorldGenAutumnTree tree = new WorldGenAutumnTree(true, AutumnTreeType.BROWN);
-                                WorldGenAutumnTree.setTrunkBlock(
-                                    Block.getBlockFromItem(
-                                        Element.LOG_AUTUMN.get()
-                                            .getItem()),
-                                    Element.LOG_AUTUMN.get()
-                                        .getItemDamage());
-                                tree.generate(player.worldObj, player.worldObj.rand, x, y, z);
-                            } else if (cmds[1].equals("orange")) {
-                                WorldGenAutumnTree tree = new WorldGenAutumnTree(true, AutumnTreeType.ORANGE);
-                                WorldGenAutumnTree.setTrunkBlock(
-                                    Block.getBlockFromItem(
-                                        Element.LOG_AUTUMN.get()
-                                            .getItem()),
-                                    Element.LOG_AUTUMN.get()
-                                        .getItemDamage());
-                                tree.generate(player.worldObj, player.worldObj.rand, x, y, z);
-                            } else if (cmds[1].equals("red")) {
-                                WorldGenAutumnTree tree = new WorldGenAutumnTree(true, AutumnTreeType.PURPLE);
-                                WorldGenAutumnTree.setTrunkBlock(
-                                    Block.getBlockFromItem(
-                                        Element.LOG_AUTUMN.get()
-                                            .getItem()),
-                                    Element.LOG_AUTUMN.get()
-                                        .getItemDamage());
-                                tree.generate(player.worldObj, player.worldObj.rand, x, y, z);
-                            } else if (cmds[1].equals("yellow")) {
-                                WorldGenAutumnTree tree = new WorldGenAutumnTree(true, AutumnTreeType.YELLOW);
-                                WorldGenAutumnTree.setTrunkBlock(
-                                    Block.getBlockFromItem(
-                                        Element.LOG_AUTUMN.get()
-                                            .getItem()),
-                                    Element.LOG_AUTUMN.get()
-                                        .getItemDamage());
-                                tree.generate(player.worldObj, player.worldObj.rand, x, y, z);
-                            } else if (cmds[1].equals("largebrown")) {
-                                WorldGenBigAutumnTree tree = new WorldGenBigAutumnTree(true, AutumnTreeType.BROWN);
-                                WorldGenBigAutumnTree.setTrunkBlock(
-                                    Block.getBlockFromItem(
-                                        Element.LOG_AUTUMN.get()
-                                            .getItem()),
-                                    Element.LOG_AUTUMN.get()
-                                        .getItemDamage());
-                                tree.generate(player.worldObj, player.worldObj.rand, x, y, z);
-                            } else if (cmds[1].equals("largeorange")) {
-                                WorldGenBigAutumnTree tree = new WorldGenBigAutumnTree(true, AutumnTreeType.ORANGE);
-                                WorldGenBigAutumnTree.setTrunkBlock(
-                                    Block.getBlockFromItem(
-                                        Element.LOG_AUTUMN.get()
-                                            .getItem()),
-                                    Element.LOG_AUTUMN.get()
-                                        .getItemDamage());
-                                tree.generate(player.worldObj, player.worldObj.rand, x, y, z);
-                            } else if (cmds[1].equals("largered")) {
-                                WorldGenBigAutumnTree tree = new WorldGenBigAutumnTree(true, AutumnTreeType.PURPLE);
-                                WorldGenBigAutumnTree.setTrunkBlock(
-                                    Block.getBlockFromItem(
-                                        Element.LOG_AUTUMN.get()
-                                            .getItem()),
-                                    Element.LOG_AUTUMN.get()
-                                        .getItemDamage());
-                                tree.generate(player.worldObj, player.worldObj.rand, x, y, z);
-                            } else if (cmds[1].equals("largeyellow")) {
-                                WorldGenBigAutumnTree tree = new WorldGenBigAutumnTree(true, AutumnTreeType.YELLOW);
-                                WorldGenBigAutumnTree.setTrunkBlock(
-                                    Block.getBlockFromItem(
-                                        Element.LOG_AUTUMN.get()
-                                            .getItem()),
-                                    Element.LOG_AUTUMN.get()
-                                        .getItemDamage());
-                                tree.generate(player.worldObj, player.worldObj.rand, x, y, z);
-                            } else if (cmds[1].equals("sakura")) {
-                                (new WorldGenSakuraBlossomTree(true))
-                                    .generate(player.worldObj, player.worldObj.rand, x, y, z);
-                            } else if (cmds[1].equals("legend")) {
-                                (new WorldGenLegendOak(true)).generate(player.worldObj, player.worldObj.rand, x, y, z);
-                            } else {
-                                treeNames(player);
+                                switch (cmds[1]) {
+                                    case "acacia" -> (new WorldGenAcacia(true))
+                                        .generate(player.worldObj, player.worldObj.rand, x, y, z);
+                                    case "cypress" -> (new WorldGenCypressTree(true))
+                                        .generate(player.worldObj, player.worldObj.rand, x, y, z);
+                                    case "baldcypress" -> (new WorldGenBaldCypressTree(true))
+                                        .generate(player.worldObj, player.worldObj.rand, x, y, z);
+                                    case "rainbow" -> (new WorldGenRainbowEucalyptusTree(true))
+                                        .generate(player.worldObj, player.worldObj.rand, x, y, z);
+                                    case "japanesemaple" -> (new WorldGenJapaneseMapleTree(true))
+                                        .generate(player.worldObj, player.worldObj.rand, x, y, z);
+                                    case "japanesemapleshrub" -> (new WorldGenJapaneseMapleShrub(true))
+                                        .generate(player.worldObj, player.worldObj.rand, x, y, z);
+                                    case "fir" -> (new WorldGenFirTree(true))
+                                        .generate(player.worldObj, player.worldObj.rand, x, y, z);
+                                    case "redwood" -> (new WorldGenNewRedwood(true))
+                                        .generate(player.worldObj, player.worldObj.rand, x, y, z);
+                                    case "largeFir" -> (new WorldGenFirTreeHuge(true))
+                                        .generate(player.worldObj, player.worldObj.rand, x, y, z);
+                                    case "brown" -> {
+                                        WorldGenAutumnTree tree = new WorldGenAutumnTree(true, AutumnTreeType.BROWN);
+                                        WorldGenAutumnTree.setTrunkBlock(
+                                            Block.getBlockFromItem(
+                                                Element.LOG_AUTUMN.get()
+                                                    .getItem()),
+                                            Element.LOG_AUTUMN.get()
+                                                .getItemDamage());
+                                        tree.generate(player.worldObj, player.worldObj.rand, x, y, z);
+                                    }
+                                    case "orange" -> {
+                                        WorldGenAutumnTree tree = new WorldGenAutumnTree(true, AutumnTreeType.ORANGE);
+                                        WorldGenAutumnTree.setTrunkBlock(
+                                            Block.getBlockFromItem(
+                                                Element.LOG_AUTUMN.get()
+                                                    .getItem()),
+                                            Element.LOG_AUTUMN.get()
+                                                .getItemDamage());
+                                        tree.generate(player.worldObj, player.worldObj.rand, x, y, z);
+                                    }
+                                    case "red" -> {
+                                        WorldGenAutumnTree tree = new WorldGenAutumnTree(true, AutumnTreeType.PURPLE);
+                                        WorldGenAutumnTree.setTrunkBlock(
+                                            Block.getBlockFromItem(
+                                                Element.LOG_AUTUMN.get()
+                                                    .getItem()),
+                                            Element.LOG_AUTUMN.get()
+                                                .getItemDamage());
+                                        tree.generate(player.worldObj, player.worldObj.rand, x, y, z);
+                                    }
+                                    case "yellow" -> {
+                                        WorldGenAutumnTree tree = new WorldGenAutumnTree(true, AutumnTreeType.YELLOW);
+                                        WorldGenAutumnTree.setTrunkBlock(
+                                            Block.getBlockFromItem(
+                                                Element.LOG_AUTUMN.get()
+                                                    .getItem()),
+                                            Element.LOG_AUTUMN.get()
+                                                .getItemDamage());
+                                        tree.generate(player.worldObj, player.worldObj.rand, x, y, z);
+                                    }
+                                    case "largebrown" -> {
+                                        WorldGenBigAutumnTree tree = new WorldGenBigAutumnTree(
+                                            true,
+                                            AutumnTreeType.BROWN);
+                                        WorldGenBigAutumnTree.setTrunkBlock(
+                                            Block.getBlockFromItem(
+                                                Element.LOG_AUTUMN.get()
+                                                    .getItem()),
+                                            Element.LOG_AUTUMN.get()
+                                                .getItemDamage());
+                                        tree.generate(player.worldObj, player.worldObj.rand, x, y, z);
+                                    }
+                                    case "largeorange" -> {
+                                        WorldGenBigAutumnTree tree = new WorldGenBigAutumnTree(
+                                            true,
+                                            AutumnTreeType.ORANGE);
+                                        WorldGenBigAutumnTree.setTrunkBlock(
+                                            Block.getBlockFromItem(
+                                                Element.LOG_AUTUMN.get()
+                                                    .getItem()),
+                                            Element.LOG_AUTUMN.get()
+                                                .getItemDamage());
+                                        tree.generate(player.worldObj, player.worldObj.rand, x, y, z);
+                                    }
+                                    case "largered" -> {
+                                        WorldGenBigAutumnTree tree = new WorldGenBigAutumnTree(
+                                            true,
+                                            AutumnTreeType.PURPLE);
+                                        WorldGenBigAutumnTree.setTrunkBlock(
+                                            Block.getBlockFromItem(
+                                                Element.LOG_AUTUMN.get()
+                                                    .getItem()),
+                                            Element.LOG_AUTUMN.get()
+                                                .getItemDamage());
+                                        tree.generate(player.worldObj, player.worldObj.rand, x, y, z);
+                                    }
+                                    case "largeyellow" -> {
+                                        WorldGenBigAutumnTree tree = new WorldGenBigAutumnTree(
+                                            true,
+                                            AutumnTreeType.YELLOW);
+                                        WorldGenBigAutumnTree.setTrunkBlock(
+                                            Block.getBlockFromItem(
+                                                Element.LOG_AUTUMN.get()
+                                                    .getItem()),
+                                            Element.LOG_AUTUMN.get()
+                                                .getItemDamage());
+                                        tree.generate(player.worldObj, player.worldObj.rand, x, y, z);
+                                    }
+                                    case "sakura" -> (new WorldGenSakuraBlossomTree(true))
+                                        .generate(player.worldObj, player.worldObj.rand, x, y, z);
+                                    case "legend" -> (new WorldGenLegendOak(true))
+                                        .generate(player.worldObj, player.worldObj.rand, x, y, z);
+                                    default -> treeNames(player);
+                                }
+                            } catch (Exception e) {
+                                sendChatMessage(player, "X, Y and Z must be valid numbers.");
                             }
-                        } catch (Exception e) {
-                            sendChatMessage(player, "X, Y and Z must be valid numbers.");
-                        }
-                    } else if (cmds.length == 6) {
-                        try {
-                            int x = Integer.parseInt(cmds[2]);
-                            int y = Integer.parseInt(cmds[3]);
-                            int z = Integer.parseInt(cmds[4]);
-                            long seed = Long.parseLong(cmds[5]);
+                        } else if (cmds.length == 6) {
+                            try {
+                                int x = Integer.parseInt(cmds[2]);
+                                int y = Integer.parseInt(cmds[3]);
+                                int z = Integer.parseInt(cmds[4]);
+                                long seed = Long.parseLong(cmds[5]);
 
-                            if (cmds[1].equals("acacia")) {
-                                (new WorldGenAcacia(true)).generate(player.worldObj, seed, x, y, z);
-                            } else if (cmds[1].equals("cypress")) {
-                                (new WorldGenCypressTree(true)).generate(player.worldObj, seed, x, y, z);
-                            } else if (cmds[1].equals("baldcypress")) {
-                                (new WorldGenBaldCypressTree(true)).generate(player.worldObj, seed, x, y, z);
-                            } else if (cmds[1].equals("rainbow")) {
-                                (new WorldGenRainbowEucalyptusTree(true)).generate(player.worldObj, seed, x, y, z);
-                            } else if (cmds[1].equals("japanesemaple")) {
-                                (new WorldGenJapaneseMapleTree(true)).generate(player.worldObj, seed, x, y, z);
-                            } else if (cmds[1].equals("japanesemapleshrub")) {
-                                (new WorldGenJapaneseMapleShrub(true)).generate(player.worldObj, seed, x, y, z);
-                            } else if (cmds[1].equals("fir")) {
-                                (new WorldGenFirTree(true)).generate(player.worldObj, seed, x, y, z);
-                            } else if (cmds[1].equals("redwood")) {
-                                (new WorldGenNewRedwood(true)).generate(player.worldObj, seed, x, y, z);
-                            } else if (cmds[1].equals("largeFir")) {
-                                (new WorldGenFirTreeHuge(true)).generate(player.worldObj, seed, x, y, z);
-                            } else if (cmds[1].equals("brown")) {
-                                WorldGenAutumnTree tree = new WorldGenAutumnTree(true, AutumnTreeType.BROWN);
-                                WorldGenAutumnTree.setTrunkBlock(
-                                    Block.getBlockFromItem(
-                                        Element.LOG_AUTUMN.get()
-                                            .getItem()),
-                                    Element.LOG_AUTUMN.get()
-                                        .getItemDamage());
-                                tree.generate(player.worldObj, seed, x, y, z);
-                            } else if (cmds[1].equals("orange")) {
-                                WorldGenAutumnTree tree = new WorldGenAutumnTree(true, AutumnTreeType.ORANGE);
-                                WorldGenAutumnTree.setTrunkBlock(
-                                    Block.getBlockFromItem(
-                                        Element.LOG_AUTUMN.get()
-                                            .getItem()),
-                                    Element.LOG_AUTUMN.get()
-                                        .getItemDamage());
-                                tree.generate(player.worldObj, seed, x, y, z);
-                            } else if (cmds[1].equals("red")) {
-                                WorldGenAutumnTree tree = new WorldGenAutumnTree(true, AutumnTreeType.PURPLE);
-                                WorldGenAutumnTree.setTrunkBlock(
-                                    Block.getBlockFromItem(
-                                        Element.LOG_AUTUMN.get()
-                                            .getItem()),
-                                    Element.LOG_AUTUMN.get()
-                                        .getItemDamage());
-                                tree.generate(player.worldObj, seed, x, y, z);
-                            } else if (cmds[1].equals("yellow")) {
-                                WorldGenAutumnTree tree = new WorldGenAutumnTree(true, AutumnTreeType.YELLOW);
-                                WorldGenAutumnTree.setTrunkBlock(
-                                    Block.getBlockFromItem(
-                                        Element.LOG_AUTUMN.get()
-                                            .getItem()),
-                                    Element.LOG_AUTUMN.get()
-                                        .getItemDamage());
-                                tree.generate(player.worldObj, seed, x, y, z);
-                            } else if (cmds[1].equals("largeBrown")) {
-                                WorldGenBigAutumnTree tree = new WorldGenBigAutumnTree(true, AutumnTreeType.BROWN);
-                                WorldGenBigAutumnTree.setTrunkBlock(
-                                    Block.getBlockFromItem(
-                                        Element.LOG_AUTUMN.get()
-                                            .getItem()),
-                                    Element.LOG_AUTUMN.get()
-                                        .getItemDamage());
-                                tree.generate(player.worldObj, seed, x, y, z);
-                            } else if (cmds[1].equals("largeorange")) {
-                                WorldGenBigAutumnTree tree = new WorldGenBigAutumnTree(true, AutumnTreeType.ORANGE);
-                                WorldGenBigAutumnTree.setTrunkBlock(
-                                    Block.getBlockFromItem(
-                                        Element.LOG_AUTUMN.get()
-                                            .getItem()),
-                                    Element.LOG_AUTUMN.get()
-                                        .getItemDamage());
-                                tree.generate(player.worldObj, seed, x, y, z);
-                            } else if (cmds[1].equals("largered")) {
-                                WorldGenBigAutumnTree tree = new WorldGenBigAutumnTree(true, AutumnTreeType.PURPLE);
-                                WorldGenBigAutumnTree.setTrunkBlock(
-                                    Block.getBlockFromItem(
-                                        Element.LOG_AUTUMN.get()
-                                            .getItem()),
-                                    Element.LOG_AUTUMN.get()
-                                        .getItemDamage());
-                                tree.generate(player.worldObj, seed, x, y, z);
-                            } else if (cmds[1].equals("largeyellow")) {
-                                WorldGenBigAutumnTree tree = new WorldGenBigAutumnTree(true, AutumnTreeType.YELLOW);
-                                WorldGenBigAutumnTree.setTrunkBlock(
-                                    Block.getBlockFromItem(
-                                        Element.LOG_AUTUMN.get()
-                                            .getItem()),
-                                    Element.LOG_AUTUMN.get()
-                                        .getItemDamage());
-                                tree.generate(player.worldObj, seed, x, y, z);
-                            } else if (cmds[1].equals("sakura")) {
-                                (new WorldGenSakuraBlossomTree(true)).generate(player.worldObj, seed, x, y, z);
-                            } else if (cmds[1].equals("legend")) {
-                                (new WorldGenLegendOak(true)).generate(player.worldObj, player.worldObj.rand, x, y, z);
-                                sendChatMessage(player, "The Legend Oak does not currently support seeding.");
-                            } else {
-                                treeNames(player);
+                                switch (cmds[1]) {
+                                    case "acacia" -> (new WorldGenAcacia(true))
+                                        .generate(player.worldObj, seed, x, y, z);
+                                    case "cypress" -> (new WorldGenCypressTree(true))
+                                        .generate(player.worldObj, seed, x, y, z);
+                                    case "baldcypress" -> (new WorldGenBaldCypressTree(true))
+                                        .generate(player.worldObj, seed, x, y, z);
+                                    case "rainbow" -> (new WorldGenRainbowEucalyptusTree(true))
+                                        .generate(player.worldObj, seed, x, y, z);
+                                    case "japanesemaple" -> (new WorldGenJapaneseMapleTree(true))
+                                        .generate(player.worldObj, seed, x, y, z);
+                                    case "japanesemapleshrub" -> (new WorldGenJapaneseMapleShrub(true))
+                                        .generate(player.worldObj, seed, x, y, z);
+                                    case "fir" -> (new WorldGenFirTree(true)).generate(player.worldObj, seed, x, y, z);
+                                    case "redwood" -> (new WorldGenNewRedwood(true))
+                                        .generate(player.worldObj, seed, x, y, z);
+                                    case "largeFir" -> (new WorldGenFirTreeHuge(true))
+                                        .generate(player.worldObj, seed, x, y, z);
+                                    case "brown" -> {
+                                        WorldGenAutumnTree tree = new WorldGenAutumnTree(true, AutumnTreeType.BROWN);
+                                        WorldGenAutumnTree.setTrunkBlock(
+                                            Block.getBlockFromItem(
+                                                Element.LOG_AUTUMN.get()
+                                                    .getItem()),
+                                            Element.LOG_AUTUMN.get()
+                                                .getItemDamage());
+                                        tree.generate(player.worldObj, seed, x, y, z);
+                                    }
+                                    case "orange" -> {
+                                        WorldGenAutumnTree tree = new WorldGenAutumnTree(true, AutumnTreeType.ORANGE);
+                                        WorldGenAutumnTree.setTrunkBlock(
+                                            Block.getBlockFromItem(
+                                                Element.LOG_AUTUMN.get()
+                                                    .getItem()),
+                                            Element.LOG_AUTUMN.get()
+                                                .getItemDamage());
+                                        tree.generate(player.worldObj, seed, x, y, z);
+                                    }
+                                    case "red" -> {
+                                        WorldGenAutumnTree tree = new WorldGenAutumnTree(true, AutumnTreeType.PURPLE);
+                                        WorldGenAutumnTree.setTrunkBlock(
+                                            Block.getBlockFromItem(
+                                                Element.LOG_AUTUMN.get()
+                                                    .getItem()),
+                                            Element.LOG_AUTUMN.get()
+                                                .getItemDamage());
+                                        tree.generate(player.worldObj, seed, x, y, z);
+                                    }
+                                    case "yellow" -> {
+                                        WorldGenAutumnTree tree = new WorldGenAutumnTree(true, AutumnTreeType.YELLOW);
+                                        WorldGenAutumnTree.setTrunkBlock(
+                                            Block.getBlockFromItem(
+                                                Element.LOG_AUTUMN.get()
+                                                    .getItem()),
+                                            Element.LOG_AUTUMN.get()
+                                                .getItemDamage());
+                                        tree.generate(player.worldObj, seed, x, y, z);
+                                    }
+                                    case "largeBrown" -> {
+                                        WorldGenBigAutumnTree tree = new WorldGenBigAutumnTree(
+                                            true,
+                                            AutumnTreeType.BROWN);
+                                        WorldGenBigAutumnTree.setTrunkBlock(
+                                            Block.getBlockFromItem(
+                                                Element.LOG_AUTUMN.get()
+                                                    .getItem()),
+                                            Element.LOG_AUTUMN.get()
+                                                .getItemDamage());
+                                        tree.generate(player.worldObj, seed, x, y, z);
+                                    }
+                                    case "largeorange" -> {
+                                        WorldGenBigAutumnTree tree = new WorldGenBigAutumnTree(
+                                            true,
+                                            AutumnTreeType.ORANGE);
+                                        WorldGenBigAutumnTree.setTrunkBlock(
+                                            Block.getBlockFromItem(
+                                                Element.LOG_AUTUMN.get()
+                                                    .getItem()),
+                                            Element.LOG_AUTUMN.get()
+                                                .getItemDamage());
+                                        tree.generate(player.worldObj, seed, x, y, z);
+                                    }
+                                    case "largered" -> {
+                                        WorldGenBigAutumnTree tree = new WorldGenBigAutumnTree(
+                                            true,
+                                            AutumnTreeType.PURPLE);
+                                        WorldGenBigAutumnTree.setTrunkBlock(
+                                            Block.getBlockFromItem(
+                                                Element.LOG_AUTUMN.get()
+                                                    .getItem()),
+                                            Element.LOG_AUTUMN.get()
+                                                .getItemDamage());
+                                        tree.generate(player.worldObj, seed, x, y, z);
+                                    }
+                                    case "largeyellow" -> {
+                                        WorldGenBigAutumnTree tree = new WorldGenBigAutumnTree(
+                                            true,
+                                            AutumnTreeType.YELLOW);
+                                        WorldGenBigAutumnTree.setTrunkBlock(
+                                            Block.getBlockFromItem(
+                                                Element.LOG_AUTUMN.get()
+                                                    .getItem()),
+                                            Element.LOG_AUTUMN.get()
+                                                .getItemDamage());
+                                        tree.generate(player.worldObj, seed, x, y, z);
+                                    }
+                                    case "sakura" -> (new WorldGenSakuraBlossomTree(true))
+                                        .generate(player.worldObj, seed, x, y, z);
+                                    case "legend" -> {
+                                        (new WorldGenLegendOak(true))
+                                            .generate(player.worldObj, player.worldObj.rand, x, y, z);
+                                        sendChatMessage(player, "The Legend Oak does not currently support seeding.");
+                                    }
+                                    default -> treeNames(player);
+                                }
+                            } catch (Exception e) {
+                                sendChatMessage(player, "X, Y, Z and seed must be valid numbers.");
                             }
-                        } catch (Exception e) {
-                            sendChatMessage(player, "X, Y, Z and seed must be valid numbers.");
+                        } else {
+                            sendChatMessage(player, "Incorrect format. /ebxl spawntree <treetype> <x> <y> <z> [seed]");
                         }
-                    } else {
-                        sendChatMessage(player, "Incorrect format. /ebxl spawntree <treetype> <x> <y> <z> [seed]");
                     }
-                } else {
-                    sendChatMessage(player, "\"/ebxl " + cmds[0] + "\" is not a valid command.");
-                    sendChatMessage(player, "Use \"/ebxl help\" for the list of valid commands.");
+                    default -> {
+                        sendChatMessage(player, "\"/ebxl " + cmds[0] + "\" is not a valid command.");
+                        sendChatMessage(player, "Use \"/ebxl help\" for the list of valid commands.");
+                    }
                 }
             }
         }

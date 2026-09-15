@@ -52,11 +52,7 @@ public enum BlockManager {
                 LogHelper.fine("Skipping registration of disabled block " + block);
                 continue;
             }
-            try {
-                block.create();
-            } catch (final Exception e) {
-                throw e;
-            }
+            block.create();
             block.blockCreated = true;
         }
     }

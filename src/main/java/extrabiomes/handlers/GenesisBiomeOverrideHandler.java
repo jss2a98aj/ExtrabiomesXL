@@ -17,8 +17,8 @@ public class GenesisBiomeOverrideHandler extends GenLayer {
 
     public static class coord {
 
-        public int x = 0;
-        public int z = 0;
+        public int x;
+        public int z;
 
         public coord(int xx, int zz) {
             x = xx;

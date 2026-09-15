@@ -21,7 +21,6 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -71,16 +70,11 @@ public class BlockQuarterLog extends BlockLog {
     private static Orientation determineOrientation(World world, int x, int y, int z, EntityLivingBase entity) {
         final int direction = BlockPistonBase.determineOrientation(world, x, y, z, entity);
 
-        switch (direction) {
-            case 0:
-            case 1:
-                return Orientation.UD;
-            case 2:
-            case 3:
-                return Orientation.NS;
-            default:
-                return Orientation.EW;
-        }
+        return switch (direction) {
+            case 0, 1 -> Orientation.UD;
+            case 2, 3 -> Orientation.NS;
+            default -> Orientation.EW;
+        };
     }
 
     public static void setRenderId(int renderId) {
@@ -93,10 +87,10 @@ public class BlockQuarterLog extends BlockLog {
         return barkOnSides;
     }
 
-    private BlockSettings settings;
-    private HashMap<Integer, IIcon> textures;
-    private IIcon[] textureArray = new IIcon[24];
-    private int index;
+    private final BlockSettings settings;
+    private final HashMap<Integer, IIcon> textures;
+    private final IIcon[] textureArray = new IIcon[24];
+    private final int index;
 
     public BlockQuarterLog(BlockSettings settings, int index, BarkOn barkOnSides) {
         super();
@@ -185,78 +179,38 @@ public class BlockQuarterLog extends BlockLog {
 
         if (type > 2) type = 0;
 
-        int offset = 0;
-        switch (barkOnSides) {
-            case SE:
-                offset = getSETextureOffset(side, orientation);
-                break;
-            case SW:
-                offset = getSWTextureOffset(side, orientation);
-                break;
-            case NE:
-                offset = getNETextureOffset(side, orientation);
-                break;
-            case NW:
-                offset = getNWTextureOffset(side, orientation);
-                break;
-        }
+        int offset = switch (barkOnSides) {
+            case SE -> getSETextureOffset(side, orientation);
+            case SW -> getSWTextureOffset(side, orientation);
+            case NE -> getNETextureOffset(side, orientation);
+            case NW -> getNWTextureOffset(side, orientation);
+        };
         return textures.get(index + offset + type * 2);
     }
 
     private int getNETextureOffset(int side, final int orientation) {
         int offset = 0;
-        if (orientation == 0) switch (side) {
-            case 0:
-            case 1:
-                offset = 17;
-                break;
-            case 2:
-                offset = 0;
-                break;
-            case 3:
-                offset = 49;
-                break;
-            case 4:
-                offset = 48;
-                break;
-            default:
-                offset = 1;
-        }
-        else if (orientation == 4) switch (side) {
-            case 0:
-                offset = 49;
-                break;
-            case 1:
-                offset = 0;
-                break;
-            case 2:
-                offset = 1;
-                break;
-            case 3:
-                offset = 48;
-                break;
-            case 4:
-                offset = 16;
-                break;
-            default:
-                offset = 17;
-        }
-        else if (orientation == 8) switch (side) {
-            case 0:
-                offset = 49;
-                break;
-            case 2:
-                offset = 16;
-                break;
-            case 3:
-                offset = 17;
-                break;
-            case 4:
-                offset = 49;
-                break;
-            default:
-                offset = 1;
-        }
+        if (orientation == 0) offset = switch (side) {
+            case 0, 1 -> 17;
+            case 2 -> 0;
+            case 3 -> 49;
+            case 4 -> 48;
+            default -> 1;
+        };
+        else if (orientation == 4) offset = switch (side) {
+            case 0 -> 49;
+            case 1 -> 0;
+            case 2 -> 1;
+            case 3 -> 48;
+            case 4 -> 16;
+            default -> 17;
+        };
+        else if (orientation == 8) offset = switch (side) {
+            case 0, 4 -> 49;
+            case 2 -> 16;
+            case 3 -> 17;
+            default -> 1;
+        };
         return offset;
     }
 
@@ -270,61 +224,29 @@ public class BlockQuarterLog extends BlockLog {
 
     private int getNWTextureOffset(int side, final int orientation) {
         int offset = 0;
-        if (orientation == 0) switch (side) {
-            case 0:
-            case 1:
-                offset = 16;
-                break;
-            case 2:
-                offset = 1;
-                break;
-            case 3:
-                offset = 48;
-                break;
-            case 4:
-                offset = 0;
-                break;
-            default:
-                offset = 49;
-        }
-        else if (orientation == 4) switch (side) {
-            case 0:
-                offset = 48;
-                break;
-            case 1:
-                offset = 1;
-                break;
-            case 2:
-                offset = 49;
-                break;
-            case 3:
-                offset = 0;
-                break;
-            case 4:
-                offset = 17;
-                break;
-            default:
-                offset = 16;
-        }
-        else if (orientation == 8) switch (side) {
-            case 0:
-                offset = 48;
-                break;
-            case 1:
-                offset = 0;
-                break;
-            case 2:
-                offset = 17;
-                break;
-            case 3:
-                offset = 16;
-                break;
-            case 4:
-                offset = 1;
-                break;
-            default:
-                offset = 49;
-        }
+        if (orientation == 0) offset = switch (side) {
+            case 0, 1 -> 16;
+            case 2 -> 1;
+            case 3 -> 48;
+            case 4 -> 0;
+            default -> 49;
+        };
+        else if (orientation == 4) offset = switch (side) {
+            case 0 -> 48;
+            case 1 -> 1;
+            case 2 -> 49;
+            case 3 -> 0;
+            case 4 -> 17;
+            default -> 16;
+        };
+        else if (orientation == 8) offset = switch (side) {
+            case 0 -> 48;
+            case 1 -> 0;
+            case 2 -> 17;
+            case 3 -> 16;
+            case 4 -> 1;
+            default -> 49;
+        };
         return offset;
     }
 
@@ -349,8 +271,7 @@ public class BlockQuarterLog extends BlockLog {
                 break;
         }
 
-        final ItemStack itemstack = new ItemStack(pickItem, 1, pickMeta);
-        return itemstack;
+        return new ItemStack(pickItem, 1, pickMeta);
     }
 
     @Override
@@ -360,65 +281,33 @@ public class BlockQuarterLog extends BlockLog {
 
     private int getSETextureOffset(int side, final int orientation) {
         int offset = 0;
-        if (orientation == 0) switch (side) {
-            case 0:
-            case 1:
-                offset = 33;
-                break;
-            case 2:
-                offset = 48;
-                break;
-            case 3:
-                offset = 1;
-                break;
-            case 4:
-                offset = 49;
-                break;
-            default:
-                offset = 0;
-        }
-        else if (orientation == 4) switch (side) {
-            case 0:
-                offset = 0;
-                break;
-            case 1:
-                offset = 49;
-                break;
-            case 2:
-                offset = 48;
-                break;
-            case 3:
-                offset = 1;
-                break;
-            case 4:
-                offset = 33;
-                break;
-            default:
-                offset = 32;
-        }
-        else if (orientation == 8) switch (side) {
-            case 0:
-                offset = 1;
-                break;
-            case 1:
-                offset = 49;
-                break;
-            case 2:
-                offset = 32;
-                break;
-            case 3:
-                offset = 33;
-                break;
-            case 4:
-                offset = 48;
-                break;
-            default:
-                offset = 0;
-        }
+        if (orientation == 0) offset = switch (side) {
+            case 0, 1 -> 33;
+            case 2 -> 48;
+            case 3 -> 1;
+            case 4 -> 49;
+            default -> 0;
+        };
+        else if (orientation == 4) offset = switch (side) {
+            case 0 -> 0;
+            case 1 -> 49;
+            case 2 -> 48;
+            case 3 -> 1;
+            case 4 -> 33;
+            default -> 32;
+        };
+        else if (orientation == 8) offset = switch (side) {
+            case 0 -> 1;
+            case 1 -> 49;
+            case 2 -> 32;
+            case 3 -> 33;
+            case 4 -> 48;
+            default -> 0;
+        };
         return offset;
     }
 
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @SuppressWarnings({ "rawtypes" })
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(Item item, CreativeTabs par2CreativeTabs, List list) {
@@ -428,88 +317,48 @@ public class BlockQuarterLog extends BlockLog {
 
     private int getSWTextureOffset(int side, final int orientation) {
         int offset = 0;
-        if (orientation == 0) switch (side) {
-            case 0:
-            case 1:
-                offset = 32;
-                break;
-            case 2:
-                offset = 49;
-                break;
-            case 3:
-                offset = 0;
-                break;
-            case 4:
-                offset = 1;
-                break;
-            default:
-                offset = 48;
-        }
-        else if (orientation == 4) switch (side) {
-            case 0:
-                offset = 1;
-                break;
-            case 1:
-                offset = 48;
-                break;
-            case 2:
-                offset = 0;
-                break;
-            case 3:
-                offset = 49;
-                break;
-            case 4:
-                offset = 32;
-                break;
-            default:
-                offset = 33;
-        }
-        else if (orientation == 8) switch (side) {
-            case 0:
-                offset = 0;
-                break;
-            case 1:
-                offset = 48;
-                break;
-            case 2:
-                offset = 33;
-                break;
-            case 3:
-                offset = 32;
-                break;
-            case 4:
-                offset = 0;
-                break;
-            default:
-                offset = 48;
-        }
+        if (orientation == 0) offset = switch (side) {
+            case 0, 1 -> 32;
+            case 2 -> 49;
+            case 3 -> 0;
+            case 4 -> 1;
+            default -> 48;
+        };
+        else if (orientation == 4) offset = switch (side) {
+            case 0 -> 1;
+            case 1 -> 48;
+            case 2 -> 0;
+            case 3 -> 49;
+            case 4 -> 32;
+            default -> 33;
+        };
+        else if (orientation == 8) offset = switch (side) {
+            case 0, 4 -> 0;
+            case 2 -> 33;
+            case 3 -> 32;
+            default -> 48;
+        };
         return offset;
     }
 
     @Override
     public Item getItemDropped(int metadata, Random rand, int unused) {
         metadata &= 3;
-        switch (metadata) {
-            case 1:
-                return BlockSettings.CUSTOMLOG.getItem();
-            case 2:
-                return ItemBlock.getItemFromBlock(Blocks.log);
-            default:
-                return BlockSettings.NEWLOG.getItem();
-        }
+        return switch (metadata) {
+            case 1 -> BlockSettings.CUSTOMLOG.getItem();
+            case 2 -> ItemBlock.getItemFromBlock(Blocks.log);
+            default -> BlockSettings.NEWLOG.getItem();
+        };
     }
 
     @Override
     public int damageDropped(int metadata) {
         metadata &= 3;
-        switch (metadata) {
-            case 0:
-                return BlockNewLog.BlockType.REDWOOD.metadata();
-            case 2:
-                return 0;
-            default:
-                return BlockCustomLog.BlockType.FIR.metadata();
-        }
+        return switch (metadata) {
+            case 0 -> BlockNewLog.BlockType.REDWOOD.metadata();
+            case 2 -> 0;
+            default -> BlockCustomLog.BlockType.FIR.metadata();
+        };
     }
 
     @Override
@@ -641,41 +490,26 @@ public class BlockQuarterLog extends BlockLog {
             if (thisMeta == northMeta) {
                 if (northBlock == BarkOn.SW.block) {
                     world.setBlock(x, y, z, BarkOn.SE.block, thisMeta, 3);
-                    return;
-                }
-                if (northBlock == BarkOn.NE.block) {
+                } else if (northBlock == BarkOn.NE.block) {
                     world.setBlock(x, y, z, BarkOn.NW.block, thisMeta, 3);
-                    return;
                 }
-            }
-            if (thisMeta == upMeta) {
+            } else if (thisMeta == upMeta) {
                 if (upBlock == BarkOn.NW.block) {
                     world.setBlock(x, y, z, BarkOn.SE.block, thisMeta, 3);
-                    return;
-                }
-                if (upBlock == BarkOn.NE.block) {
+                } else if (upBlock == BarkOn.NE.block) {
                     world.setBlock(x, y, z, BarkOn.SW.block, thisMeta, 3);
-                    return;
                 }
-            }
-            if (thisMeta == southMeta) {
+            } else if (thisMeta == southMeta) {
                 if (southBlock == BarkOn.SE.block) {
                     world.setBlock(x, y, z, BarkOn.SW.block, thisMeta, 3);
-                    return;
-                }
-                if (southBlock == BarkOn.NW.block) {
+                } else if (southBlock == BarkOn.NW.block) {
                     world.setBlock(x, y, z, BarkOn.NE.block, thisMeta, 3);
-                    return;
                 }
-            }
-            if (thisMeta == downMeta) {
+            } else if (thisMeta == downMeta) {
                 if (downBlock == BarkOn.SW.block) {
                     world.setBlock(x, y, z, BarkOn.NE.block, thisMeta, 3);
-                    return;
-                }
-                if (downBlock == BarkOn.SE.block) {
+                } else if (downBlock == BarkOn.SE.block) {
                     world.setBlock(x, y, z, BarkOn.NW.block, thisMeta, 3);
-                    return;
                 }
             }
         }
@@ -710,16 +544,6 @@ public class BlockQuarterLog extends BlockLog {
             // Patch for skipping over block ids that are out of order
             event.setCanceled(true);
         }
-    }
-
-    @Override
-    public boolean canSustainLeaves(IBlockAccess world, int x, int y, int z) {
-        return true;
-    }
-
-    @Override
-    public boolean isWood(IBlockAccess world, int x, int y, int z) {
-        return true;
     }
 
     @Override
