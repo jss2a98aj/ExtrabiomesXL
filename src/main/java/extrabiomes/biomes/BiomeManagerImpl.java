@@ -62,7 +62,6 @@ import extrabiomes.module.summa.worldgen.WorldGenSakuraBlossomTree;
 @SuppressWarnings("deprecation")
 public class BiomeManagerImpl extends BiomeManager {
 
-    private static final WorldGenerator CYPRESS_TREE_GEN = new WorldGenCypressTree(false);
     private static final WorldGenerator ACACIA_TREE_GEN = new WorldGenAcacia(false);
     private static final WorldGenerator ALT_TAIGA_GEN = new WorldGenTaiga2(false);
     private static final WorldGenerator BIG_FIR_TREE_GEN = new WorldGenFirTreeHuge(false);
@@ -95,8 +94,9 @@ public class BiomeManagerImpl extends BiomeManager {
         addWeightedTreeGenForBiome(biome.get(), FIR_TREE_GEN, 100);
     }
 
-    private static void addAutumnTrees(Optional<? extends BiomeGenBase> biome) {
-        if (!biome.isPresent()) return;
+    private static void addAutumnTrees(Optional<? extends BiomeGenBase> biomeOptional) {
+        if (!biomeOptional.isPresent()) return;
+        BiomeGenBase biome = biomeOptional.get();
 
         /*
          * tree = new WorldGenBigAutumnTree(true, AutumnTreeType.PURPLE);
@@ -104,7 +104,7 @@ public class BiomeManagerImpl extends BiomeManager {
          * Element.LOG_AUTUMN.get().getItemDamage());
          */
 
-        addWeightedTreeGenForBiome(biome.get(), new WorldGenAbstractTree(false) {
+        addWeightedTreeGenForBiome(biome, new WorldGenAbstractTree(false) {
 
             @Override
             public boolean generate(World world, Random rand, int x, int y, int z) {
@@ -118,7 +118,7 @@ public class BiomeManagerImpl extends BiomeManager {
                 return worldGen.generate(world, rand, x, y, z);
             }
         }, 10);
-        addWeightedTreeGenForBiome(biome.get(), new WorldGenAbstractTree(false) {
+        addWeightedTreeGenForBiome(biome, new WorldGenAbstractTree(false) {
 
             @Override
             public boolean generate(World world, Random rand, int x, int y, int z) {
@@ -132,7 +132,7 @@ public class BiomeManagerImpl extends BiomeManager {
                 return worldGen.generate(world, rand, x, y, z);
             }
         }, 90);
-        addWeightedTreeGenForBiome(biome.get(), new WorldGenAbstractTree(false) {
+        addWeightedTreeGenForBiome(biome, new WorldGenAbstractTree(false) {
 
             @Override
             public boolean generate(World world, Random rand, int x, int y, int z) {
@@ -146,7 +146,7 @@ public class BiomeManagerImpl extends BiomeManager {
                 return worldGen.generate(world, rand, x, y, z);
             }
         }, 10);
-        addWeightedTreeGenForBiome(biome.get(), new WorldGenAbstractTree(false) {
+        addWeightedTreeGenForBiome(biome, new WorldGenAbstractTree(false) {
 
             @Override
             public boolean generate(World world, Random rand, int x, int y, int z) {
@@ -160,7 +160,7 @@ public class BiomeManagerImpl extends BiomeManager {
                 return worldGen.generate(world, rand, x, y, z);
             }
         }, 90);
-        addWeightedTreeGenForBiome(biome.get(), new WorldGenAbstractTree(false) {
+        addWeightedTreeGenForBiome(biome, new WorldGenAbstractTree(false) {
 
             @Override
             public boolean generate(World world, Random rand, int x, int y, int z) {
@@ -174,7 +174,7 @@ public class BiomeManagerImpl extends BiomeManager {
                 return worldGen.generate(world, rand, x, y, z);
             }
         }, 10);
-        addWeightedTreeGenForBiome(biome.get(), new WorldGenAbstractTree(false) {
+        addWeightedTreeGenForBiome(biome, new WorldGenAbstractTree(false) {
 
             @Override
             public boolean generate(World world, Random rand, int x, int y, int z) {
@@ -188,7 +188,7 @@ public class BiomeManagerImpl extends BiomeManager {
                 return worldGen.generate(world, rand, x, y, z);
             }
         }, 90);
-        addWeightedTreeGenForBiome(biome.get(), new WorldGenAbstractTree(false) {
+        addWeightedTreeGenForBiome(biome, new WorldGenAbstractTree(false) {
 
             @Override
             public boolean generate(World world, Random rand, int x, int y, int z) {
@@ -202,7 +202,7 @@ public class BiomeManagerImpl extends BiomeManager {
                 return worldGen.generate(world, rand, x, y, z);
             }
         }, 10);
-        addWeightedTreeGenForBiome(biome.get(), new WorldGenAbstractTree(false) {
+        addWeightedTreeGenForBiome(biome, new WorldGenAbstractTree(false) {
 
             @Override
             public boolean generate(World world, Random rand, int x, int y, int z) {
@@ -216,34 +216,37 @@ public class BiomeManagerImpl extends BiomeManager {
                 return worldGen.generate(world, rand, x, y, z);
             }
         }, 90);
-        addWeightedTreeGenForBiome(biome.get(), OAK_TREE_GEN, 90);
-        addWeightedTreeGenForBiome(biome.get(), BIG_OAK_TREE_GEN, 10);
-        addWeightedTreeGenForBiome(biome.get(), JAPANESE_MAPLE_GEN, 30);
+        addWeightedTreeGenForBiome(biome, OAK_TREE_GEN, 90);
+        addWeightedTreeGenForBiome(biome, BIG_OAK_TREE_GEN, 10);
+        addWeightedTreeGenForBiome(biome, JAPANESE_MAPLE_GEN, 30);
     }
 
-    private static void addBirchForestTrees(Optional<? extends BiomeGenBase> biome) {
-        if (!biome.isPresent()) return;
+    private static void addBirchForestTrees(Optional<? extends BiomeGenBase> biomeOptional) {
+        if (!biomeOptional.isPresent()) return;
+        BiomeGenBase biome = biomeOptional.get();
 
-        addWeightedTreeGenForBiome(biome.get(), OAK_TREE_GEN, 99);
-        addWeightedTreeGenForBiome(biome.get(), BIG_OAK_TREE_GEN, 1);
-        addWeightedTreeGenForBiome(biome.get(), BIRCH_TREE_GEN, 9650);
-        addWeightedTreeGenForBiome(biome.get(), SAKURA_BLOSSOM_GEN, 250);
+        addWeightedTreeGenForBiome(biome, OAK_TREE_GEN, 99);
+        addWeightedTreeGenForBiome(biome, BIG_OAK_TREE_GEN, 1);
+        addWeightedTreeGenForBiome(biome, BIRCH_TREE_GEN, 9650);
+        addWeightedTreeGenForBiome(biome, SAKURA_BLOSSOM_GEN, 250);
     }
 
-    private static void addDefaultTrees(Optional<? extends BiomeGenBase> biome) {
-        if (!biome.isPresent()) return;
+    private static void addDefaultTrees(Optional<? extends BiomeGenBase> biomeOptional) {
+        if (!biomeOptional.isPresent()) return;
+        BiomeGenBase biome = biomeOptional.get();
 
-        addWeightedTreeGenForBiome(biome.get(), OAK_TREE_GEN, 90);
-        addWeightedTreeGenForBiome(biome.get(), BIG_OAK_TREE_GEN, 10);
+        addWeightedTreeGenForBiome(biome, OAK_TREE_GEN, 90);
+        addWeightedTreeGenForBiome(biome, BIG_OAK_TREE_GEN, 10);
     }
 
-    private static void addExtremeJungleTrees(Optional<? extends BiomeGenBase> biome) {
-        if (!biome.isPresent()) return;
+    private static void addExtremeJungleTrees(Optional<? extends BiomeGenBase> biomeOptional) {
+        if (!biomeOptional.isPresent()) return;
+        BiomeGenBase biome = biomeOptional.get();
 
-        addWeightedTreeGenForBiome(biome.get(), BIG_OAK_TREE_GEN, 4);
-        addWeightedTreeGenForBiome(biome.get(), SHRUB_GEN, 18);
-        addWeightedTreeGenForBiome(biome.get(), RAINBOW_EUCALYPTUS_GEN, 20);
-        addWeightedTreeGenForBiome(biome.get(), new WorldGenAbstractTree(false) {
+        addWeightedTreeGenForBiome(biome, BIG_OAK_TREE_GEN, 4);
+        addWeightedTreeGenForBiome(biome, SHRUB_GEN, 18);
+        addWeightedTreeGenForBiome(biome, RAINBOW_EUCALYPTUS_GEN, 20);
+        addWeightedTreeGenForBiome(biome, new WorldGenAbstractTree(false) {
 
             @Override
             public boolean generate(World world, Random rand, int x, int y, int z) {
@@ -253,7 +256,7 @@ public class BiomeManagerImpl extends BiomeManager {
             }
 
         }, 6);
-        addWeightedTreeGenForBiome(biome.get(), new WorldGenAbstractTree(false) {
+        addWeightedTreeGenForBiome(biome, new WorldGenAbstractTree(false) {
 
             @Override
             public boolean generate(World world, Random rand, int x, int y, int z) {
@@ -271,37 +274,41 @@ public class BiomeManagerImpl extends BiomeManager {
         }
     }
 
-    private static void addGrassandFerns(Optional<? extends BiomeGenBase> biome) {
-        if (!biome.isPresent()) return;
+    private static void addGrassandFerns(Optional<? extends BiomeGenBase> biomeOptional) {
+        if (!biomeOptional.isPresent()) return;
+        BiomeGenBase biome = biomeOptional.get();
 
-        addWeightedGrassGenForBiome(biome.get(), FERN_GEN, 25);
-        addWeightedGrassGenForBiome(biome.get(), GRASS_GEN, 75);
+        addWeightedGrassGenForBiome(biome, FERN_GEN, 25);
+        addWeightedGrassGenForBiome(biome, GRASS_GEN, 75);
     }
 
-    private static void addGreenSwampTrees(Optional<? extends BiomeGenBase> biome) {
-        if (!biome.isPresent()) return;
+    private static void addGreenSwampTrees(Optional<? extends BiomeGenBase> biomeOptional) {
+        if (!biomeOptional.isPresent()) return;
+        BiomeGenBase biome = biomeOptional.get();
 
-        addWeightedTreeGenForBiome(biome.get(), SWAMP_TREE_GEN, 15);
-        addWeightedTreeGenForBiome(biome.get(), CUSTOM_SWAMP_TREE_GEN, 75);
-        addWeightedTreeGenForBiome(biome.get(), BALD_CYPRESS_GEN, 150);
+        addWeightedTreeGenForBiome(biome, SWAMP_TREE_GEN, 15);
+        addWeightedTreeGenForBiome(biome, CUSTOM_SWAMP_TREE_GEN, 75);
+        addWeightedTreeGenForBiome(biome, BALD_CYPRESS_GEN, 150);
     }
 
-    private static void addMiniJungleTrees(Optional<? extends BiomeGenBase> biome) {
-        if (!biome.isPresent()) return;
+    private static void addMiniJungleTrees(Optional<? extends BiomeGenBase> biomeOptional) {
+        if (!biomeOptional.isPresent()) return;
+        BiomeGenBase biome = biomeOptional.get();
 
-        addWeightedTreeGenForBiome(biome.get(), SWAMP_TREE_GEN, 100);
-        addWeightedTreeGenForBiome(biome.get(), OAK_TREE_GEN, 1);
-        addWeightedTreeGenForBiome(biome.get(), BIG_OAK_TREE_GEN, 99);
-        addWeightedTreeGenForBiome(biome.get(), RAINBOW_EUCALYPTUS_GEN, 20);
+        addWeightedTreeGenForBiome(biome, SWAMP_TREE_GEN, 100);
+        addWeightedTreeGenForBiome(biome, OAK_TREE_GEN, 1);
+        addWeightedTreeGenForBiome(biome, BIG_OAK_TREE_GEN, 99);
+        addWeightedTreeGenForBiome(biome, RAINBOW_EUCALYPTUS_GEN, 20);
     }
 
-    private static void addRainforestTrees(Optional<? extends BiomeGenBase> biome) {
-        if (!biome.isPresent()) return;
+    private static void addRainforestTrees(Optional<? extends BiomeGenBase> biomeOptional) {
+        if (!biomeOptional.isPresent()) return;
+        BiomeGenBase biome = biomeOptional.get();
 
-        addWeightedTreeGenForBiome(biome.get(), SWAMP_TREE_GEN, 9);
-        addWeightedTreeGenForBiome(biome.get(), BIG_OAK_TREE_GEN, 60);
-        addWeightedTreeGenForBiome(biome.get(), OAK_TREE_GEN, 19);
-        addWeightedTreeGenForBiome(biome.get(), RAINBOW_EUCALYPTUS_GEN, 32);
+        addWeightedTreeGenForBiome(biome, SWAMP_TREE_GEN, 9);
+        addWeightedTreeGenForBiome(biome, BIG_OAK_TREE_GEN, 60);
+        addWeightedTreeGenForBiome(biome, OAK_TREE_GEN, 19);
+        addWeightedTreeGenForBiome(biome, RAINBOW_EUCALYPTUS_GEN, 32);
     }
 
     private static void addRedwoodForestTrees(Optional<? extends BiomeGenBase> biome) {
