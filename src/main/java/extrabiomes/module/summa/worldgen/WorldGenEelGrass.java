@@ -39,7 +39,7 @@ class WorldGenEelGrass extends WorldGenerator {
         y++;
 
         if (block.canBlockStay(world, x, y, z)) {
-            world.setBlock(x, y, z, block);
+            world.setBlock(x, y, z, block, metaData, 0);
         }
 
         return true;
