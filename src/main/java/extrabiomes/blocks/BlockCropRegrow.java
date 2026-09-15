@@ -100,11 +100,11 @@ public class BlockCropRegrow extends BlockCropBasic {
         int growth = world.getBlockMetadata(x, y, z);
         if (growth >= MAX_GROWTH_STAGE) {
             EntityItem drop = new EntityItem(
-                    world,
-                    player.posX,
-                    player.posY - 1.0,
-                    player.posZ,
-                    new ItemStack(this.getCropItem(), 1, 0));
+                world,
+                player.posX,
+                player.posY - 1.0,
+                player.posZ,
+                new ItemStack(this.getCropItem(), 1, 0));
             // spawn the drop, then force collide it with the player
             world.spawnEntityInWorld(drop);
             drop.onCollideWithPlayer(player);
@@ -119,7 +119,7 @@ public class BlockCropRegrow extends BlockCropBasic {
 
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7,
-            float par8, float par9) {
+        float par8, float par9) {
         return doHarvest(world, x, y, z, player);
     }
 

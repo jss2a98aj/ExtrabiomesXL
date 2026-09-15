@@ -38,7 +38,8 @@ public abstract class ItemHandler {
 
         Stuff.logTurner = Optional.of(logTurner);
 
-        logTurner.setUnlocalizedName("extrabiomes.logturner").setCreativeTab(Extrabiomes.tabsEBXL);
+        logTurner.setUnlocalizedName("extrabiomes.logturner")
+            .setCreativeTab(Extrabiomes.tabsEBXL);
 
         GameRegistry.registerItem(logTurner, "extrabiomes.logturner", Reference.MOD_ID);
 
@@ -58,7 +59,8 @@ public abstract class ItemHandler {
         } else {
             final ItemCustomDye dye = new ItemCustomDye();
             Stuff.dye = Optional.of(dye);
-            dye.setUnlocalizedName("extrabiomes.dye").setCreativeTab(Extrabiomes.tabsEBXL);
+            dye.setUnlocalizedName("extrabiomes.dye")
+                .setCreativeTab(Extrabiomes.tabsEBXL);
             GameRegistry.registerItem(dye, "extrabiomes.dye", Reference.MOD_ID);
 
             dye.init();

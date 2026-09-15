@@ -22,12 +22,15 @@ public class MarshGenerator implements IWorldGenerator {
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator,
-            IChunkProvider chunkProvider) {
+        IChunkProvider chunkProvider) {
         chunkX = chunkX << 4;
         chunkZ = chunkZ << 4;
         final BiomeGenBase biome = world.getBiomeGenForCoords(chunkX, chunkZ);
 
-        if (BiomeSettings.MARSH.getBiome().isPresent() && biome == BiomeSettings.MARSH.getBiome().get())
+        if (BiomeSettings.MARSH.getBiome()
+            .isPresent()
+            && biome == BiomeSettings.MARSH.getBiome()
+                .get())
             generateMarsh(random, chunkX, chunkZ, world);
 
     }

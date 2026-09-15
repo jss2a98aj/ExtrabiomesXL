@@ -27,7 +27,8 @@ public abstract class Biomes {
      */
     public static Optional<BiomeGenBase> getBiome(String targetBiome) {
         final GetBiomeIDEvent event = new GetBiomeIDEvent(targetBiome);
-        Api.getExtrabiomesXLEventBus().post(event);
+        Api.getExtrabiomesXLEventBus()
+            .post(event);
         if (event.biomeID <= 0 || BiomeGenBase.getBiomeGenArray()[event.biomeID] == null) return Optional.absent();
         return Optional.of(BiomeGenBase.getBiomeGenArray()[event.biomeID]);
     }

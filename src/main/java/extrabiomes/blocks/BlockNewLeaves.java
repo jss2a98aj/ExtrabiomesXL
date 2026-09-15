@@ -124,7 +124,7 @@ public class BlockNewLeaves extends BlockLeafEbxl {
         for (int z1 = -1; z1 <= 1; ++z1) {
             for (int x1 = -1; x1 <= 1; ++x1) {
                 final int foliageColor = iBlockAccess.getBiomeGenForCoords(x + x1, z + z1)
-                        .getBiomeFoliageColor(x + x1, 96, z + z1);
+                    .getBiomeFoliageColor(x + x1, 96, z + z1);
                 red += (foliageColor & 16711680) >> 16;
                 green += (foliageColor & 65280) >> 8;
                 blue += foliageColor & 255;

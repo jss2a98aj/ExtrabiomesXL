@@ -95,7 +95,9 @@ public class ToolTipStringFormatter {
     }
 
     private static int WordLength(String word) {
-        return codes.matcher(word).replaceAll("").length();
+        return codes.matcher(word)
+            .replaceAll("")
+            .length();
     }
 
     private static String LineFormatHeader() {
@@ -113,7 +115,8 @@ public class ToolTipStringFormatter {
 
     private static String ParseTags(String word) {
         // Remove all bad codes
-        word = codesBad.matcher(word).replaceAll("");
+        word = codesBad.matcher(word)
+            .replaceAll("");
 
         // Log the change of good codes
         Matcher matcher = codesGood.matcher(word);
@@ -151,9 +154,11 @@ public class ToolTipStringFormatter {
         }
 
         // Reset needs to rest the color to the default
-        word = resetCode.matcher(word).replaceAll(unicodeControlCode + "r" + unicodeControlCode + defaultColorVal);
+        word = resetCode.matcher(word)
+            .replaceAll(unicodeControlCode + "r" + unicodeControlCode + defaultColorVal);
 
         // Replace good codes
-        return controlCode.matcher(word).replaceAll(unicodeControlCode);
+        return controlCode.matcher(word)
+            .replaceAll(unicodeControlCode);
     }
 }

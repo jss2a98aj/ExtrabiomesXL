@@ -27,7 +27,8 @@ public class ItemCustomFence extends MultiItemBlock {
         itemstack = itemstack.copy();
         itemstack.setItemDamage(metadata);
         return super.getUnlocalizedName() + "."
-                + BlockCustomFence.BlockType.values()[metadata].toString().toLowerCase(Locale.ENGLISH);
+            + BlockCustomFence.BlockType.values()[metadata].toString()
+                .toLowerCase(Locale.ENGLISH);
         // return super.getUnlocalizedName(itemstack);
     }
 

@@ -87,7 +87,9 @@ public class ItemCustomFood extends ItemFood {
     @Override
     public String getUnlocalizedName(ItemStack itemStack) {
         final FoodType type = getFoodType(itemStack.getItemDamage());
-        return super.getUnlocalizedName() + "." + type.name().toLowerCase();
+        return super.getUnlocalizedName() + "."
+            + type.name()
+                .toLowerCase();
     }
 
     @SuppressWarnings({ "unchecked", "rawtypes" })

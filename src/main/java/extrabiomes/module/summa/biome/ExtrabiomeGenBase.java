@@ -52,7 +52,8 @@ public abstract class ExtrabiomeGenBase extends BiomeGenBase {
     @Override
     public BiomeDecorator createBiomeDecorator() {
         try {
-            return new CustomBiomeDecorator.Builder(this).loadSettings(getDecorationSettings()).build();
+            return new CustomBiomeDecorator.Builder(this).loadSettings(getDecorationSettings())
+                .build();
         } catch (Exception e) {
             LogHelper.severe("No decoration settings found for " + this);
             return null;

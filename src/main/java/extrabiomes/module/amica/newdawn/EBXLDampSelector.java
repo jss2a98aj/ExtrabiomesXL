@@ -10,19 +10,19 @@ import two.newdawn.API.noise.SimplexNoise;
 public class EBXLDampSelector extends NewDawnBiomeSelector {
 
     protected static final NewDawnBiome biomeExtremeJungle = NewDawnPluginImpl
-            .getBiomeIfEnabled(BiomeSettings.EXTREMEJUNGLE);
+        .getBiomeIfEnabled(BiomeSettings.EXTREMEJUNGLE);
     protected static final NewDawnBiome biomeGreenHills = NewDawnPluginImpl.getBiomeIfEnabled(BiomeSettings.GREENHILLS);
     protected static final NewDawnBiome biomeGreenSwamp = NewDawnPluginImpl.getBiomeIfEnabled(BiomeSettings.GREENSWAMP);
     protected static final NewDawnBiome biomeMiniJungle = NewDawnPluginImpl.getBiomeIfEnabled(BiomeSettings.MINIJUNGLE);
     protected static final NewDawnBiome biomeRainforest = NewDawnPluginImpl.getBiomeIfEnabled(BiomeSettings.RAINFOREST);
     protected static final NewDawnBiome biomeRedwoodForest = NewDawnPluginImpl
-            .getBiomeIfEnabled(BiomeSettings.REDWOODFOREST);
+        .getBiomeIfEnabled(BiomeSettings.REDWOODFOREST);
     protected static final NewDawnBiome biomeRedwoodLush = NewDawnPluginImpl
-            .getBiomeIfEnabled(BiomeSettings.REDWOODLUSH);
+        .getBiomeIfEnabled(BiomeSettings.REDWOODLUSH);
     protected static final NewDawnBiome biomeSnowRainforest = NewDawnPluginImpl
-            .getBiomeIfEnabled(BiomeSettings.SNOWYRAINFOREST);
+        .getBiomeIfEnabled(BiomeSettings.SNOWYRAINFOREST);
     protected static final NewDawnBiome biomeTemperateRainforest = NewDawnPluginImpl
-            .getBiomeIfEnabled(BiomeSettings.TEMPORATERAINFOREST);
+        .getBiomeIfEnabled(BiomeSettings.TEMPORATERAINFOREST);
 
     protected NoiseStretch stretchExtremeJungle;
     protected NoiseStretch stretchGreen;
@@ -35,7 +35,7 @@ public class EBXLDampSelector extends NewDawnBiomeSelector {
 
         stretchMiniJungle = NewDawnPluginImpl.getFuzzyStretch(NewDawnSettings.MINI_JUNGLE.getStretchSize(), worldNoise);
         stretchExtremeJungle = NewDawnPluginImpl
-                .getFuzzyStretch(NewDawnSettings.EXTREME_JUNGLE.getStretchSize(), worldNoise);
+            .getFuzzyStretch(NewDawnSettings.EXTREME_JUNGLE.getStretchSize(), worldNoise);
         stretchRedwood = NewDawnPluginImpl.getFuzzyStretch(NewDawnSettings.REDWOOD.getStretchSize(), worldNoise);
         stretchGreen = NewDawnPluginImpl.getFuzzyStretch(NewDawnSettings.GREEN.getStretchSize(), worldNoise);
         stretchRainforest = NewDawnPluginImpl.getFuzzyStretch(NewDawnSettings.RAINFOREST.getStretchSize(), worldNoise);

@@ -126,11 +126,11 @@ public abstract class RecipeHandler {
 
             // emptyBowl + redMushroom + 2 toadstools = soup
             IRecipe recipe = new ShapelessOreRecipe(
-                    Items.mushroom_stew,
-                    Blocks.brown_mushroom,
-                    toadstool,
-                    toadstool,
-                    Items.bowl);
+                Items.mushroom_stew,
+                Blocks.brown_mushroom,
+                toadstool,
+                toadstool,
+                Items.bowl);
             proxy.addRecipe(recipe);
 
             // emptyBowl + brownMushroom + 2 toadstools = soup
@@ -150,10 +150,10 @@ public abstract class RecipeHandler {
 
         // leafPile x 9 = leafBlock
         final IRecipe recipe = new ShapedOreRecipe(
-                Blocks.leaves,
-                new String[] { "lll", "lll", "lll" },
-                'l',
-                Element.LEAFPILE.get());
+            Blocks.leaves,
+            new String[] { "lll", "lll", "lll" },
+            'l',
+            Element.LEAFPILE.get());
         Extrabiomes.proxy.addRecipe(recipe);
     }
 
@@ -162,140 +162,195 @@ public abstract class RecipeHandler {
 
         if (Element.LOG_QUARTER_BALD_CYPRESS.isPresent() && Element.LOG_BALD_CYPRESS.isPresent()) {
             proxy.addRecipe(
-                    new ShapedOreRecipe(
-                            new ItemStack(
-                                    Element.LOG_BALD_CYPRESS.get().getItem(),
-                                    4,
-                                    Element.LOG_BALD_CYPRESS.get().getItemDamage()),
-                            new String[] { "ll", "ll" },
-                            'l',
-                            Element.LOG_QUARTER_BALD_CYPRESS.get()));
+                new ShapedOreRecipe(
+                    new ItemStack(
+                        Element.LOG_BALD_CYPRESS.get()
+                            .getItem(),
+                        4,
+                        Element.LOG_BALD_CYPRESS.get()
+                            .getItemDamage()),
+                    new String[] { "ll", "ll" },
+                    'l',
+                    Element.LOG_QUARTER_BALD_CYPRESS.get()));
             proxy.addRecipe(
-                    new ShapedOreRecipe(
-                            new ItemStack(Element.LOG_QUARTER_BALD_CYPRESS.get().getItem(), 4, 0),
-                            new String[] { "ll", "ll" },
-                            'l',
-                            Element.LOG_BALD_CYPRESS.get()));
+                new ShapedOreRecipe(
+                    new ItemStack(
+                        Element.LOG_QUARTER_BALD_CYPRESS.get()
+                            .getItem(),
+                        4,
+                        0),
+                    new String[] { "ll", "ll" },
+                    'l',
+                    Element.LOG_BALD_CYPRESS.get()));
         }
 
         if (Element.LOG_KNEE_BALD_CYPRESS.isPresent() && Element.LOG_BALD_CYPRESS.isPresent()) {
             proxy.addRecipe(
-                    new ShapedOreRecipe(
-                            new ItemStack(
-                                    Element.LOG_BALD_CYPRESS.get().getItem(),
-                                    3,
-                                    Element.LOG_BALD_CYPRESS.get().getItemDamage()),
-                            new String[] { " l", "ll" },
-                            'l',
-                            Element.LOG_KNEE_BALD_CYPRESS.get()));
+                new ShapedOreRecipe(
+                    new ItemStack(
+                        Element.LOG_BALD_CYPRESS.get()
+                            .getItem(),
+                        3,
+                        Element.LOG_BALD_CYPRESS.get()
+                            .getItemDamage()),
+                    new String[] { " l", "ll" },
+                    'l',
+                    Element.LOG_KNEE_BALD_CYPRESS.get()));
             proxy.addRecipe(
-                    new ShapedOreRecipe(
-                            new ItemStack(Element.LOG_KNEE_BALD_CYPRESS.get().getItem(), 3, 0),
-                            new String[] { " l", "ll" },
-                            'l',
-                            Element.LOG_BALD_CYPRESS.get()));
+                new ShapedOreRecipe(
+                    new ItemStack(
+                        Element.LOG_KNEE_BALD_CYPRESS.get()
+                            .getItem(),
+                        3,
+                        0),
+                    new String[] { " l", "ll" },
+                    'l',
+                    Element.LOG_BALD_CYPRESS.get()));
         }
 
         if (Element.LOG_QUARTER_RAINBOW_EUCALYPTUS.isPresent() && Element.LOG_RAINBOW_EUCALYPTUS.isPresent()) {
             proxy.addRecipe(
-                    new ShapedOreRecipe(
-                            new ItemStack(
-                                    Element.LOG_RAINBOW_EUCALYPTUS.get().getItem(),
-                                    4,
-                                    Element.LOG_RAINBOW_EUCALYPTUS.get().getItemDamage()),
-                            new String[] { "ll", "ll" },
-                            'l',
-                            Element.LOG_QUARTER_RAINBOW_EUCALYPTUS.get()));
+                new ShapedOreRecipe(
+                    new ItemStack(
+                        Element.LOG_RAINBOW_EUCALYPTUS.get()
+                            .getItem(),
+                        4,
+                        Element.LOG_RAINBOW_EUCALYPTUS.get()
+                            .getItemDamage()),
+                    new String[] { "ll", "ll" },
+                    'l',
+                    Element.LOG_QUARTER_RAINBOW_EUCALYPTUS.get()));
             proxy.addRecipe(
-                    new ShapedOreRecipe(
-                            new ItemStack(Element.LOG_QUARTER_RAINBOW_EUCALYPTUS.get().getItem(), 4, 0),
-                            new String[] { "ll", "ll" },
-                            'l',
-                            Element.LOG_RAINBOW_EUCALYPTUS.get()));
+                new ShapedOreRecipe(
+                    new ItemStack(
+                        Element.LOG_QUARTER_RAINBOW_EUCALYPTUS.get()
+                            .getItem(),
+                        4,
+                        0),
+                    new String[] { "ll", "ll" },
+                    'l',
+                    Element.LOG_RAINBOW_EUCALYPTUS.get()));
         }
 
         if (Element.LOG_KNEE_RAINBOW_EUCALYPTUS.isPresent() && Element.LOG_RAINBOW_EUCALYPTUS.isPresent()) {
             proxy.addRecipe(
-                    new ShapedOreRecipe(
-                            new ItemStack(
-                                    Element.LOG_RAINBOW_EUCALYPTUS.get().getItem(),
-                                    3,
-                                    Element.LOG_RAINBOW_EUCALYPTUS.get().getItemDamage()),
-                            new String[] { " l", "ll" },
-                            'l',
-                            Element.LOG_KNEE_RAINBOW_EUCALYPTUS.get()));
+                new ShapedOreRecipe(
+                    new ItemStack(
+                        Element.LOG_RAINBOW_EUCALYPTUS.get()
+                            .getItem(),
+                        3,
+                        Element.LOG_RAINBOW_EUCALYPTUS.get()
+                            .getItemDamage()),
+                    new String[] { " l", "ll" },
+                    'l',
+                    Element.LOG_KNEE_RAINBOW_EUCALYPTUS.get()));
             proxy.addRecipe(
-                    new ShapedOreRecipe(
-                            new ItemStack(Element.LOG_KNEE_RAINBOW_EUCALYPTUS.get().getItem(), 3, 0),
-                            new String[] { " l", "ll" },
-                            'l',
-                            Element.LOG_RAINBOW_EUCALYPTUS.get()));
+                new ShapedOreRecipe(
+                    new ItemStack(
+                        Element.LOG_KNEE_RAINBOW_EUCALYPTUS.get()
+                            .getItem(),
+                        3,
+                        0),
+                    new String[] { " l", "ll" },
+                    'l',
+                    Element.LOG_RAINBOW_EUCALYPTUS.get()));
         }
 
         if (Element.LOG_QUARTER_FIR.isPresent() && Element.LOG_FIR.isPresent()) {
             proxy.addRecipe(
-                    new ShapedOreRecipe(
-                            new ItemStack(Element.LOG_FIR.get().getItem(), 4, Element.LOG_FIR.get().getItemDamage()),
-                            new String[] { "ll", "ll" },
-                            'l',
-                            Element.LOG_QUARTER_FIR.get()));
+                new ShapedOreRecipe(
+                    new ItemStack(
+                        Element.LOG_FIR.get()
+                            .getItem(),
+                        4,
+                        Element.LOG_FIR.get()
+                            .getItemDamage()),
+                    new String[] { "ll", "ll" },
+                    'l',
+                    Element.LOG_QUARTER_FIR.get()));
             proxy.addRecipe(
-                    new ShapedOreRecipe(
-                            new ItemStack(Element.LOG_QUARTER_FIR.get().getItem(), 4, 0),
-                            new String[] { "ll", "ll" },
-                            'l',
-                            Element.LOG_FIR.get()));
+                new ShapedOreRecipe(
+                    new ItemStack(
+                        Element.LOG_QUARTER_FIR.get()
+                            .getItem(),
+                        4,
+                        0),
+                    new String[] { "ll", "ll" },
+                    'l',
+                    Element.LOG_FIR.get()));
         }
         if (Element.LOG_QUARTER_FIR.isPresent() && Element.LOG_HUGE_FIR_SE.isPresent()) {
             proxy.addRecipe(
-                    new ShapelessOreRecipe(
-                            new ItemStack(Element.LOG_QUARTER_FIR.get().getItem(), 1, 0),
-                            Element.LOG_HUGE_FIR_SE.get()));
+                new ShapelessOreRecipe(
+                    new ItemStack(
+                        Element.LOG_QUARTER_FIR.get()
+                            .getItem(),
+                        1,
+                        0),
+                    Element.LOG_HUGE_FIR_SE.get()));
         }
 
         if (Element.LOG_REDWOOD.isPresent() && Element.LOG_QUARTER_REDWOOD.isPresent()) {
             proxy.addRecipe(
-                    new ShapedOreRecipe(
-                            new ItemStack(
-                                    Element.LOG_REDWOOD.get().getItem(),
-                                    4,
-                                    Element.LOG_REDWOOD.get().getItemDamage()),
-                            new String[] { "ll", "ll" },
-                            'l',
-                            Element.LOG_QUARTER_REDWOOD.get()));
+                new ShapedOreRecipe(
+                    new ItemStack(
+                        Element.LOG_REDWOOD.get()
+                            .getItem(),
+                        4,
+                        Element.LOG_REDWOOD.get()
+                            .getItemDamage()),
+                    new String[] { "ll", "ll" },
+                    'l',
+                    Element.LOG_QUARTER_REDWOOD.get()));
             proxy.addRecipe(
-                    new ShapedOreRecipe(
-                            new ItemStack(Element.LOG_QUARTER_REDWOOD.get().getItem(), 4, 0),
-                            new String[] { "ll", "ll" },
-                            'l',
-                            Element.LOG_REDWOOD.get()));
+                new ShapedOreRecipe(
+                    new ItemStack(
+                        Element.LOG_QUARTER_REDWOOD.get()
+                            .getItem(),
+                        4,
+                        0),
+                    new String[] { "ll", "ll" },
+                    'l',
+                    Element.LOG_REDWOOD.get()));
         }
         if (Element.LOG_QUARTER_REDWOOD.isPresent() && Element.LOG_HUGE_REDWOOD_SE.isPresent()) {
             proxy.addRecipe(
-                    new ShapelessOreRecipe(
-                            new ItemStack(Element.LOG_QUARTER_REDWOOD.get().getItem(), 1, 0),
-                            Element.LOG_HUGE_REDWOOD_SE.get()));
+                new ShapelessOreRecipe(
+                    new ItemStack(
+                        Element.LOG_QUARTER_REDWOOD.get()
+                            .getItem(),
+                        1,
+                        0),
+                    Element.LOG_HUGE_REDWOOD_SE.get()));
         }
 
         if (Element.LOG_HUGE_OAK_SE.isPresent() && Element.LOG_QUARTER_OAK.isPresent()) {
             proxy.addRecipe(
-                    new ShapelessOreRecipe(
-                            new ItemStack(Element.LOG_QUARTER_OAK.get().getItem(), 1, 0),
-                            Element.LOG_HUGE_OAK_SE.get()));
+                new ShapelessOreRecipe(
+                    new ItemStack(
+                        Element.LOG_QUARTER_OAK.get()
+                            .getItem(),
+                        1,
+                        0),
+                    Element.LOG_HUGE_OAK_SE.get()));
         }
         if (Element.LOG_QUARTER_OAK.isPresent()) {
             proxy.addRecipe(
-                    new ShapedOreRecipe(
-                            new ItemStack(Blocks.log, 4, 0),
-                            new String[] { "ll", "ll" },
-                            'l',
-                            Element.LOG_QUARTER_OAK.get()));
+                new ShapedOreRecipe(
+                    new ItemStack(Blocks.log, 4, 0),
+                    new String[] { "ll", "ll" },
+                    'l',
+                    Element.LOG_QUARTER_OAK.get()));
             proxy.addRecipe(
-                    new ShapedOreRecipe(
-                            new ItemStack(Element.LOG_QUARTER_OAK.get().getItem(), 4, 0),
-                            new String[] { "ll", "ll" },
-                            'l',
-                            new ItemStack(Blocks.log, 1, 0)));
+                new ShapedOreRecipe(
+                    new ItemStack(
+                        Element.LOG_QUARTER_OAK.get()
+                            .getItem(),
+                        4,
+                        0),
+                    new String[] { "ll", "ll" },
+                    'l',
+                    new ItemStack(Blocks.log, 1, 0)));
         }
     }
 
@@ -343,33 +398,33 @@ public abstract class RecipeHandler {
         }
 
         if (Element.LOG_HUGE_OAK_NW.isPresent() && Element.LOG_HUGE_OAK_NE.isPresent()
-                && Element.LOG_HUGE_OAK_SW.isPresent()
-                && Element.LOG_HUGE_OAK_SE.isPresent()) {
+            && Element.LOG_HUGE_OAK_SW.isPresent()
+            && Element.LOG_HUGE_OAK_SE.isPresent()) {
             for (final ItemStack itemstack : new ItemStack[] { Element.LOG_HUGE_OAK_NW.get(),
-                    Element.LOG_HUGE_OAK_NE.get(), Element.LOG_HUGE_OAK_SW.get(), Element.LOG_HUGE_OAK_SE.get() }) {
+                Element.LOG_HUGE_OAK_NE.get(), Element.LOG_HUGE_OAK_SW.get(), Element.LOG_HUGE_OAK_SE.get() }) {
                 final IRecipe recipe = new ShapelessOreRecipe(new ItemStack(Blocks.log), itemstack);
                 Extrabiomes.proxy.addRecipe(recipe);
             }
         }
 
         if (Element.LOG_FIR.isPresent() && Element.LOG_HUGE_FIR_NW.isPresent()
-                && Element.LOG_HUGE_FIR_NE.isPresent()
-                && Element.LOG_HUGE_FIR_SW.isPresent()
-                && Element.LOG_HUGE_FIR_SE.isPresent()) {
+            && Element.LOG_HUGE_FIR_NE.isPresent()
+            && Element.LOG_HUGE_FIR_SW.isPresent()
+            && Element.LOG_HUGE_FIR_SE.isPresent()) {
             for (final ItemStack itemstack : new ItemStack[] { Element.LOG_HUGE_FIR_NW.get(),
-                    Element.LOG_HUGE_FIR_NE.get(), Element.LOG_HUGE_FIR_SW.get(), Element.LOG_HUGE_FIR_SE.get() }) {
+                Element.LOG_HUGE_FIR_NE.get(), Element.LOG_HUGE_FIR_SW.get(), Element.LOG_HUGE_FIR_SE.get() }) {
                 final IRecipe recipe = new ShapelessOreRecipe(Element.LOG_FIR.get(), itemstack);
                 Extrabiomes.proxy.addRecipe(recipe);
             }
         }
 
         if (Element.LOG_REDWOOD.isPresent() && Element.LOG_HUGE_REDWOOD_NW.isPresent()
-                && Element.LOG_HUGE_REDWOOD_NE.isPresent()
-                && Element.LOG_HUGE_REDWOOD_SW.isPresent()
-                && Element.LOG_HUGE_REDWOOD_SE.isPresent()) {
+            && Element.LOG_HUGE_REDWOOD_NE.isPresent()
+            && Element.LOG_HUGE_REDWOOD_SW.isPresent()
+            && Element.LOG_HUGE_REDWOOD_SE.isPresent()) {
             for (final ItemStack itemstack : new ItemStack[] { Element.LOG_HUGE_REDWOOD_NW.get(),
-                    Element.LOG_HUGE_REDWOOD_NE.get(), Element.LOG_HUGE_REDWOOD_SW.get(),
-                    Element.LOG_HUGE_REDWOOD_SE.get() }) {
+                Element.LOG_HUGE_REDWOOD_NE.get(), Element.LOG_HUGE_REDWOOD_SW.get(),
+                Element.LOG_HUGE_REDWOOD_SE.get() }) {
                 final IRecipe recipe = new ShapelessOreRecipe(Element.LOG_REDWOOD.get(), itemstack);
                 Extrabiomes.proxy.addRecipe(recipe);
             }
@@ -391,9 +446,9 @@ public abstract class RecipeHandler {
         for (final Element logSakura : new Element[] { Element.LOG_SAKURA_BLOSSOM }) {
             if (logSakura.isPresent()) {
                 final ItemStack sakuraPlanks = new ItemStack(
-                        block,
-                        2,
-                        BlockCustomWood.BlockType.SAKURA_BLOSSOM.metadata());
+                    block,
+                    2,
+                    BlockCustomWood.BlockType.SAKURA_BLOSSOM.metadata());
 
                 // cypressLog = cypressPlanks
                 final IRecipe recipe = new ShapelessOreRecipe(sakuraPlanks, logSakura.get());
@@ -405,12 +460,12 @@ public abstract class RecipeHandler {
         }
 
         for (final Element logBaldCypress : new Element[] { Element.LOG_BALD_CYPRESS, Element.LOG_QUARTER_BALD_CYPRESS,
-                Element.LOG_KNEE_BALD_CYPRESS }) {
+            Element.LOG_KNEE_BALD_CYPRESS }) {
             if (logBaldCypress.isPresent()) {
                 final ItemStack cypressPlanks = new ItemStack(
-                        block,
-                        4,
-                        BlockCustomWood.BlockType.BALD_CYPRESS.metadata());
+                    block,
+                    4,
+                    BlockCustomWood.BlockType.BALD_CYPRESS.metadata());
 
                 // cypressLog = cypressPlanks
                 final IRecipe recipe = new ShapelessOreRecipe(cypressPlanks, logBaldCypress.get());
@@ -422,12 +477,12 @@ public abstract class RecipeHandler {
         }
 
         for (final Element logRainbow : new Element[] { Element.LOG_RAINBOW_EUCALYPTUS,
-                Element.LOG_QUARTER_RAINBOW_EUCALYPTUS, Element.LOG_KNEE_RAINBOW_EUCALYPTUS }) {
+            Element.LOG_QUARTER_RAINBOW_EUCALYPTUS, Element.LOG_KNEE_RAINBOW_EUCALYPTUS }) {
             if (logRainbow.isPresent()) {
                 final ItemStack rainbowPlanks = new ItemStack(
-                        block,
-                        4,
-                        BlockCustomWood.BlockType.RAINBOW_EUCALYPTUS.metadata());
+                    block,
+                    4,
+                    BlockCustomWood.BlockType.RAINBOW_EUCALYPTUS.metadata());
 
                 // rainbowLog = rainbowPlanks
                 final IRecipe recipe = new ShapelessOreRecipe(rainbowPlanks, logRainbow.get());
@@ -482,10 +537,10 @@ public abstract class RecipeHandler {
         if (!Element.LOGTURNER.isPresent()) return;
 
         final IRecipe recipe = new ShapedOreRecipe(
-                Element.LOGTURNER.get(),
-                new String[] { "ss", " s", "ss" },
-                's',
-                "stickWood");
+            Element.LOGTURNER.get(),
+            new String[] { "ss", " s", "ss" },
+            's',
+            "stickWood");
         Extrabiomes.proxy.addRecipe(recipe);
     }
 
@@ -500,9 +555,9 @@ public abstract class RecipeHandler {
         proxy.addRecipe(recipe);
 
         final ItemStack choco_strawberry = new ItemStack(
-                foodItem,
-                1,
-                ItemCustomFood.FoodType.CHOCOLATE_STRAWBERRY.meta);
+            foodItem,
+            1,
+            ItemCustomFood.FoodType.CHOCOLATE_STRAWBERRY.meta);
         recipe = new ShapelessOreRecipe(choco_strawberry, chocolate, "cropStrawberry");
         proxy.addRecipe(recipe);
     }

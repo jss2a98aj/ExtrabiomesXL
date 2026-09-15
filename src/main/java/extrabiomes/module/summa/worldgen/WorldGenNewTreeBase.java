@@ -76,7 +76,7 @@ public abstract class WorldGenNewTreeBase extends WorldGenAbstractTree {
     }
 
     public boolean placeKnee(int x, int y, int z, int height, int direction, ItemStack logs, ItemStack knees,
-            World world) {
+        World world) {
         Block logBlock = Block.getBlockFromItem(logs.getItem());
 
         if (direction > 3) return false;
@@ -105,9 +105,9 @@ public abstract class WorldGenNewTreeBase extends WorldGenAbstractTree {
         Material material = block.getMaterial();
         int checkY = y + height - 1;
         if (material.isLiquid() || material.isReplaceable()
-                || block.canBeReplacedByLeaves(world, x, checkY, z)
-                || block.isLeaves(world, x, checkY, z)
-                || block.isFoliage(world, x, checkY, z)) {
+            || block.canBeReplacedByLeaves(world, x, checkY, z)
+            || block.isLeaves(world, x, checkY, z)
+            || block.isFoliage(world, x, checkY, z)) {
             setBlockAndNotifyAdequately(world, x, checkY, z, Block.getBlockFromItem(knees.getItem()), orientation);
         }
 
@@ -115,9 +115,9 @@ public abstract class WorldGenNewTreeBase extends WorldGenAbstractTree {
             block = world.getBlock(x, currentY, z);
             material = block.getMaterial();
             if (material.isLiquid() || material.isReplaceable()
-                    || block.canBeReplacedByLeaves(world, x, currentY, z)
-                    || block.isLeaves(world, x, currentY, z)
-                    || block.isFoliage(world, x, currentY, z)) {
+                || block.canBeReplacedByLeaves(world, x, currentY, z)
+                || block.isLeaves(world, x, currentY, z)
+                || block.isFoliage(world, x, currentY, z)) {
                 setBlockAndNotifyAdequately(world, x, currentY, z, logBlock, logs.getItemDamage());
             } else {
                 break;
@@ -467,7 +467,7 @@ public abstract class WorldGenNewTreeBase extends WorldGenAbstractTree {
                 final Block block = world.getBlock(x2, y, z2);
 
                 if ((((x1 * x1) + (z1 * z1)) <= dist)
-                        && (block == null || block.canBeReplacedByLeaves(world, x2, y, z2))) {
+                    && (block == null || block.canBeReplacedByLeaves(world, x2, y, z2))) {
                     setLeafBlock(world, x2, y, z2, leaves);
                 }
             }

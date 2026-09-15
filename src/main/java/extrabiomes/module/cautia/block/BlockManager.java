@@ -47,7 +47,8 @@ public enum BlockManager {
 
     private static void createBlocks() throws Exception {
         for (final BlockManager block : BlockManager.values()) {
-            if (!block.getSettings().getEnabled()) {
+            if (!block.getSettings()
+                .getEnabled()) {
                 LogHelper.fine("Skipping registration of disabled block " + block);
                 continue;
             }

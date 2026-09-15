@@ -70,7 +70,11 @@ public class CropHandler {
 
             final ItemStack crop_item = new ItemStack(item, 1, type.meta);
             element.set(crop_item);
-            OreDictionary.registerOre("crop" + StringUtils.capitalize(type.name().toLowerCase()), crop_item);
+            OreDictionary.registerOre(
+                "crop" + StringUtils.capitalize(
+                    type.name()
+                        .toLowerCase()),
+                crop_item);
         }
     }
 
@@ -139,7 +143,9 @@ public class CropHandler {
             }
 
             final BlockCropRegrow block = new BlockCropRegrow(type);
-            block.setCropItem(crop_element.get().getItem());
+            block.setCropItem(
+                crop_element.get()
+                    .getItem());
             block.setBlockName("extrabiomes.crop." + name.toLowerCase());
             proxy.registerEventHandler(new CropBonemealEventHandler(block));
             proxy.registerBlock(block, block.getUnlocalizedName());

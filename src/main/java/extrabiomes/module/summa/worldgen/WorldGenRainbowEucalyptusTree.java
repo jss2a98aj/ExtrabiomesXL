@@ -93,10 +93,9 @@ public class WorldGenRainbowEucalyptusTree extends WorldGenNewTreeBase {
 
         // Make sure that a tree can grow on the soil
         if (!TreeSoilRegistry.isValidSoil(world.getBlock(x, y - 1, z))
-                || !TreeSoilRegistry.isValidSoil(world.getBlock(x + 1, y - 1, z))
-                || !TreeSoilRegistry.isValidSoil(world.getBlock(x, y - 1, z + 1))
-                || !TreeSoilRegistry.isValidSoil(world.getBlock(x + 1, y - 1, z + 1)))
-            return false;
+            || !TreeSoilRegistry.isValidSoil(world.getBlock(x + 1, y - 1, z))
+            || !TreeSoilRegistry.isValidSoil(world.getBlock(x, y - 1, z + 1))
+            || !TreeSoilRegistry.isValidSoil(world.getBlock(x + 1, y - 1, z + 1))) return false;
 
         // make sure that we have room to grow the tree
         if (y >= 256 - height - 4) return false;
@@ -106,13 +105,12 @@ public class WorldGenRainbowEucalyptusTree extends WorldGenNewTreeBase {
 
         // Make sure the chunks are loaded
         if (!world.checkChunksExist(
-                x - chunkCheck,
-                y - chunkCheck,
-                z - chunkCheck,
-                x + chunkCheck,
-                y + chunkCheck,
-                z + chunkCheck))
-            return false;
+            x - chunkCheck,
+            y - chunkCheck,
+            z - chunkCheck,
+            x + chunkCheck,
+            y + chunkCheck,
+            z + chunkCheck)) return false;
 
         // Draw the main trunk
         if (!check2x2Trunk(x, y, z, (int) (height * TRUNK_HEIGHT_PERCENT), world, false)) return false;
@@ -122,12 +120,12 @@ public class WorldGenRainbowEucalyptusTree extends WorldGenNewTreeBase {
 
         // Place the topper leaves
         return checkLeafCluster(
-                world,
-                x,
-                (int) (height * TRUNK_HEIGHT_PERCENT) + y,
-                z,
-                4 + rand.nextInt(CLUSTER_HEIGHT_VARIANCE),
-                4 + rand.nextInt(CLUSTER_DIAMETER_VARIANCE));
+            world,
+            x,
+            (int) (height * TRUNK_HEIGHT_PERCENT) + y,
+            z,
+            4 + rand.nextInt(CLUSTER_HEIGHT_VARIANCE),
+            4 + rand.nextInt(CLUSTER_DIAMETER_VARIANCE));
     }
 
     private boolean generateTree(World world, Random rand, int x, int y, int z) {
@@ -137,10 +135,9 @@ public class WorldGenRainbowEucalyptusTree extends WorldGenNewTreeBase {
 
         // Make sure that a tree can grow on the soil
         if (!TreeSoilRegistry.isValidSoil(world.getBlock(x, y - 1, z))
-                || !TreeSoilRegistry.isValidSoil(world.getBlock(x + 1, y - 1, z))
-                || !TreeSoilRegistry.isValidSoil(world.getBlock(x, y - 1, z + 1))
-                || !TreeSoilRegistry.isValidSoil(world.getBlock(x + 1, y - 1, z + 1)))
-            return false;
+            || !TreeSoilRegistry.isValidSoil(world.getBlock(x + 1, y - 1, z))
+            || !TreeSoilRegistry.isValidSoil(world.getBlock(x, y - 1, z + 1))
+            || !TreeSoilRegistry.isValidSoil(world.getBlock(x + 1, y - 1, z + 1))) return false;
 
         // make sure that we have room to grow the tree
         if (y >= 256 - height - 4) return false;
@@ -150,13 +147,12 @@ public class WorldGenRainbowEucalyptusTree extends WorldGenNewTreeBase {
 
         // Make sure the chunks are loaded
         if (!world.checkChunksExist(
-                x - chunkCheck,
-                y - chunkCheck,
-                z - chunkCheck,
-                x + chunkCheck,
-                y + chunkCheck,
-                z + chunkCheck))
-            return false;
+            x - chunkCheck,
+            y - chunkCheck,
+            z - chunkCheck,
+            x + chunkCheck,
+            y + chunkCheck,
+            z + chunkCheck)) return false;
 
         // Draw the main trunk
         if (place2x2Trunk(x, y, z, (int) (height * TRUNK_HEIGHT_PERCENT), TreeBlock.TRUNK.get(), world)) {
@@ -168,12 +164,12 @@ public class WorldGenRainbowEucalyptusTree extends WorldGenNewTreeBase {
 
             // Place the topper leaves
             generateLeafCluster(
-                    world,
-                    x,
-                    (int) (height * TRUNK_HEIGHT_PERCENT) + y,
-                    z,
-                    4 + rand.nextInt(CLUSTER_HEIGHT_VARIANCE),
-                    4 + rand.nextInt(CLUSTER_DIAMETER_VARIANCE));
+                world,
+                x,
+                (int) (height * TRUNK_HEIGHT_PERCENT) + y,
+                z,
+                4 + rand.nextInt(CLUSTER_HEIGHT_VARIANCE),
+                4 + rand.nextInt(CLUSTER_DIAMETER_VARIANCE));
 
             return true;
         }
@@ -208,7 +204,7 @@ public class WorldGenRainbowEucalyptusTree extends WorldGenNewTreeBase {
             // Max of tree height
             // Min of branch start
             start[1] = Math
-                    .max(branchStart + y, Math.min(height, rand.nextInt(Math.max(end[1] - branchStart - y, 1)) + y));
+                .max(branchStart + y, Math.min(height, rand.nextInt(Math.max(end[1] - branchStart - y, 1)) + y));
 
             if (end[0] > x && end[2] > z) {
                 start[0] = x + 1;
@@ -238,13 +234,12 @@ public class WorldGenRainbowEucalyptusTree extends WorldGenNewTreeBase {
         while (itt.hasNext()) {
             int[] cluster = itt.next();
             if (!checkLeafCluster(
-                    world,
-                    cluster[0],
-                    cluster[1],
-                    cluster[2],
-                    CLUSTER_HEIGHT + rand.nextInt(CLUSTER_HEIGHT_VARIANCE),
-                    CLUSTER_DIAMETER + rand.nextInt(CLUSTER_DIAMETER_VARIANCE)))
-                return false;
+                world,
+                cluster[0],
+                cluster[1],
+                cluster[2],
+                CLUSTER_HEIGHT + rand.nextInt(CLUSTER_HEIGHT_VARIANCE),
+                CLUSTER_DIAMETER + rand.nextInt(CLUSTER_DIAMETER_VARIANCE))) return false;
         }
 
         return true;
@@ -277,7 +272,7 @@ public class WorldGenRainbowEucalyptusTree extends WorldGenNewTreeBase {
             // Max of tree height
             // Min of branch start
             start[1] = Math
-                    .max(branchStart + y, Math.min(height, rand.nextInt(Math.max(end[1] - branchStart - y, 1)) + y));
+                .max(branchStart + y, Math.min(height, rand.nextInt(Math.max(end[1] - branchStart - y, 1)) + y));
 
             if (end[0] > x && end[2] > z) {
                 start[0] = x + 1;
@@ -307,12 +302,12 @@ public class WorldGenRainbowEucalyptusTree extends WorldGenNewTreeBase {
         while (itt.hasNext()) {
             int[] cluster = itt.next();
             generateLeafCluster(
-                    world,
-                    cluster[0],
-                    cluster[1],
-                    cluster[2],
-                    CLUSTER_HEIGHT + rand.nextInt(CLUSTER_HEIGHT_VARIANCE),
-                    CLUSTER_DIAMETER + rand.nextInt(CLUSTER_DIAMETER_VARIANCE));
+                world,
+                cluster[0],
+                cluster[1],
+                cluster[2],
+                CLUSTER_HEIGHT + rand.nextInt(CLUSTER_HEIGHT_VARIANCE),
+                CLUSTER_DIAMETER + rand.nextInt(CLUSTER_DIAMETER_VARIANCE));
         }
     }
 
@@ -320,45 +315,45 @@ public class WorldGenRainbowEucalyptusTree extends WorldGenNewTreeBase {
         switch (rand.nextInt(11)) {
             case 0, 1, 2, 3:
                 placeKnee(
-                        x - 1,
-                        y,
-                        z,
-                        ((rand.nextInt(3) != 0) ? 1 : 2),
-                        2,
-                        TreeBlock.KNEE_LOG.get(),
-                        TreeBlock.KNEE.get(),
-                        world);
+                    x - 1,
+                    y,
+                    z,
+                    ((rand.nextInt(3) != 0) ? 1 : 2),
+                    2,
+                    TreeBlock.KNEE_LOG.get(),
+                    TreeBlock.KNEE.get(),
+                    world);
                 break;
             case 4, 5, 6, 7:
                 placeKnee(
-                        x - 1,
-                        y,
-                        z + 1,
-                        ((rand.nextInt(3) != 0) ? 1 : 2),
-                        2,
-                        TreeBlock.KNEE_LOG.get(),
-                        TreeBlock.KNEE.get(),
-                        world);
+                    x - 1,
+                    y,
+                    z + 1,
+                    ((rand.nextInt(3) != 0) ? 1 : 2),
+                    2,
+                    TreeBlock.KNEE_LOG.get(),
+                    TreeBlock.KNEE.get(),
+                    world);
                 break;
             case 8:
                 placeKnee(
-                        x - 1,
-                        y,
-                        z,
-                        ((rand.nextInt(5) != 0) ? 1 : 2),
-                        2,
-                        TreeBlock.KNEE_LOG.get(),
-                        TreeBlock.KNEE.get(),
-                        world);
+                    x - 1,
+                    y,
+                    z,
+                    ((rand.nextInt(5) != 0) ? 1 : 2),
+                    2,
+                    TreeBlock.KNEE_LOG.get(),
+                    TreeBlock.KNEE.get(),
+                    world);
                 placeKnee(
-                        x - 1,
-                        y,
-                        z + 1,
-                        ((rand.nextInt(2) != 0) ? 1 : 2),
-                        2,
-                        TreeBlock.KNEE_LOG.get(),
-                        TreeBlock.KNEE.get(),
-                        world);
+                    x - 1,
+                    y,
+                    z + 1,
+                    ((rand.nextInt(2) != 0) ? 1 : 2),
+                    2,
+                    TreeBlock.KNEE_LOG.get(),
+                    TreeBlock.KNEE.get(),
+                    world);
                 break;
             default:
                 break;
@@ -367,45 +362,45 @@ public class WorldGenRainbowEucalyptusTree extends WorldGenNewTreeBase {
         switch (rand.nextInt(11)) {
             case 0, 1, 2, 3:
                 placeKnee(
-                        x,
-                        y,
-                        z - 1,
-                        ((rand.nextInt(3) != 0) ? 1 : 2),
-                        3,
-                        TreeBlock.KNEE_LOG.get(),
-                        TreeBlock.KNEE.get(),
-                        world);
+                    x,
+                    y,
+                    z - 1,
+                    ((rand.nextInt(3) != 0) ? 1 : 2),
+                    3,
+                    TreeBlock.KNEE_LOG.get(),
+                    TreeBlock.KNEE.get(),
+                    world);
                 break;
             case 4, 5, 6, 7:
                 placeKnee(
-                        x + 1,
-                        y,
-                        z - 1,
-                        ((rand.nextInt(3) != 0) ? 1 : 2),
-                        3,
-                        TreeBlock.KNEE_LOG.get(),
-                        TreeBlock.KNEE.get(),
-                        world);
+                    x + 1,
+                    y,
+                    z - 1,
+                    ((rand.nextInt(3) != 0) ? 1 : 2),
+                    3,
+                    TreeBlock.KNEE_LOG.get(),
+                    TreeBlock.KNEE.get(),
+                    world);
                 break;
             case 8:
                 placeKnee(
-                        x,
-                        y,
-                        z - 1,
-                        ((rand.nextInt(3) != 0) ? 1 : 2),
-                        3,
-                        TreeBlock.KNEE_LOG.get(),
-                        TreeBlock.KNEE.get(),
-                        world);
+                    x,
+                    y,
+                    z - 1,
+                    ((rand.nextInt(3) != 0) ? 1 : 2),
+                    3,
+                    TreeBlock.KNEE_LOG.get(),
+                    TreeBlock.KNEE.get(),
+                    world);
                 placeKnee(
-                        x + 1,
-                        y,
-                        z - 1,
-                        ((rand.nextInt(5) != 0) ? 1 : 2),
-                        3,
-                        TreeBlock.KNEE_LOG.get(),
-                        TreeBlock.KNEE.get(),
-                        world);
+                    x + 1,
+                    y,
+                    z - 1,
+                    ((rand.nextInt(5) != 0) ? 1 : 2),
+                    3,
+                    TreeBlock.KNEE_LOG.get(),
+                    TreeBlock.KNEE.get(),
+                    world);
                 break;
             default:
                 break;
@@ -414,45 +409,45 @@ public class WorldGenRainbowEucalyptusTree extends WorldGenNewTreeBase {
         switch (rand.nextInt(11)) {
             case 0, 1, 2, 3:
                 placeKnee(
-                        x + 2,
-                        y,
-                        z,
-                        ((rand.nextInt(3) != 0) ? 1 : 2),
-                        0,
-                        TreeBlock.KNEE_LOG.get(),
-                        TreeBlock.KNEE.get(),
-                        world);
+                    x + 2,
+                    y,
+                    z,
+                    ((rand.nextInt(3) != 0) ? 1 : 2),
+                    0,
+                    TreeBlock.KNEE_LOG.get(),
+                    TreeBlock.KNEE.get(),
+                    world);
                 break;
             case 4, 5, 6, 7:
                 placeKnee(
-                        x + 2,
-                        y,
-                        z + 1,
-                        ((rand.nextInt(3) != 0) ? 1 : 2),
-                        0,
-                        TreeBlock.KNEE_LOG.get(),
-                        TreeBlock.KNEE.get(),
-                        world);
+                    x + 2,
+                    y,
+                    z + 1,
+                    ((rand.nextInt(3) != 0) ? 1 : 2),
+                    0,
+                    TreeBlock.KNEE_LOG.get(),
+                    TreeBlock.KNEE.get(),
+                    world);
                 break;
             case 8:
                 placeKnee(
-                        x + 2,
-                        y,
-                        z,
-                        ((rand.nextInt(3) != 0) ? 1 : 2),
-                        0,
-                        TreeBlock.KNEE_LOG.get(),
-                        TreeBlock.KNEE.get(),
-                        world);
+                    x + 2,
+                    y,
+                    z,
+                    ((rand.nextInt(3) != 0) ? 1 : 2),
+                    0,
+                    TreeBlock.KNEE_LOG.get(),
+                    TreeBlock.KNEE.get(),
+                    world);
                 placeKnee(
-                        x + 2,
-                        y,
-                        z + 1,
-                        ((rand.nextInt(3) != 0) ? 1 : 2),
-                        0,
-                        TreeBlock.KNEE_LOG.get(),
-                        TreeBlock.KNEE.get(),
-                        world);
+                    x + 2,
+                    y,
+                    z + 1,
+                    ((rand.nextInt(3) != 0) ? 1 : 2),
+                    0,
+                    TreeBlock.KNEE_LOG.get(),
+                    TreeBlock.KNEE.get(),
+                    world);
                 break;
             default:
                 break;
@@ -461,45 +456,45 @@ public class WorldGenRainbowEucalyptusTree extends WorldGenNewTreeBase {
         switch (rand.nextInt(11)) {
             case 0, 1, 2, 3:
                 placeKnee(
-                        x,
-                        y,
-                        z + 2,
-                        ((rand.nextInt(3) != 0) ? 1 : 2),
-                        1,
-                        TreeBlock.KNEE_LOG.get(),
-                        TreeBlock.KNEE.get(),
-                        world);
+                    x,
+                    y,
+                    z + 2,
+                    ((rand.nextInt(3) != 0) ? 1 : 2),
+                    1,
+                    TreeBlock.KNEE_LOG.get(),
+                    TreeBlock.KNEE.get(),
+                    world);
                 break;
             case 4, 5, 6, 7:
                 placeKnee(
-                        x + 1,
-                        y,
-                        z + 2,
-                        ((rand.nextInt(3) != 0) ? 1 : 2),
-                        1,
-                        TreeBlock.KNEE_LOG.get(),
-                        TreeBlock.KNEE.get(),
-                        world);
+                    x + 1,
+                    y,
+                    z + 2,
+                    ((rand.nextInt(3) != 0) ? 1 : 2),
+                    1,
+                    TreeBlock.KNEE_LOG.get(),
+                    TreeBlock.KNEE.get(),
+                    world);
                 break;
             case 8:
                 placeKnee(
-                        x,
-                        y,
-                        z + 2,
-                        ((rand.nextInt(2) != 0) ? 1 : 2),
-                        1,
-                        TreeBlock.KNEE_LOG.get(),
-                        TreeBlock.KNEE.get(),
-                        world);
+                    x,
+                    y,
+                    z + 2,
+                    ((rand.nextInt(2) != 0) ? 1 : 2),
+                    1,
+                    TreeBlock.KNEE_LOG.get(),
+                    TreeBlock.KNEE.get(),
+                    world);
                 placeKnee(
-                        x + 1,
-                        y,
-                        z + 2,
-                        ((rand.nextInt(5) != 0) ? 1 : 2),
-                        1,
-                        TreeBlock.KNEE_LOG.get(),
-                        TreeBlock.KNEE.get(),
-                        world);
+                    x + 1,
+                    y,
+                    z + 2,
+                    ((rand.nextInt(5) != 0) ? 1 : 2),
+                    1,
+                    TreeBlock.KNEE_LOG.get(),
+                    TreeBlock.KNEE.get(),
+                    world);
                 break;
             default:
                 break;
@@ -509,12 +504,12 @@ public class WorldGenRainbowEucalyptusTree extends WorldGenNewTreeBase {
     public void generateLeafCluster(World world, int x, int y, int z, int height, int radius) {
         for (int layer = -height; layer <= height; layer++) {
             this.placeLeavesCircle(
-                    x,
-                    y + layer,
-                    z,
-                    radius * Math.cos(layer / (height / 1.3)),
-                    TreeBlock.LEAVES.get(),
-                    world);
+                x,
+                y + layer,
+                z,
+                radius * Math.cos(layer / (height / 1.3)),
+                TreeBlock.LEAVES.get(),
+                world);
         }
     }
 

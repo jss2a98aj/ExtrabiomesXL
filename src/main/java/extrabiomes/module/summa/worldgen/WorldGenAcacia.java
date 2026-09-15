@@ -96,11 +96,10 @@ public class WorldGenAcacia extends WorldGenAbstractTree {
                         final Block block = world.getBlock(x1, y1, z1);
 
                         if (block != null && !block.isLeaves(world, x1, y1, z1)
-                                && !block.equals(Blocks.grass)
-                                && !block.equals(Blocks.dirt)
-                                && !block.isWood(world, x1, y1, z1)
-                                && !block.isReplaceable(world, x1, y1, z1))
-                            canGrow = false;
+                            && !block.equals(Blocks.grass)
+                            && !block.equals(Blocks.dirt)
+                            && !block.isWood(world, x1, y1, z1)
+                            && !block.isReplaceable(world, x1, y1, z1)) canGrow = false;
 
                     } else {
                         canGrow = false;
@@ -130,15 +129,15 @@ public class WorldGenAcacia extends WorldGenAbstractTree {
                     final Block block = world.getBlock(x1, y1, z1);
 
                     if ((Math.abs(xOnRadius) != canopyRadius || Math.abs(zOnRadius) != canopyRadius
-                            || rand.nextInt(2) != 0 && distanceFromTop != 0)
-                            && (block == null || block.canBeReplacedByLeaves(world, x1, y1, z1))) {
+                        || rand.nextInt(2) != 0 && distanceFromTop != 0)
+                        && (block == null || block.canBeReplacedByLeaves(world, x1, y1, z1))) {
                         setBlockAndNotifyAdequately(
-                                world,
-                                x1,
-                                y1,
-                                z1,
-                                TreeBlock.LEAVES.getBlock(),
-                                TreeBlock.LEAVES.getMetadata());
+                            world,
+                            x1,
+                            y1,
+                            z1,
+                            TreeBlock.LEAVES.getBlock(),
+                            TreeBlock.LEAVES.getMetadata());
                     }
                 }
             }

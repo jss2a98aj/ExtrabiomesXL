@@ -54,7 +54,9 @@ public class ItemCustomSeed extends Item implements IPlantable {
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister iconRegister) {
         for (SeedType type : SeedType.values()) {
-            final String IIconPath = Extrabiomes.TEXTURE_PATH + "seed_" + type.name().toLowerCase();
+            final String IIconPath = Extrabiomes.TEXTURE_PATH + "seed_"
+                + type.name()
+                    .toLowerCase();
             type.IIcon = iconRegister.registerIcon(IIconPath);
         }
     }
@@ -76,7 +78,9 @@ public class ItemCustomSeed extends Item implements IPlantable {
     @Override
     public String getUnlocalizedName(ItemStack itemStack) {
         final SeedType seed = getSeedType(itemStack.getItemDamage());
-        return super.getUnlocalizedName() + "." + seed.name().toLowerCase();
+        return super.getUnlocalizedName() + "."
+            + seed.name()
+                .toLowerCase();
     }
 
     @Override
@@ -89,7 +93,7 @@ public class ItemCustomSeed extends Item implements IPlantable {
 
     @Override
     public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int x, int y, int z, int side,
-            float px, float py, float pz) {
+        float px, float py, float pz) {
 
         if (side != ForgeDirection.UP.ordinal()) {
             return false;
@@ -98,7 +102,7 @@ public class ItemCustomSeed extends Item implements IPlantable {
                 final Block soil = world.getBlock(x, y, z);
 
                 if (soil != null && soil.canSustainPlant(world, x, y, z, ForgeDirection.UP, this)
-                        && world.isAirBlock(x, y + 1, z)) {
+                    && world.isAirBlock(x, y + 1, z)) {
 
                     final SeedType seed = getSeedType(itemStack.getItemDamage());
                     if (seed == null || seed.cropType == null) {

@@ -65,26 +65,31 @@ public enum BiomeHandler {
             }
         }
 
-        Api.getExtrabiomesXLEventBus().register(INSTANCE);
+        Api.getExtrabiomesXLEventBus()
+            .register(INSTANCE);
     }
 
     public static void registerWorldGenerators(EnhancedConfiguration config) {
-        if (BiomeSettings.MARSH.isEnabled() && BiomeSettings.MARSH.getBiome().isPresent()) {
+        if (BiomeSettings.MARSH.isEnabled() && BiomeSettings.MARSH.getBiome()
+            .isPresent()) {
             Extrabiomes.proxy.registerWorldGenerator(new MarshGenerator());
         }
 
-        if (BiomeSettings.MOUNTAINDESERT.isEnabled() && BiomeSettings.MOUNTAINDESERT.getBiome().isPresent()) {
+        if (BiomeSettings.MOUNTAINDESERT.isEnabled() && BiomeSettings.MOUNTAINDESERT.getBiome()
+            .isPresent()) {
             Extrabiomes.proxy.registerWorldGenerator(new MountainDesertGenerator());
         }
 
-        if (BiomeSettings.MOUNTAINRIDGE.isEnabled() && BiomeSettings.MOUNTAINRIDGE.getBiome().isPresent()) {
+        if (BiomeSettings.MOUNTAINRIDGE.isEnabled() && BiomeSettings.MOUNTAINRIDGE.getBiome()
+            .isPresent()) {
             Extrabiomes.proxy.registerWorldGenerator(new MountainRidgeGenerator());
         }
 
         Extrabiomes.proxy.registerWorldGenerator(new VanillaFloraGenerator());
 
         // allow legendary oaks to be disabled
-        if (config.get(config.CATEGORY_GENERAL, "GenerateLegendOaks", true).getBoolean()) {
+        if (config.get(config.CATEGORY_GENERAL, "GenerateLegendOaks", true)
+            .getBoolean()) {
             Extrabiomes.proxy.registerWorldGenerator(new LegendOakGenerator());
         }
     }

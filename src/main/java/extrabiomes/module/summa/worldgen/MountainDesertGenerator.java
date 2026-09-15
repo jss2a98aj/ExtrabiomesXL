@@ -19,13 +19,15 @@ public class MountainDesertGenerator implements IWorldGenerator {
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator,
-            IChunkProvider chunkProvider) {
+        IChunkProvider chunkProvider) {
         chunkX = chunkX << 4;
         chunkZ = chunkZ << 4;
         final BiomeGenBase biome = world.getBiomeGenForCoords(chunkX, chunkZ);
 
-        if (BiomeSettings.MOUNTAINDESERT.getBiome().isPresent()
-                && biome == BiomeSettings.MOUNTAINDESERT.getBiome().get())
+        if (BiomeSettings.MOUNTAINDESERT.getBiome()
+            .isPresent()
+            && biome == BiomeSettings.MOUNTAINDESERT.getBiome()
+                .get())
             generateRareDesertWell(random, chunkX, chunkZ, world);
     }
 

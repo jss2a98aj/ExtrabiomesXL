@@ -18,7 +18,8 @@ public class ItemCustomMiniLog extends ItemBlock {
     @Override
     public String getUnlocalizedName(ItemStack itemstack) {
         return super.getUnlocalizedName() + "."
-                + BlockMiniLog.BlockType.values()[0].toString().toLowerCase(Locale.ENGLISH);
+            + BlockMiniLog.BlockType.values()[0].toString()
+                .toLowerCase(Locale.ENGLISH);
     }
 
     public ItemCustomMiniLog(final Block block) {

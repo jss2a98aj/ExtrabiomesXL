@@ -54,17 +54,17 @@ public class EnhancedConfiguration extends Configuration {
 
         if (configBiomes[prop.getInt()]) {
             LogHelper
-                    .warning("Warning two of Extrabiomes were set to Biome ID #%d in your config file.", prop.getInt());
+                .warning("Warning two of Extrabiomes were set to Biome ID #%d in your config file.", prop.getInt());
         } else if (prop.getInt() != defaultID) {
             String msg = "Warning biome ID conflict.\n";
             msg += "According to ExtrabiomesXL's config file, biome id #%d was used by %s, but it has been overwritten by %s.\n";
             msg += "Any existing worlds may have incorrect biome information.";
             LogHelper.warning(
-                    msg,
-                    prop.getInt(),
-                    key,
-                    BiomeGenBase.getBiomeGenArray()[prop.getInt()].getBiomeClass().getName() + ":"
-                            + BiomeGenBase.getBiomeGenArray()[prop.getInt()].biomeName);
+                msg,
+                prop.getInt(),
+                key,
+                BiomeGenBase.getBiomeGenArray()[prop.getInt()].getBiomeClass()
+                    .getName() + ":" + BiomeGenBase.getBiomeGenArray()[prop.getInt()].biomeName);
         }
 
         for (int j = 40; j < configBiomes.length - 1; j++) {

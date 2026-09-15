@@ -52,15 +52,19 @@ public class CommonProxy {
 
     @SuppressWarnings("unchecked")
     public void addRecipe(IRecipe recipe) {
-        CraftingManager.getInstance().getRecipeList().add(0, recipe);
+        CraftingManager.getInstance()
+            .getRecipeList()
+            .add(0, recipe);
     }
 
     public void addSmelting(Item item, int metadata, ItemStack itemstack, float experience) {
-        FurnaceRecipes.smelting().func_151394_a(new ItemStack(item, 1, metadata), itemstack, experience);
+        FurnaceRecipes.smelting()
+            .func_151394_a(new ItemStack(item, 1, metadata), itemstack, experience);
     }
 
     public void addSmelting(ItemStack input, ItemStack output, float experience) {
-        FurnaceRecipes.smelting().func_151394_a(input, output, experience);
+        FurnaceRecipes.smelting()
+            .func_151394_a(input, output, experience);
     }
 
     public ItemStack getGrassSeed(World world) {
@@ -85,15 +89,15 @@ public class CommonProxy {
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
     public void registerEntity(Class entityClass, String entityName, Object mod, int entityID, int trackingRange,
-            int updateFrequency, boolean sendsVelocityUpdates) {
+        int updateFrequency, boolean sendsVelocityUpdates) {
         EntityRegistry.registerModEntity(
-                entityClass,
-                entityName,
-                entityID,
-                mod,
-                trackingRange,
-                updateFrequency,
-                sendsVelocityUpdates);
+            entityClass,
+            entityName,
+            entityID,
+            mod,
+            trackingRange,
+            updateFrequency,
+            sendsVelocityUpdates);
     }
 
     public void registerEventHandler(Object target) {

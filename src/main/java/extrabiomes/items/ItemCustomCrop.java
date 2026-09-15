@@ -66,7 +66,8 @@ public class ItemCustomCrop extends ItemFood {
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister iconRegister) {
         for (CropType type : CropType.values()) {
-            final String IIconPath = Extrabiomes.TEXTURE_PATH + type.name().toLowerCase();
+            final String IIconPath = Extrabiomes.TEXTURE_PATH + type.name()
+                .toLowerCase();
             type.IIcon = iconRegister.registerIcon(IIconPath);
         }
     }
@@ -88,7 +89,9 @@ public class ItemCustomCrop extends ItemFood {
     @Override
     public String getUnlocalizedName(ItemStack itemStack) {
         final CropType crop = getCropType(itemStack.getItemDamage());
-        return super.getUnlocalizedName() + "." + crop.name().toLowerCase();
+        return super.getUnlocalizedName() + "."
+            + crop.name()
+                .toLowerCase();
     }
 
     @SuppressWarnings({ "unchecked", "rawtypes" })

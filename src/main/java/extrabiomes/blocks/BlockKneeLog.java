@@ -317,19 +317,19 @@ public class BlockKneeLog extends BlockLog {
         if (block == this) {
             final Block wood = Blocks.log;
             event.world.playSoundEffect(
-                    event.x + 0.5F,
-                    event.y + 0.5F,
-                    event.z + 0.5F,
-                    wood.stepSound.soundName,
-                    (wood.stepSound.getVolume() + 1.0F) / 2.0F,
-                    wood.stepSound.getPitch() * 1.55F);
+                event.x + 0.5F,
+                event.y + 0.5F,
+                event.z + 0.5F,
+                wood.stepSound.soundName,
+                (wood.stepSound.getVolume() + 1.0F) / 2.0F,
+                wood.stepSound.getPitch() * 1.55F);
 
             if (!event.world.isRemote) {
                 int metadata = event.world.getBlockMetadata(event.x, event.y, event.z);
 
                 if (event.entityPlayer.isSneaking() == true) {
                     switch (BlockPistonBase
-                            .determineOrientation(event.world, event.x, event.y, event.z, event.entityLiving)) {
+                        .determineOrientation(event.world, event.x, event.y, event.z, event.entityLiving)) {
                         case 0:
                             switch (metadata) {
                                 case 9:
@@ -448,7 +448,7 @@ public class BlockKneeLog extends BlockLog {
                 } else {
                     // Increment the orentation
                     if (BlockPistonBase.determineOrientation(event.world, event.x, event.y, event.z, event.entityLiving)
-                            % 2 == 0) {
+                        % 2 == 0) {
                         metadata = (++metadata > 11) ? 0 : metadata;
                     } else {
                         metadata = (--metadata < 0) ? 11 : metadata;

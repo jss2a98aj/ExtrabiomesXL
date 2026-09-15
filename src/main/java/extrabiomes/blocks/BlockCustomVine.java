@@ -32,7 +32,9 @@ public class BlockCustomVine extends BlockVine {
 
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister iconRegister) {
-        final String IIconPath = Extrabiomes.TEXTURE_PATH + "vine_" + type.toString().toLowerCase();
+        final String IIconPath = Extrabiomes.TEXTURE_PATH + "vine_"
+            + type.toString()
+                .toLowerCase();
         this.blockIcon = iconRegister.registerIcon(IIconPath);
     }
 
@@ -80,7 +82,7 @@ public class BlockCustomVine extends BlockVine {
                 if (j2 > 0) {
                     for (l1 = 0; l1 <= 3; ++l1) {
                         if (!this.func_150093_a(
-                                world.getBlock(x + Direction.offsetX[l1], y + 1, z + Direction.offsetZ[l1]))) {
+                            world.getBlock(x + Direction.offsetX[l1], y + 1, z + Direction.offsetZ[l1]))) {
                             j2 &= ~(1 << l1);
                         }
                     }
@@ -105,73 +107,68 @@ public class BlockCustomVine extends BlockVine {
                         i2 = k1 + 3 & 3;
 
                         if ((i1 & 1 << l1) != 0 && this.func_150093_a(
-                                world.getBlock(
-                                        x + Direction.offsetX[k1] + Direction.offsetX[l1],
-                                        y,
-                                        z + Direction.offsetZ[k1] + Direction.offsetZ[l1]))) {
+                            world.getBlock(
+                                x + Direction.offsetX[k1] + Direction.offsetX[l1],
+                                y,
+                                z + Direction.offsetZ[k1] + Direction.offsetZ[l1]))) {
                             world.setBlock(x + Direction.offsetX[k1], y, z + Direction.offsetZ[k1], this, 1 << l1, 2);
                         } else if ((i1 & 1 << i2) != 0 && this.func_150093_a(
-                                world.getBlock(
-                                        x + Direction.offsetX[k1] + Direction.offsetX[i2],
+                            world.getBlock(
+                                x + Direction.offsetX[k1] + Direction.offsetX[i2],
+                                y,
+                                z + Direction.offsetZ[k1] + Direction.offsetZ[i2]))) {
+                                    world.setBlock(
+                                        x + Direction.offsetX[k1],
                                         y,
-                                        z + Direction.offsetZ[k1] + Direction.offsetZ[i2]))) {
-                                            world.setBlock(
-                                                    x + Direction.offsetX[k1],
-                                                    y,
-                                                    z + Direction.offsetZ[k1],
-                                                    this,
-                                                    1 << i2,
-                                                    2);
-                                        } else
+                                        z + Direction.offsetZ[k1],
+                                        this,
+                                        1 << i2,
+                                        2);
+                                } else
                             if ((i1 & 1 << l1) != 0
-                                    && world.isAirBlock(
+                                && world.isAirBlock(
+                                    x + Direction.offsetX[k1] + Direction.offsetX[l1],
+                                    y,
+                                    z + Direction.offsetZ[k1] + Direction.offsetZ[l1])
+                                && this.func_150093_a(
+                                    world.getBlock(x + Direction.offsetX[l1], y, z + Direction.offsetZ[l1]))) {
+                                        world.setBlock(
                                             x + Direction.offsetX[k1] + Direction.offsetX[l1],
                                             y,
-                                            z + Direction.offsetZ[k1] + Direction.offsetZ[l1])
-                                    && this.func_150093_a(
-                                            world.getBlock(x + Direction.offsetX[l1], y, z + Direction.offsetZ[l1]))) {
-                                                world.setBlock(
-                                                        x + Direction.offsetX[k1] + Direction.offsetX[l1],
-                                                        y,
-                                                        z + Direction.offsetZ[k1] + Direction.offsetZ[l1],
-                                                        this,
-                                                        1 << (k1 + 2 & 3),
-                                                        2);
-                                            } else
+                                            z + Direction.offsetZ[k1] + Direction.offsetZ[l1],
+                                            this,
+                                            1 << (k1 + 2 & 3),
+                                            2);
+                                    } else
                                 if ((i1 & 1 << i2) != 0
-                                        && world.isAirBlock(
+                                    && world.isAirBlock(
+                                        x + Direction.offsetX[k1] + Direction.offsetX[i2],
+                                        y,
+                                        z + Direction.offsetZ[k1] + Direction.offsetZ[i2])
+                                    && this.func_150093_a(
+                                        world.getBlock(x + Direction.offsetX[i2], y, z + Direction.offsetZ[i2]))) {
+                                            world.setBlock(
                                                 x + Direction.offsetX[k1] + Direction.offsetX[i2],
                                                 y,
-                                                z + Direction.offsetZ[k1] + Direction.offsetZ[i2])
-                                        && this.func_150093_a(
-                                                world.getBlock(
-                                                        x + Direction.offsetX[i2],
-                                                        y,
-                                                        z + Direction.offsetZ[i2]))) {
-                                                            world.setBlock(
-                                                                    x + Direction.offsetX[k1] + Direction.offsetX[i2],
-                                                                    y,
-                                                                    z + Direction.offsetZ[k1] + Direction.offsetZ[i2],
-                                                                    this,
-                                                                    1 << (k1 + 2 & 3),
-                                                                    2);
-                                                        } else
+                                                z + Direction.offsetZ[k1] + Direction.offsetZ[i2],
+                                                this,
+                                                1 << (k1 + 2 & 3),
+                                                2);
+                                        } else
                                     if (this.func_150093_a(
-                                            world.getBlock(
-                                                    x + Direction.offsetX[k1],
-                                                    y + 1,
-                                                    z + Direction.offsetZ[k1]))) {
-                                                        world.setBlock(
-                                                                x + Direction.offsetX[k1],
-                                                                y,
-                                                                z + Direction.offsetZ[k1],
-                                                                this,
-                                                                0,
-                                                                2);
-                                                    }
-                    } else if (block.getMaterial().isOpaque() && block.renderAsNormalBlock()) {
-                        world.setBlockMetadataWithNotify(x, y, z, i1 | 1 << k1, 2);
-                    }
+                                        world.getBlock(x + Direction.offsetX[k1], y + 1, z + Direction.offsetZ[k1]))) {
+                                            world.setBlock(
+                                                x + Direction.offsetX[k1],
+                                                y,
+                                                z + Direction.offsetZ[k1],
+                                                this,
+                                                0,
+                                                2);
+                                        }
+                    } else if (block.getMaterial()
+                        .isOpaque() && block.renderAsNormalBlock()) {
+                            world.setBlockMetadataWithNotify(x, y, z, i1 | 1 << k1, 2);
+                        }
                 } else if (y > 1) {
                     block = world.getBlock(x, y - 1, z);
 
@@ -195,7 +192,8 @@ public class BlockCustomVine extends BlockVine {
     }
 
     private boolean func_150093_a(Block p_150093_1_) {
-        return p_150093_1_.renderAsNormalBlock() && p_150093_1_.getMaterial().blocksMovement();
+        return p_150093_1_.renderAsNormalBlock() && p_150093_1_.getMaterial()
+            .blocksMovement();
     }
 
     /*

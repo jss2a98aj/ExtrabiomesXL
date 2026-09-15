@@ -23,8 +23,9 @@ public class ItemKneeLog extends ItemBlock {
 
     @Override
     public void addInformation(ItemStack itemForTooltip, EntityPlayer playerViewingToolTip, List listOfLines,
-            boolean sneaking) {
-        String line = LanguageRegistry.instance().getStringLocalization("extrabiomes.elbow.crafting");
+        boolean sneaking) {
+        String line = LanguageRegistry.instance()
+            .getStringLocalization("extrabiomes.elbow.crafting");
 
         if (!line.equals("extrabiomes.elbow.crafting")) {
             if (listOfLines.size() > 0 && ((String) listOfLines.get(0)).length() > 20) {

@@ -34,7 +34,8 @@ public class NewDawnPluginImpl implements NewDawnBiomeProvider {
         if (biome != null && biome.isEnabled()) {
             final BiomeGenBase gen;
             try {
-                gen = biome.getBiome().get();
+                gen = biome.getBiome()
+                    .get();
             } catch (Exception e) {
                 return null;
             }

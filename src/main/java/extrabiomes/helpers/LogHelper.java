@@ -110,7 +110,8 @@ public enum LogHelper {
      * @see java.util.Formatter Formatter
      */
     public static void log(Level level, Throwable exception, String format, Object... args) {
-        INSTANCE.getLogger().log(level, String.format(format, args), exception);
+        INSTANCE.getLogger()
+            .log(level, String.format(format, args), exception);
     }
 
     /**

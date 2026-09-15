@@ -82,37 +82,37 @@ public class WorldGenLegendOak extends WorldGenerator {
     private void growLeafNode(World world, int x, int y, int z) {
         for (int xOffset = -3; xOffset <= 3; xOffset++) for (int zOffset = -3; zOffset <= 3; zOffset++) {
             if ((Math.abs(xOffset) != 3 || Math.abs(zOffset) != 3) && (Math.abs(xOffset) != 3 || Math.abs(zOffset) != 2)
-                    && (Math.abs(xOffset) != 2 || Math.abs(zOffset) != 3)
-                    && (xOffset != 0 || zOffset != 0))
+                && (Math.abs(xOffset) != 2 || Math.abs(zOffset) != 3)
+                && (xOffset != 0 || zOffset != 0))
                 if (world.isAirBlock(x + xOffset, y, z + zOffset)) setBlockAndNotifyAdequately(
-                        world,
-                        x + xOffset,
-                        y,
-                        z + zOffset,
-                        TreeBlock.LEAVES.getBlock(),
-                        TreeBlock.LEAVES.getMetadata());
+                    world,
+                    x + xOffset,
+                    y,
+                    z + zOffset,
+                    TreeBlock.LEAVES.getBlock(),
+                    TreeBlock.LEAVES.getMetadata());
             if (Math.abs(xOffset) >= 3 || Math.abs(zOffset) >= 3 || Math.abs(xOffset) == 2 && Math.abs(zOffset) == 2)
                 continue;
             if (world.isAirBlock(x + xOffset, y - 1, z + zOffset)) setBlockAndNotifyAdequately(
-                    world,
-                    x + xOffset,
-                    y - 1,
-                    z + zOffset,
-                    TreeBlock.LEAVES.getBlock(),
-                    TreeBlock.LEAVES.getMetadata());
+                world,
+                x + xOffset,
+                y - 1,
+                z + zOffset,
+                TreeBlock.LEAVES.getBlock(),
+                TreeBlock.LEAVES.getMetadata());
             if (!world.isAirBlock(x + xOffset, y + 1, z + zOffset)) continue;
             setBlockAndNotifyAdequately(
-                    world,
-                    x + xOffset,
-                    y + 1,
-                    z + zOffset,
-                    TreeBlock.LEAVES.getBlock(),
-                    TreeBlock.LEAVES.getMetadata());
+                world,
+                x + xOffset,
+                y + 1,
+                z + zOffset,
+                TreeBlock.LEAVES.getBlock(),
+                TreeBlock.LEAVES.getMetadata());
         }
     }
 
     protected void growLeaves(World world, Random random, int x, int y, int z, int height, int leaflessHeight,
-            int leafWidth) {
+        int leafWidth) {
         for (final BendDirection xDirection : BendDirection.values())
             for (final BendDirection zDirection : BendDirection.values()) {
                 if (xDirection == BendDirection.STRAIGHT && zDirection == BendDirection.STRAIGHT) continue;
@@ -123,7 +123,7 @@ public class WorldGenLegendOak extends WorldGenerator {
     }
 
     protected void growTree(World world, Random random, int x, int y, int z, int height, int leaflessHeight,
-            int leafWidth) {
+        int leafWidth) {
         world.setBlock(x, y - 1, z, Blocks.dirt);
         world.setBlock(x - 1, y - 1, z, Blocks.dirt);
         world.setBlock(x, y - 1, z - 1, Blocks.dirt);
@@ -148,7 +148,7 @@ public class WorldGenLegendOak extends WorldGenerator {
     }
 
     private void inside(World world, Random random, int size, BendDirection xDirection, BendDirection zDirection, int x,
-            int y, int z) {
+        int y, int z) {
         int length = 0;
         while (length < 2 * size / 3) {
             setBlockAndNotifyAdequately(world, x, y, z, TreeBlock.BRANCH.getBlock(), TreeBlock.BRANCH.getMetadata());
@@ -181,7 +181,7 @@ public class WorldGenLegendOak extends WorldGenerator {
     }
 
     private void insideSmall(World world, Random random, int size, BendDirection xDirection, BendDirection zDirection,
-            int x, int y, int z) {
+        int x, int y, int z) {
         int length = 0;
         while (length < size / 3) {
             setBlockAndNotifyAdequately(world, x, y, z, TreeBlock.BRANCH.getBlock(), TreeBlock.BRANCH.getMetadata());
@@ -214,7 +214,7 @@ public class WorldGenLegendOak extends WorldGenerator {
     }
 
     private void primary(World world, Random random, int size, BendDirection xDirection, BendDirection zDirection,
-            int x, int y, int z) {
+        int x, int y, int z) {
         Acuteness acuteness = Acuteness.LOOSE;
         int length = 0;
         if (xDirection == BendDirection.RIGHT) x += 2;
@@ -263,7 +263,7 @@ public class WorldGenLegendOak extends WorldGenerator {
     }
 
     private void secondary(World world, Random random, int size, BendDirection xDirection, BendDirection zDirection,
-            int x, int y, int z) {
+        int x, int y, int z) {
         int length = 0;
         for (int branch = 0; branch < 2; branch++) {
             int x1 = x;
@@ -272,12 +272,12 @@ public class WorldGenLegendOak extends WorldGenerator {
             while (length < size) {
                 if (random.nextInt(2) == 0) y1++;
                 setBlockAndNotifyAdequately(
-                        world,
-                        x1,
-                        y1,
-                        z1,
-                        TreeBlock.BRANCH.getBlock(),
-                        TreeBlock.BRANCH.getMetadata());
+                    world,
+                    x1,
+                    y1,
+                    z1,
+                    TreeBlock.BRANCH.getBlock(),
+                    TreeBlock.BRANCH.getMetadata());
                 if (random.nextInt(4) == 0 || length == size - 1) growLeafNode(world, x1, y1, z1);
                 if (zDirection == BendDirection.STRAIGHT) {
                     if (xDirection == BendDirection.RIGHT) x1 += random.nextInt(2);

@@ -54,7 +54,7 @@ public class ItemScarecrow extends Item {
 
     @Override
     public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int x, int y, int z, int side,
-            float xOffset, float yOffset, float zOffset) {
+        float xOffset, float yOffset, float zOffset) {
         if (world.isRemote) {
             return true;
         } else {
@@ -83,8 +83,9 @@ public class ItemScarecrow extends Item {
 
     @Override
     public void addInformation(ItemStack itemForTooltip, EntityPlayer playerViewingToolTip, List listOfLines,
-            boolean sneaking) {
-        String line = LanguageRegistry.instance().getStringLocalization(this.getUnlocalizedName() + ".description");
+        boolean sneaking) {
+        String line = LanguageRegistry.instance()
+            .getStringLocalization(this.getUnlocalizedName() + ".description");
 
         if (!line.equals(this.getUnlocalizedName() + ".description")) {
             if (listOfLines.size() > 0 && ((String) listOfLines.get(0)).length() > 20) {

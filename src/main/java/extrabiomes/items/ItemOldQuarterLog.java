@@ -16,7 +16,7 @@ public class ItemOldQuarterLog extends MultiItemBlock {
 
     @Override
     public void addInformation(ItemStack itemForTooltip, EntityPlayer playerViewingToolTip, List listOfLines,
-            boolean sneaking) {
+        boolean sneaking) {
         listOfLines.add("�o�lNo longer Used�r");
         listOfLines.add("");
         listOfLines.add("Place in crafting grid to");

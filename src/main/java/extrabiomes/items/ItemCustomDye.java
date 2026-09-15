@@ -45,7 +45,7 @@ public class ItemCustomDye extends Item {
     }
 
     private static final Element[] elements = { Element.DYE_BLACK, Element.DYE_BLUE, Element.DYE_BROWN,
-            Element.DYE_WHITE };
+        Element.DYE_WHITE };
 
     @SideOnly(Side.CLIENT)
     private IIcon[] dyeIIcons;

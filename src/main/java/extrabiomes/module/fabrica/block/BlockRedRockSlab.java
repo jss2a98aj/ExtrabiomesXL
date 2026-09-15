@@ -81,7 +81,7 @@ public class BlockRedRockSlab extends BlockSlab {
     public IIcon getIcon(int side, int metadata) {
         metadata &= 7;
         return metadata == BlockType.REDROCK.metadata() ? side < 2 ? textures[3] : textures[2]
-                : metadata == BlockType.REDROCKBRICK.metadata() ? textures[1] : textures[0];
+            : metadata == BlockType.REDROCKBRICK.metadata() ? textures[1] : textures[0];
     }
 
     /* Was called getFullSlabName in pre 1.7 */

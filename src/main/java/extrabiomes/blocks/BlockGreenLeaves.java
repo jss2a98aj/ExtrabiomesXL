@@ -88,7 +88,7 @@ public class BlockGreenLeaves extends BlockLeafEbxl {
     public int colorMultiplier(IBlockAccess iBlockAccess, int x, int y, int z) {
         final int metadata = iBlockAccess.getBlockMetadata(x, y, z) & 3;
         return (metadata == BlockType.REDWOOD.metadata()) ? calcSmoothedBiomeFoliageColor(iBlockAccess, x, z)
-                : getRenderColor(metadata);
+            : getRenderColor(metadata);
     }
 
     @Override
@@ -116,7 +116,7 @@ public class BlockGreenLeaves extends BlockLeafEbxl {
         for (int z1 = -1; z1 <= 1; ++z1) {
             for (int x1 = -1; x1 <= 1; ++x1) {
                 final int foliageColor = iBlockAccess.getBiomeGenForCoords(x + x1, z + z1)
-                        .getBiomeFoliageColor(x + x1, 96, z + z1);
+                    .getBiomeFoliageColor(x + x1, 96, z + z1);
                 red += (foliageColor & 16711680) >> 16;
                 green += (foliageColor & 65280) >> 8;
                 blue += foliageColor & 255;

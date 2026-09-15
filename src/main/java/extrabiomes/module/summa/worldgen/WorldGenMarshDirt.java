@@ -30,12 +30,12 @@ class WorldGenMarshDirt extends WorldGenerator {
 
                     if (Blocks.dirt.canPlaceBlockOnSide(world, x1, y1, z1, side)) {
                         world.setBlock(
-                                x1,
-                                y1,
-                                z1,
-                                Blocks.dirt,
-                                1 << Direction.facingToDirection[Facing.oppositeSide[side]],
-                                3);
+                            x1,
+                            y1,
+                            z1,
+                            Blocks.dirt,
+                            1 << Direction.facingToDirection[Facing.oppositeSide[side]],
+                            3);
                         continue label0;
                     }
 

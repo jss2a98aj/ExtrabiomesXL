@@ -78,7 +78,7 @@ public class WorldGenCypressTree extends WorldGenNewTreeBase {
         final Block below = world.getBlock(x, y - 1, z);
         final int height = rand.nextInt(BASE_HEIGHT_VARIANCE) + BASE_HEIGHT;
         int start = CANOPY_START_HEIGHT
-                + (int) ((rand.nextDouble() * CANOPY_START_VARIANCE) - (CANOPY_START_VARIANCE / 2));
+            + (int) ((rand.nextDouble() * CANOPY_START_VARIANCE) - (CANOPY_START_VARIANCE / 2));
         double radius = (CANOPY_RADIUS + ((rand.nextDouble() * CANOPY_RADIUS_VARIANCE) + (CANOPY_RADIUS_VARIANCE / 2)));
         double factor = 16.0D / (2 + height - start);
         final int chunkCheck = (int) Math.ceil(radius) + 1;
@@ -91,13 +91,12 @@ public class WorldGenCypressTree extends WorldGenNewTreeBase {
 
         // Make sure the chunks are loaded
         if (!world.checkChunksExist(
-                x - chunkCheck,
-                y - chunkCheck,
-                z - chunkCheck,
-                x + chunkCheck,
-                y + chunkCheck,
-                z + chunkCheck))
-            return false;
+            x - chunkCheck,
+            y - chunkCheck,
+            z - chunkCheck,
+            x + chunkCheck,
+            y + chunkCheck,
+            z + chunkCheck)) return false;
 
         // See if we can generate the tree
         if (!check1x1Trunk(x, y, z, height, world)) return false;
@@ -118,7 +117,7 @@ public class WorldGenCypressTree extends WorldGenNewTreeBase {
         final Block below = world.getBlock(x, y - 1, z);
         final int height = rand.nextInt(BASE_HEIGHT_VARIANCE) + BASE_HEIGHT;
         int start = CANOPY_START_HEIGHT
-                + (int) ((rand.nextDouble() * CANOPY_START_VARIANCE) - (CANOPY_START_VARIANCE / 2));
+            + (int) ((rand.nextDouble() * CANOPY_START_VARIANCE) - (CANOPY_START_VARIANCE / 2));
         double radius = (CANOPY_RADIUS + ((rand.nextDouble() * CANOPY_RADIUS_VARIANCE) + (CANOPY_RADIUS_VARIANCE / 2)));
         double factor = 16.0D / (2 + height - start);
         final int chunkCheck = (int) Math.ceil(radius) + 1;
@@ -131,13 +130,12 @@ public class WorldGenCypressTree extends WorldGenNewTreeBase {
 
         // Make sure the chunks are loaded
         if (!world.checkChunksExist(
-                x - chunkCheck,
-                y - chunkCheck,
-                z - chunkCheck,
-                x + chunkCheck,
-                y + chunkCheck,
-                z + chunkCheck))
-            return false;
+            x - chunkCheck,
+            y - chunkCheck,
+            z - chunkCheck,
+            x + chunkCheck,
+            y + chunkCheck,
+            z + chunkCheck)) return false;
 
         // See if we can generate the tree
         if (place1x1Trunk(x, y, z, height, TreeBlock.TRUNK.get(), world)) {

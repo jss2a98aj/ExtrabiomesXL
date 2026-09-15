@@ -53,7 +53,8 @@ public abstract class ConfigurationHandler {
             configVersion.comment = "To help ebxl in updating the config file in the future.";
 
             // for future use - are we upgrading between config versions?
-            final boolean isNewVersion = !configVersion.getString().equals(Reference.CONFIG_VERSION);
+            final boolean isNewVersion = !configVersion.getString()
+                .equals(Reference.CONFIG_VERSION);
             configVersion.set(Reference.CONFIG_VERSION);
 
             Property upgradeProp = configuration.get("version", "upgrade", upgradeOverride);
@@ -79,8 +80,8 @@ public abstract class ConfigurationHandler {
             }
 
             configuration.addCustomCategoryComment(
-                    "saplingreplanting",
-                    "Settings to configure the chance that saplings will replant themselves up despawning on valid soil.");
+                "saplingreplanting",
+                "Settings to configure the chance that saplings will replant themselves up despawning on valid soil.");
             for (final SaplingSettings setting : SaplingSettings.values()) {
                 setting.load(configuration);
             }
@@ -90,35 +91,33 @@ public abstract class ConfigurationHandler {
             }
 
             configuration
-                    .addCustomCategoryComment(EnhancedConfiguration.CATEGORY_NEWDAWN, "New Dawn biome size hints.");
+                .addCustomCategoryComment(EnhancedConfiguration.CATEGORY_NEWDAWN, "New Dawn biome size hints.");
             for (final NewDawnSettings setting : NewDawnSettings.values()) {
                 setting.load(configuration);
             }
 
             Property bigTreeSaplingDropRateProperty = configuration.get(
-                    Configuration.CATEGORY_GENERAL,
-                    "Relative sapling drops",
-                    GeneralSettings.bigTreeSaplingDropModifier);
+                Configuration.CATEGORY_GENERAL,
+                "Relative sapling drops",
+                GeneralSettings.bigTreeSaplingDropModifier);
             bigTreeSaplingDropRateProperty.comment = "Setting relative sapling drops to true will decrease the amount of saplings dropped by decaying fir and redwood leaf blocks to a more reasonable amount.";
             GeneralSettings.bigTreeSaplingDropModifier = bigTreeSaplingDropRateProperty.getBoolean(false);
 
             //
-            Property consoleCommandsDisabled = configuration.get(
-                    Configuration.CATEGORY_GENERAL,
-                    "DisableConsoleCommands",
-                    GeneralSettings.consoleCommandsDisabled);
+            Property consoleCommandsDisabled = configuration
+                .get(Configuration.CATEGORY_GENERAL, "DisableConsoleCommands", GeneralSettings.consoleCommandsDisabled);
             consoleCommandsDisabled.comment = "Set to false to enable console commands.";
             GeneralSettings.consoleCommandsDisabled = consoleCommandsDisabled.getBoolean(true);
 
             Property useLegacyRedwoods = configuration.get(
-                    Configuration.CATEGORY_GENERAL,
-                    "UseLegacyRedwoods",
-                    autoUpgrade ? true : GeneralSettings.useLegacyRedwoods);
+                Configuration.CATEGORY_GENERAL,
+                "UseLegacyRedwoods",
+                autoUpgrade ? true : GeneralSettings.useLegacyRedwoods);
             useLegacyRedwoods.comment = "Set to true to enable old redwood tree generation.";
             GeneralSettings.useLegacyRedwoods = useLegacyRedwoods.getBoolean(false);
 
             Property useMC18Doors = configuration
-                    .get(Configuration.CATEGORY_GENERAL, "UseMC18Doors", GeneralSettings.useMC18Doors);
+                .get(Configuration.CATEGORY_GENERAL, "UseMC18Doors", GeneralSettings.useMC18Doors);
             useMC18Doors.comment = "Allow EbXL doors to stack like in MC 1.8 and be crafted in stacks of 3.";
             GeneralSettings.useMC18Doors = useMC18Doors.getBoolean(true);
 

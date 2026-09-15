@@ -82,8 +82,8 @@ public enum DecorationSettings {
     }
 
     DecorationSettings(Integer waterlily, Integer trees, Integer flowers, Integer grass, Integer deadBush,
-            Integer mushrooms, Integer reeds, Integer cacti, Integer sand, Integer sand2, Integer clay,
-            Integer bigMushrooms, Integer newFlowers) {
+        Integer mushrooms, Integer reeds, Integer cacti, Integer sand, Integer sand2, Integer clay,
+        Integer bigMushrooms, Integer newFlowers) {
         initSetting(Decoration.WATERLILY, waterlily);
         initSetting(Decoration.TREES, trees);
         initSetting(Decoration.FLOWERS, flowers);
@@ -127,13 +127,14 @@ public enum DecorationSettings {
         if (!settings.containsKey(decoration)) return;
 
         Property property = configuration
-                .get(EnhancedConfiguration.CATEGORY_DECORATION, toString() + decoration.key, settings.get(decoration));
+            .get(EnhancedConfiguration.CATEGORY_DECORATION, toString() + decoration.key, settings.get(decoration));
         settings.put(decoration, property.getInt());
     }
 
     public int getSetting(Decoration decoration) {
         if (settings.containsKey(decoration)) {
-            return settings.get(decoration).intValue();
+            return settings.get(decoration)
+                .intValue();
         } else {
             return decoration.def;
         }

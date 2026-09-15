@@ -22,7 +22,8 @@ class WorldGenOasis extends WorldGenerator {
     @Override
     public boolean generate(World world, Random rand, int x, int y, int z) {
 
-        if (world.getBlock(x, y, z).getMaterial() != Material.water) return false;
+        if (world.getBlock(x, y, z)
+            .getMaterial() != Material.water) return false;
 
         final int xzRadius = rand.nextInt(AVERAGE_OASIS - 2) + 2;
         final int yRadius = 2;
@@ -37,9 +38,11 @@ class WorldGenOasis extends WorldGenerator {
                 final Block blockToReplace = world.getBlock(x1, y1, z1);
 
                 if (blockToReplace.equals(Blocks.stone) || blockToReplace.equals(Blocks.sand)
-                        || blockToReplace.equals(Blocks.sandstone)
-                        || (BiomeSettings.MOUNTAINRIDGE.getBiome().isPresent()
-                                && blockToReplace == BiomeSettings.MOUNTAINRIDGE.getBiome().get().topBlock))
+                    || blockToReplace.equals(Blocks.sandstone)
+                    || (BiomeSettings.MOUNTAINRIDGE.getBiome()
+                        .isPresent()
+                        && blockToReplace == BiomeSettings.MOUNTAINRIDGE.getBiome()
+                            .get().topBlock))
                     world.setBlock(x1, y1, z1, Blocks.grass);
             }
         }

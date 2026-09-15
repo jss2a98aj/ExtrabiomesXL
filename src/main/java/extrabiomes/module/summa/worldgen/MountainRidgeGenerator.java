@@ -25,13 +25,15 @@ public class MountainRidgeGenerator implements IWorldGenerator {
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator,
-            IChunkProvider chunkProvider) {
+        IChunkProvider chunkProvider) {
         chunkX = chunkX << 4;
         chunkZ = chunkZ << 4;
         final BiomeGenBase biome = world.getBiomeGenForCoords(chunkX, chunkZ);
 
-        if (BiomeSettings.MOUNTAINRIDGE.getBiome().isPresent()
-                && biome == BiomeSettings.MOUNTAINRIDGE.getBiome().get()) {
+        if (BiomeSettings.MOUNTAINRIDGE.getBiome()
+            .isPresent()
+            && biome == BiomeSettings.MOUNTAINRIDGE.getBiome()
+                .get()) {
             trimPondsInGrass(random, chunkX, chunkZ, world);
             generateEmeraldOre(random, chunkX, chunkZ, world);
         }

@@ -12,14 +12,14 @@ public class EBXLAridSelector extends NewDawnBiomeSelector {
     protected static final NewDawnBiome biomeAlpine = NewDawnPluginImpl.getBiomeIfEnabled(BiomeSettings.ALPINE);
     protected static final NewDawnBiome biomeGlacier = NewDawnPluginImpl.getBiomeIfEnabled(BiomeSettings.GLACIER);
     protected static final NewDawnBiome biomeMountainDesert = NewDawnPluginImpl
-            .getBiomeIfEnabled(BiomeSettings.MOUNTAINDESERT);
+        .getBiomeIfEnabled(BiomeSettings.MOUNTAINDESERT);
     protected static final NewDawnBiome biomeMountainRidge = NewDawnPluginImpl
-            .getBiomeIfEnabled(BiomeSettings.MOUNTAINRIDGE);
+        .getBiomeIfEnabled(BiomeSettings.MOUNTAINRIDGE);
     protected static final NewDawnBiome biomeSavanna = NewDawnPluginImpl.getBiomeIfEnabled(BiomeSettings.SAVANNA);
     protected static final NewDawnBiome biomeTundra = NewDawnPluginImpl.getBiomeIfEnabled(BiomeSettings.TUNDRA);
     protected static final NewDawnBiome biomeWasteland = NewDawnPluginImpl.getBiomeIfEnabled(BiomeSettings.WASTELAND);
     protected static final NewDawnBiome biomeIceWasteland = NewDawnPluginImpl
-            .getBiomeIfEnabled(BiomeSettings.ICEWASTELAND);
+        .getBiomeIfEnabled(BiomeSettings.ICEWASTELAND);
 
     protected NoiseStretch stretchAlpine;
     protected NoiseStretch stretchGlacier;

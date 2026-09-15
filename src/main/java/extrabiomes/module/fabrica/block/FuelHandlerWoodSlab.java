@@ -21,7 +21,8 @@ class FuelHandlerWoodSlabs implements IFuelHandler {
 
     @Override
     public int getBurnTime(ItemStack fuel) {
-        if (fuel.getItem().equals(Item.getItemFromBlock(slab))) return 150;
+        if (fuel.getItem()
+            .equals(Item.getItemFromBlock(slab))) return 150;
         return 0;
     }
 

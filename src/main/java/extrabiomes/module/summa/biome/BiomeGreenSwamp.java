@@ -38,18 +38,19 @@ public class BiomeGreenSwamp extends ExtrabiomeGenBase {
     @Override
     public void canSpawnEvent(CheckSpawn event) {
         if (event.entity instanceof EntitySlime && event.y > 50.0D
-                && event.y < 70.0D
-                && event.world.rand.nextFloat() < 0.5F
-                && event.world.rand.nextFloat() < event.world.getCurrentMoonPhaseFactor()
-                && event.world.getBlockLightValue(
-                        MathHelper.floor_double(event.x),
-                        MathHelper.floor_double(event.y),
-                        MathHelper.floor_double(event.z)) <= event.world.rand.nextInt(8)) {
+            && event.y < 70.0D
+            && event.world.rand.nextFloat() < 0.5F
+            && event.world.rand.nextFloat() < event.world.getCurrentMoonPhaseFactor()
+            && event.world.getBlockLightValue(
+                MathHelper.floor_double(event.x),
+                MathHelper.floor_double(event.y),
+                MathHelper.floor_double(event.z)) <= event.world.rand.nextInt(8)) {
             AxisAlignedBB boundingBox = event.entityLiving.boundingBox;
 
             if (event.world.checkNoEntityCollision(boundingBox)
-                    && event.world.getCollidingBoundingBoxes(event.entityLiving, boundingBox).isEmpty()
-                    && !event.world.isAnyLiquid(boundingBox)) {
+                && event.world.getCollidingBoundingBoxes(event.entityLiving, boundingBox)
+                    .isEmpty()
+                && !event.world.isAnyLiquid(boundingBox)) {
                 // Allow the spawning
                 event.setResult(Result.ALLOW);
             }

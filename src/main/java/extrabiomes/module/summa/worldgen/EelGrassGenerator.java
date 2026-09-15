@@ -24,7 +24,7 @@ public class EelGrassGenerator implements IWorldGenerator {
 
     @Override
     public void generate(Random rand, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator,
-            IChunkProvider chunkProvider) {
+        IChunkProvider chunkProvider) {
         chunkX = chunkX << 4;
         chunkZ = chunkZ << 4;
 

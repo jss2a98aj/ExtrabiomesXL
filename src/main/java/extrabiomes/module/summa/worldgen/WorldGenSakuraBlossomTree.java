@@ -94,25 +94,24 @@ public class WorldGenSakuraBlossomTree extends WorldGenNewTreeBase {
 
         // Make sure that all the needed chunks are loaded
         if (!world.checkChunksExist(
-                x - chunkCheck,
-                y - chunkCheck,
-                z - chunkCheck,
-                x + chunkCheck,
-                y + chunkCheck,
-                z + chunkCheck))
-            return false;
+            x - chunkCheck,
+            y - chunkCheck,
+            z - chunkCheck,
+            x + chunkCheck,
+            y + chunkCheck,
+            z + chunkCheck)) return false;
 
         // Draw the main trunk
         if (!check1x1Trunk(x, y, z, (int) (height * TRUNK_HEIGHT_PERCENT), world)) return false;
         // Generate the branches
         return checkBranches(
-                world,
-                rand,
-                x,
-                y + (int) (height * TRUNK_HEIGHT_PERCENT),
-                z,
-                height - (int) (height * TRUNK_HEIGHT_PERCENT) - 2,
-                radius);
+            world,
+            rand,
+            x,
+            y + (int) (height * TRUNK_HEIGHT_PERCENT),
+            z,
+            height - (int) (height * TRUNK_HEIGHT_PERCENT) - 2,
+            radius);
     }
 
     private boolean generateTree(World world, Random rand, int x, int y, int z) {
@@ -131,25 +130,24 @@ public class WorldGenSakuraBlossomTree extends WorldGenNewTreeBase {
 
         // Make sure that all the needed chunks are loaded
         if (!world.checkChunksExist(
-                x - chunkCheck,
-                y - chunkCheck,
-                z - chunkCheck,
-                x + chunkCheck,
-                y + chunkCheck,
-                z + chunkCheck))
-            return false;
+            x - chunkCheck,
+            y - chunkCheck,
+            z - chunkCheck,
+            x + chunkCheck,
+            y + chunkCheck,
+            z + chunkCheck)) return false;
 
         // Draw the main trunk
         if (place1x1Trunk(x, y, z, (int) (height * TRUNK_HEIGHT_PERCENT), TreeBlock.TRUNK.get(), world)) {
             // Generate the branches
             generateBranches(
-                    world,
-                    rand,
-                    x,
-                    y + (int) (height * TRUNK_HEIGHT_PERCENT),
-                    z,
-                    height - (int) (height * TRUNK_HEIGHT_PERCENT) - 2,
-                    radius);
+                world,
+                rand,
+                x,
+                y + (int) (height * TRUNK_HEIGHT_PERCENT),
+                z,
+                height - (int) (height * TRUNK_HEIGHT_PERCENT) - 2,
+                radius);
 
             return true;
         }
@@ -274,7 +272,7 @@ public class WorldGenSakuraBlossomTree extends WorldGenNewTreeBase {
     }
 
     public void generateCanopy(World world, Random rand, double x, double y, double z, double radius, int height,
-            ItemStack leaves) {
+        ItemStack leaves) {
         int layers = height + 2;
         for (int y1 = (int) y, layer = 0; layer < layers; layer++, y1++) {
             double layerRadius = radius * Math.cos((layer) / (height / 1.3));
@@ -287,7 +285,7 @@ public class WorldGenSakuraBlossomTree extends WorldGenNewTreeBase {
     }
 
     public void generateVerticalCone(World world, int x, int y, int z, int height, double r1, double r2,
-            ItemStack leaves) {
+        ItemStack leaves) {
         double ratio = (r2 - r1) / (height - 1);
 
         for (int offset = 0; offset < height; offset++) {
@@ -322,7 +320,7 @@ public class WorldGenSakuraBlossomTree extends WorldGenNewTreeBase {
     }
 
     public void generateCanopyLayer(World world, Random rand, double x, double y, double z, double radius,
-            int skipChance, ItemStack leaves) {
+        int skipChance, ItemStack leaves) {
         double minDist = (radius - 3 > 0) ? ((radius - 3) * (radius - 3)) : -1;
         double maxDist = radius * radius;
 

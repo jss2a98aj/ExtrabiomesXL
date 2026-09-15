@@ -34,7 +34,7 @@ public class ItemCustomDoor extends ItemBlock {
     @Override
     public void registerIcons(IIconRegister iconRegister) {
         itemIcon = iconRegister
-                .registerIcon(Extrabiomes.TEXTURE_PATH + ((BlockCustomWoodDoor) this.field_150939_a).getTextureName());
+            .registerIcon(Extrabiomes.TEXTURE_PATH + ((BlockCustomWoodDoor) this.field_150939_a).getTextureName());
     }
 
     /**
@@ -51,19 +51,19 @@ public class ItemCustomDoor extends ItemBlock {
      */
     @Override
     public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int x, int y, int z, int p_77648_7_,
-            float p_77648_8_, float p_77648_9_, float p_77648_10_) {
+        float p_77648_8_, float p_77648_9_, float p_77648_10_) {
         if (p_77648_7_ != 1) {
             return false;
         } else {
             ++y;
 
             if (player.canPlayerEdit(x, y, z, p_77648_7_, itemStack)
-                    && player.canPlayerEdit(x, y + 1, z, p_77648_7_, itemStack)) {
+                && player.canPlayerEdit(x, y + 1, z, p_77648_7_, itemStack)) {
                 if (!this.field_150939_a.canPlaceBlockAt(world, x, y, z)) {
                     return false;
                 } else {
                     int direction = MathHelper
-                            .floor_double((double) ((player.rotationYaw + 180.0F) * 4.0F / 360.0F) - 0.5D) & 3;
+                        .floor_double((double) ((player.rotationYaw + 180.0F) * 4.0F / 360.0F) - 0.5D) & 3;
                     placeDoorBlock(world, x, y, z, direction, this.field_150939_a);
                     --itemStack.stackSize;
                     return true;
@@ -94,14 +94,18 @@ public class ItemCustomDoor extends ItemBlock {
             off_x = 1;
         }
 
-        int i1 = (world.getBlock(x - off_x, y, z - off_y).isNormalCube() ? 1 : 0)
-                + (world.getBlock(x - off_x, y + 1, z - off_y).isNormalCube() ? 1 : 0);
-        int j1 = (world.getBlock(x + off_x, y, z + off_y).isNormalCube() ? 1 : 0)
-                + (world.getBlock(x + off_x, y + 1, z + off_y).isNormalCube() ? 1 : 0);
+        int i1 = (world.getBlock(x - off_x, y, z - off_y)
+            .isNormalCube() ? 1 : 0)
+            + (world.getBlock(x - off_x, y + 1, z - off_y)
+                .isNormalCube() ? 1 : 0);
+        int j1 = (world.getBlock(x + off_x, y, z + off_y)
+            .isNormalCube() ? 1 : 0)
+            + (world.getBlock(x + off_x, y + 1, z + off_y)
+                .isNormalCube() ? 1 : 0);
         boolean flag = world.getBlock(x - off_x, y, z - off_y) == block
-                || world.getBlock(x - off_x, y + 1, z - off_y) == block;
+            || world.getBlock(x - off_x, y + 1, z - off_y) == block;
         boolean flag1 = world.getBlock(x + off_x, y, z + off_y) == block
-                || world.getBlock(x + off_x, y + 1, z + off_y) == block;
+            || world.getBlock(x + off_x, y + 1, z + off_y) == block;
         boolean flag2 = false;
 
         if (flag && !flag1) {

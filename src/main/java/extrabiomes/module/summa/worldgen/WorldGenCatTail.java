@@ -33,10 +33,14 @@ class WorldGenCatTail extends WorldGenerator {
         for (int l = 0; l < 20; l++) {
             final int x1 = x + rand.nextInt(4) - rand.nextInt(4);
             final int z1 = z + rand.nextInt(4) - rand.nextInt(4);
-            if (!world.isAirBlock(x1, y, z1) || world.getBlock(x1 - 1, y - 1, z1).getMaterial() != Material.water
-                    && world.getBlock(x1 + 1, y - 1, z1).getMaterial() != Material.water
-                    && world.getBlock(x1, y - 1, z1 - 1).getMaterial() != Material.water
-                    && world.getBlock(x1, y - 1, z1 + 1).getMaterial() != Material.water)
+            if (!world.isAirBlock(x1, y, z1) || world.getBlock(x1 - 1, y - 1, z1)
+                .getMaterial() != Material.water
+                && world.getBlock(x1 + 1, y - 1, z1)
+                    .getMaterial() != Material.water
+                && world.getBlock(x1, y - 1, z1 - 1)
+                    .getMaterial() != Material.water
+                && world.getBlock(x1, y - 1, z1 + 1)
+                    .getMaterial() != Material.water)
                 continue;
 
             final int i1 = 1 + rand.nextInt(rand.nextInt(1) + 1);

@@ -22,27 +22,33 @@ public class VanillaFloraGenerator implements IWorldGenerator {
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator,
-            IChunkProvider chunkProvider) {
+        IChunkProvider chunkProvider) {
         chunkX = chunkX << 4;
         chunkZ = chunkZ << 4;
         final BiomeGenBase biome = world.getBiomeGenForCoords(chunkX, chunkZ);
 
-        final boolean biomeIsExtremeJungle = BiomeSettings.EXTREMEJUNGLE.getBiome().isPresent()
-                && biome == BiomeSettings.EXTREMEJUNGLE.getBiome().get();
+        final boolean biomeIsExtremeJungle = BiomeSettings.EXTREMEJUNGLE.getBiome()
+            .isPresent()
+            && biome == BiomeSettings.EXTREMEJUNGLE.getBiome()
+                .get();
 
         if (biomeIsExtremeJungle) {
             generateVines(random, chunkX, chunkZ, world);
         }
 
-        final boolean biomeIsMiniJungle = BiomeSettings.MINIJUNGLE.getBiome().isPresent()
-                && biome == BiomeSettings.MINIJUNGLE.getBiome().get();
-        final boolean biomeIsTemperateRainforest = BiomeSettings.TEMPORATERAINFOREST.getBiome().isPresent()
-                && biome == BiomeSettings.TEMPORATERAINFOREST.getBiome().get();
+        final boolean biomeIsMiniJungle = BiomeSettings.MINIJUNGLE.getBiome()
+            .isPresent()
+            && biome == BiomeSettings.MINIJUNGLE.getBiome()
+                .get();
+        final boolean biomeIsTemperateRainforest = BiomeSettings.TEMPORATERAINFOREST.getBiome()
+            .isPresent()
+            && biome == BiomeSettings.TEMPORATERAINFOREST.getBiome()
+                .get();
 
         if (biomeIsExtremeJungle || biomeIsMiniJungle
-                || biomeIsTemperateRainforest
-                || biome == BiomeGenBase.jungle
-                || biome == BiomeGenBase.jungleHills) {
+            || biomeIsTemperateRainforest
+            || biome == BiomeGenBase.jungle
+            || biome == BiomeGenBase.jungleHills) {
             if (random.nextInt(48) == 0) {
                 generateMelonPatch(world, random, chunkX, chunkZ);
             }

@@ -189,56 +189,80 @@ public class BlockCustomSapling extends BlockFlower {
                 tree = new WorldGenBigAutumnTree(true, AutumnTreeType.BROWN);
 
                 WorldGenBigAutumnTree.setTrunkBlock(
-                        Block.getBlockFromItem(Element.LOG_AUTUMN.get().getItem()),
-                        Element.LOG_AUTUMN.get().getItemDamage());
+                    Block.getBlockFromItem(
+                        Element.LOG_AUTUMN.get()
+                            .getItem()),
+                    Element.LOG_AUTUMN.get()
+                        .getItemDamage());
             } else {
                 tree = new WorldGenAutumnTree(true, AutumnTreeType.BROWN);
 
                 WorldGenAutumnTree.setTrunkBlock(
-                        Block.getBlockFromItem(Element.LOG_AUTUMN.get().getItem()),
-                        Element.LOG_AUTUMN.get().getItemDamage());
+                    Block.getBlockFromItem(
+                        Element.LOG_AUTUMN.get()
+                            .getItem()),
+                    Element.LOG_AUTUMN.get()
+                        .getItemDamage());
             }
         } else if (metadata == BlockType.GOLDENROD.metadata()) {
             if (rand.nextInt(3) != 0) {
                 tree = new WorldGenBigAutumnTree(true, AutumnTreeType.ORANGE);
 
                 WorldGenBigAutumnTree.setTrunkBlock(
-                        Block.getBlockFromItem(Element.LOG_AUTUMN.get().getItem()),
-                        Element.LOG_AUTUMN.get().getItemDamage());
+                    Block.getBlockFromItem(
+                        Element.LOG_AUTUMN.get()
+                            .getItem()),
+                    Element.LOG_AUTUMN.get()
+                        .getItemDamage());
             } else {
                 tree = new WorldGenAutumnTree(true, AutumnTreeType.ORANGE);
 
                 WorldGenAutumnTree.setTrunkBlock(
-                        Block.getBlockFromItem(Element.LOG_AUTUMN.get().getItem()),
-                        Element.LOG_AUTUMN.get().getItemDamage());
+                    Block.getBlockFromItem(
+                        Element.LOG_AUTUMN.get()
+                            .getItem()),
+                    Element.LOG_AUTUMN.get()
+                        .getItemDamage());
             }
         } else if (metadata == BlockType.VERMILLION.metadata()) {
             if (rand.nextInt(3) != 0) {
                 tree = new WorldGenBigAutumnTree(true, AutumnTreeType.PURPLE);
 
                 WorldGenBigAutumnTree.setTrunkBlock(
-                        Block.getBlockFromItem(Element.LOG_AUTUMN.get().getItem()),
-                        Element.LOG_AUTUMN.get().getItemDamage());
+                    Block.getBlockFromItem(
+                        Element.LOG_AUTUMN.get()
+                            .getItem()),
+                    Element.LOG_AUTUMN.get()
+                        .getItemDamage());
             } else {
                 tree = new WorldGenAutumnTree(true, AutumnTreeType.PURPLE);
 
                 WorldGenAutumnTree.setTrunkBlock(
-                        Block.getBlockFromItem(Element.LOG_AUTUMN.get().getItem()),
-                        Element.LOG_AUTUMN.get().getItemDamage());
+                    Block.getBlockFromItem(
+                        Element.LOG_AUTUMN.get()
+                            .getItem()),
+                    Element.LOG_AUTUMN.get()
+                        .getItemDamage());
             }
         } else if (metadata == BlockType.CITRINE.metadata()) {
             if (rand.nextInt(3) != 0) {
                 tree = new WorldGenBigAutumnTree(true, AutumnTreeType.YELLOW);
 
                 WorldGenBigAutumnTree.setTrunkBlock(
-                        Block.getBlockFromItem(Element.LOG_AUTUMN.get().getItem()),
-                        Element.LOG_AUTUMN.get().getItemDamage());
+                    Block.getBlockFromItem(
+                        Element.LOG_AUTUMN.get()
+                            .getItem()),
+                    Element.LOG_AUTUMN.get()
+                        .getItemDamage());
             } else {
                 tree = new WorldGenAutumnTree(true, AutumnTreeType.YELLOW);
 
                 WorldGenAutumnTree.setTrunkBlock(
-                        Block.getBlockFromItem(Element.LOG_AUTUMN.get().getItem()),
-                        Element.LOG_AUTUMN.get().getItemDamage());
+                    Block.getBlockFromItem(
+                        Element.LOG_AUTUMN.get()
+                            .getItem()),
+                    Element.LOG_AUTUMN.get()
+                        .getItemDamage());
             }
         } else if (metadata == BlockType.ACACIA.metadata()) {
             tree = new WorldGenAcacia(true);
@@ -248,20 +272,20 @@ public class BlockCustomSapling extends BlockFlower {
             // Check for 2x2 firs and redwoods
             for (x1 = 0; x1 >= -1; --x1) {
                 for (z1 = 0; z1 >= -1; --z1) if (isSameSapling(world, x + x1, y, z + z1, metadata)
-                        && isSameSapling(world, x + x1 + 1, y, z + z1, metadata)
-                        && isSameSapling(world, x + x1, y, z + z1 + 1, metadata)
-                        && isSameSapling(world, x + x1 + 1, y, z + z1 + 1, metadata)) {
-                            if (metadata == BlockType.FIR.metadata()) {
-                                tree = new WorldGenFirTreeHuge(true);
-                                offset = 1;
-                            } else {
-                                tree = GeneralSettings.useLegacyRedwoods ? new WorldGenRedwood(true)
-                                        : new WorldGenNewRedwood(true);
-                                offset = 0;
-                            }
-                            isHuge = true;
-                            break;
+                    && isSameSapling(world, x + x1 + 1, y, z + z1, metadata)
+                    && isSameSapling(world, x + x1, y, z + z1 + 1, metadata)
+                    && isSameSapling(world, x + x1 + 1, y, z + z1 + 1, metadata)) {
+                        if (metadata == BlockType.FIR.metadata()) {
+                            tree = new WorldGenFirTreeHuge(true);
+                            offset = 1;
+                        } else {
+                            tree = GeneralSettings.useLegacyRedwoods ? new WorldGenRedwood(true)
+                                : new WorldGenNewRedwood(true);
+                            offset = 0;
                         }
+                        isHuge = true;
+                        break;
+                    }
                 if (tree != null) break;
             }
             if (tree == null && metadata == BlockType.FIR.metadata()) {
@@ -318,8 +342,12 @@ public class BlockCustomSapling extends BlockFlower {
 
     @SubscribeEvent
     public void itemExpiring(ItemExpireEvent event) {
-        if (event.entityItem.getEntityItem().getItem().equals(Item.getItemFromBlock(sapling))) {
-            int metadata = unmarkedMetadata(event.entityItem.getEntityItem().getItemDamage());
+        if (event.entityItem.getEntityItem()
+            .getItem()
+            .equals(Item.getItemFromBlock(sapling))) {
+            int metadata = unmarkedMetadata(
+                event.entityItem.getEntityItem()
+                    .getItemDamage());
             int posX = (int) Math.floor(event.entityItem.lastTickPosX);
             int posY = (int) Math.floor(event.entityItem.lastTickPosY);
             int posZ = (int) Math.floor(event.entityItem.lastTickPosZ);
@@ -331,53 +359,46 @@ public class BlockCustomSapling extends BlockFlower {
 
                 // Determine if the sapling should despawn
                 if (event.entityItem.worldObj.isAirBlock(posX, posY, posZ) && metadata == BlockType.ACACIA.metadata()
-                        && chance <= SaplingSettings.ACACIA.chance()) {
+                    && chance <= SaplingSettings.ACACIA.chance()) {
                     event.entityItem.worldObj.setBlock(posX, posY, posZ, sapling, metadata, 2);
                 } else
                     if (event.entityItem.worldObj.isAirBlock(posX, posY, posZ) && metadata == BlockType.UMBER.metadata()
-                            && chance <= SaplingSettings.UMBER.chance()) {
+                        && chance <= SaplingSettings.UMBER.chance()) {
+                            event.entityItem.worldObj.setBlock(posX, posY, posZ, sapling, metadata, 2);
+                        } else if (event.entityItem.worldObj.isAirBlock(posX, posY, posZ)
+                            && metadata == BlockType.CYPRESS.metadata()
+                            && chance <= SaplingSettings.CYPRESS.chance()) {
                                 event.entityItem.worldObj.setBlock(posX, posY, posZ, sapling, metadata, 2);
-                            } else
-                        if (event.entityItem.worldObj.isAirBlock(posX, posY, posZ)
-                                && metadata == BlockType.CYPRESS.metadata()
-                                && chance <= SaplingSettings.CYPRESS.chance()) {
-                                    event.entityItem.worldObj.setBlock(posX, posY, posZ, sapling, metadata, 2);
-                                } else
-                            if (metadata == BlockType.FIR.metadata()
-                                    && chance <= SaplingSettings.FIR.chance() * ratio) {
-                                        plant2x2Sapling(
-                                                posX,
-                                                posY,
-                                                posZ,
-                                                event.entityItem.worldObj,
-                                                event.entityItem.getEntityItem());
-                                    } else
-                                if (event.entityItem.worldObj.isAirBlock(posX, posY, posZ)
-                                        && metadata == BlockType.GOLDENROD.metadata()
-                                        && chance <= SaplingSettings.GOLDENROD.chance()) {
+                            } else if (metadata == BlockType.FIR.metadata()
+                                && chance <= SaplingSettings.FIR.chance() * ratio) {
+                                    plant2x2Sapling(
+                                        posX,
+                                        posY,
+                                        posZ,
+                                        event.entityItem.worldObj,
+                                        event.entityItem.getEntityItem());
+                                } else if (event.entityItem.worldObj.isAirBlock(posX, posY, posZ)
+                                    && metadata == BlockType.GOLDENROD.metadata()
+                                    && chance <= SaplingSettings.GOLDENROD.chance()) {
+                                        event.entityItem.worldObj.setBlock(posX, posY, posZ, sapling, metadata, 2);
+                                    } else if (event.entityItem.worldObj.isAirBlock(posX, posY, posZ)
+                                        && metadata == BlockType.VERMILLION.metadata()
+                                        && chance <= SaplingSettings.VERMILLION.chance()) {
                                             event.entityItem.worldObj.setBlock(posX, posY, posZ, sapling, metadata, 2);
-                                        } else
-                                    if (event.entityItem.worldObj.isAirBlock(posX, posY, posZ)
-                                            && metadata == BlockType.VERMILLION.metadata()
-                                            && chance <= SaplingSettings.VERMILLION.chance()) {
-                                                event.entityItem.worldObj
+                                        } else if (metadata == BlockType.REDWOOD.metadata()
+                                            && chance <= SaplingSettings.REDWOOD.chance() * ratio) {
+                                                plant2x2Sapling(
+                                                    posX,
+                                                    posY,
+                                                    posZ,
+                                                    event.entityItem.worldObj,
+                                                    event.entityItem.getEntityItem());
+                                            } else if (event.entityItem.worldObj.isAirBlock(posX, posY, posZ)
+                                                && metadata == BlockType.CITRINE.metadata()
+                                                && chance <= SaplingSettings.CITRINE.chance()) {
+                                                    event.entityItem.worldObj
                                                         .setBlock(posX, posY, posZ, sapling, metadata, 2);
-                                            } else
-                                        if (metadata == BlockType.REDWOOD.metadata()
-                                                && chance <= SaplingSettings.REDWOOD.chance() * ratio) {
-                                                    plant2x2Sapling(
-                                                            posX,
-                                                            posY,
-                                                            posZ,
-                                                            event.entityItem.worldObj,
-                                                            event.entityItem.getEntityItem());
-                                                } else
-                                            if (event.entityItem.worldObj.isAirBlock(posX, posY, posZ)
-                                                    && metadata == BlockType.CITRINE.metadata()
-                                                    && chance <= SaplingSettings.CITRINE.chance()) {
-                                                        event.entityItem.worldObj
-                                                                .setBlock(posX, posY, posZ, sapling, metadata, 2);
-                                                    }
+                                                }
             }
         }
     }
@@ -387,13 +408,13 @@ public class BlockCustomSapling extends BlockFlower {
 
         // check station one blocks for validity
         if ((world.isAirBlock(x, y, z) || isSameSaplingBlock(x, y, z, world, sapling))
-                && (world.isAirBlock(x + 1, y, z) || isSameSaplingBlock(x + 1, y, z, world, sapling))
-                && (world.isAirBlock(x + 1, y, z + 1) || isSameSaplingBlock(x + 1, y, z + 1, world, sapling))
-                && (world.isAirBlock(x, y, z + 1) || isSameSaplingBlock(x, y, z + 1, world, sapling))) {
+            && (world.isAirBlock(x + 1, y, z) || isSameSaplingBlock(x + 1, y, z, world, sapling))
+            && (world.isAirBlock(x + 1, y, z + 1) || isSameSaplingBlock(x + 1, y, z + 1, world, sapling))
+            && (world.isAirBlock(x, y, z + 1) || isSameSaplingBlock(x, y, z + 1, world, sapling))) {
             if (world.isAirBlock(x, y, z) && canPlaceBlockOn(world.getBlock(x, y - 1, z))
-                    && canPlaceBlockOn(world.getBlock(x + 1, y - 1, z))
-                    && canPlaceBlockOn(world.getBlock(x + 1, y - 1, z + 1))
-                    && canPlaceBlockOn(world.getBlock(x, y - 1, z + 1))) {
+                && canPlaceBlockOn(world.getBlock(x + 1, y - 1, z))
+                && canPlaceBlockOn(world.getBlock(x + 1, y - 1, z + 1))
+                && canPlaceBlockOn(world.getBlock(x, y - 1, z + 1))) {
                 world.setBlock(x, y, z, this.sapling, metadata, 2);
                 world.setBlock(x + 1, y, z, this.sapling, metadata, 2);
                 world.setBlock(x + 1, y, z + 1, this.sapling, metadata, 2);
@@ -404,13 +425,13 @@ public class BlockCustomSapling extends BlockFlower {
 
         // check station 2
         if ((world.isAirBlock(x, y, z) || isSameSaplingBlock(x, y, z, world, sapling))
-                && (world.isAirBlock(x, y, z + 1) || isSameSaplingBlock(x, y, z + 1, world, sapling))
-                && (world.isAirBlock(x - 1, y, z + 1) || isSameSaplingBlock(x - 1, y, z + 1, world, sapling))
-                && (world.isAirBlock(x - 1, y, z) || isSameSaplingBlock(x - 1, y, z, world, sapling))) {
+            && (world.isAirBlock(x, y, z + 1) || isSameSaplingBlock(x, y, z + 1, world, sapling))
+            && (world.isAirBlock(x - 1, y, z + 1) || isSameSaplingBlock(x - 1, y, z + 1, world, sapling))
+            && (world.isAirBlock(x - 1, y, z) || isSameSaplingBlock(x - 1, y, z, world, sapling))) {
             if (world.isAirBlock(x, y, z) && canPlaceBlockOn(world.getBlock(x, y - 1, z))
-                    && canPlaceBlockOn(world.getBlock(x, y - 1, z + 1))
-                    && canPlaceBlockOn(world.getBlock(x - 1, y - 1, z + 1))
-                    && canPlaceBlockOn(world.getBlock(x - 1, y - 1, z))) {
+                && canPlaceBlockOn(world.getBlock(x, y - 1, z + 1))
+                && canPlaceBlockOn(world.getBlock(x - 1, y - 1, z + 1))
+                && canPlaceBlockOn(world.getBlock(x - 1, y - 1, z))) {
                 world.setBlock(x, y, z, this.sapling, metadata, 2);
                 world.setBlock(x, y, z + 1, this.sapling, metadata, 2);
                 world.setBlock(x - 1, y, z + 1, this.sapling, metadata, 2);
@@ -421,13 +442,13 @@ public class BlockCustomSapling extends BlockFlower {
 
         // Check station 3
         if ((world.isAirBlock(x, y, z) || isSameSaplingBlock(x, y, z, world, sapling))
-                && (world.isAirBlock(x - 1, y, z) || isSameSaplingBlock(x - 1, y, z, world, sapling))
-                && (world.isAirBlock(x - 1, y, z - 1) || isSameSaplingBlock(x - 1, y, z - 1, world, sapling))
-                && (world.isAirBlock(x, y, z - 1) || isSameSaplingBlock(x, y, z - 1, world, sapling))) {
+            && (world.isAirBlock(x - 1, y, z) || isSameSaplingBlock(x - 1, y, z, world, sapling))
+            && (world.isAirBlock(x - 1, y, z - 1) || isSameSaplingBlock(x - 1, y, z - 1, world, sapling))
+            && (world.isAirBlock(x, y, z - 1) || isSameSaplingBlock(x, y, z - 1, world, sapling))) {
             if (world.isAirBlock(x, y, z) && canPlaceBlockOn(world.getBlock(x, y - 1, z))
-                    && canPlaceBlockOn(world.getBlock(x - 1, y - 1, z))
-                    && canPlaceBlockOn(world.getBlock(x - 1, y - 1, z - 1))
-                    && canPlaceBlockOn(world.getBlock(x, y - 1, z - 1))) {
+                && canPlaceBlockOn(world.getBlock(x - 1, y - 1, z))
+                && canPlaceBlockOn(world.getBlock(x - 1, y - 1, z - 1))
+                && canPlaceBlockOn(world.getBlock(x, y - 1, z - 1))) {
                 world.setBlock(x, y, z, this.sapling, metadata, 2);
                 world.setBlock(x - 1, y, z, this.sapling, metadata, 2);
                 world.setBlock(x - 1, y, z - 1, this.sapling, metadata, 2);
@@ -438,13 +459,13 @@ public class BlockCustomSapling extends BlockFlower {
 
         // Check station 4
         if ((world.isAirBlock(x, y, z) || isSameSaplingBlock(x, y, z, world, sapling))
-                && (world.isAirBlock(x, y, z - 1) || isSameSaplingBlock(x, y, z - 1, world, sapling))
-                && (world.isAirBlock(x + 1, y, z - 1) || isSameSaplingBlock(x + 1, y, z - 1, world, sapling))
-                && (world.isAirBlock(x + 1, y, z) || isSameSaplingBlock(x + 1, y, z, world, sapling))) {
+            && (world.isAirBlock(x, y, z - 1) || isSameSaplingBlock(x, y, z - 1, world, sapling))
+            && (world.isAirBlock(x + 1, y, z - 1) || isSameSaplingBlock(x + 1, y, z - 1, world, sapling))
+            && (world.isAirBlock(x + 1, y, z) || isSameSaplingBlock(x + 1, y, z, world, sapling))) {
             if (world.isAirBlock(x, y, z) && canPlaceBlockOn(world.getBlock(x, y - 1, z))
-                    && canPlaceBlockOn(world.getBlock(x, y - 1, z - 1))
-                    && canPlaceBlockOn(world.getBlock(x + 1, y - 1, z - 1))
-                    && canPlaceBlockOn(world.getBlock(x + 1, y - 1, z))) {
+                && canPlaceBlockOn(world.getBlock(x, y - 1, z - 1))
+                && canPlaceBlockOn(world.getBlock(x + 1, y - 1, z - 1))
+                && canPlaceBlockOn(world.getBlock(x + 1, y - 1, z))) {
                 world.setBlock(x, y, z, this.sapling, metadata, 2);
                 world.setBlock(x, y, z - 1, this.sapling, metadata, 2);
                 world.setBlock(x + 1, y, z - 1, this.sapling, metadata, 2);
@@ -456,14 +477,16 @@ public class BlockCustomSapling extends BlockFlower {
     private boolean isSameSaplingBlock(int x, int y, int z, World world, ItemStack sapling) {
         Block block = world.getBlock(x, y, z);
         int metadata = world.getBlockMetadata(x, y, z);
-        return !block.isAir(world, x, y, z) && sapling.getItem().equals(Item.getItemFromBlock(block))
-                && sapling.getItemDamage() == metadata;
+        return !block.isAir(world, x, y, z) && sapling.getItem()
+            .equals(Item.getItemFromBlock(block)) && sapling.getItemDamage() == metadata;
     }
 
     @SubscribeEvent
     public void itemEntering(EntityJoinWorldEvent event) {
         if (event.entity instanceof EntityItem && !event.world.isRemote) {
-            if (((EntityItem) event.entity).getEntityItem().getItem().equals(Item.getItemFromBlock(sapling))) {
+            if (((EntityItem) event.entity).getEntityItem()
+                .getItem()
+                .equals(Item.getItemFromBlock(sapling))) {
                 ((EntityItem) event.entity).lifespan = saplingLifespan;
             }
         }
@@ -488,8 +511,9 @@ public class BlockCustomSapling extends BlockFlower {
 
             if (lines[0] != "") {
                 ToolTipStringFormatter.Format(
-                        LanguageRegistry.instance().getStringLocalization("extrabiomes.planting_guide"),
-                        listOfLines);
+                    LanguageRegistry.instance()
+                        .getStringLocalization("extrabiomes.planting_guide"),
+                    listOfLines);
                 listOfLines.add(lines[0]);
             }
         }

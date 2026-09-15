@@ -18,7 +18,7 @@ public class WorldGenBigAutumnTree extends WorldGenAutumnTree {
     private static int trunkMetadata = 0;
 
     private static final byte[] otherCoordPairs = new byte[] { (byte) 2, (byte) 0, (byte) 0, (byte) 1, (byte) 2,
-            (byte) 1 };
+        (byte) 1 };
 
     public static void setTrunkBlock(Block block, int metadata) {
         WorldGenBigAutumnTree.trunkBlock = block;
@@ -76,7 +76,7 @@ public class WorldGenBigAutumnTree extends WorldGenAutumnTree {
                 final Block block = world.getBlock(coord[0], coord[1], coord[2]);
 
                 if (!block.isAir(world, coord[0], coord[1], coord[2])
-                        && !block.isLeaves(world, coord[0], coord[1], coord[2])) {
+                    && !block.isLeaves(world, coord[0], coord[1], coord[2])) {
                     break;
                 }
             }
@@ -182,8 +182,8 @@ public class WorldGenBigAutumnTree extends WorldGenAutumnTree {
                     if (checkBlockLine(var17, var18) == -1) {
                         final int[] var19 = new int[] { basePos[0], basePos[1], basePos[2] };
                         final double var20 = Math.sqrt(
-                                Math.pow(Math.abs(basePos[0] - var17[0]), 2.0D)
-                                        + Math.pow(Math.abs(basePos[2] - var17[2]), 2.0D));
+                            Math.pow(Math.abs(basePos[0] - var17[0]), 2.0D)
+                                + Math.pow(Math.abs(basePos[2] - var17[2]), 2.0D));
                         final double var22 = var20 * branchSlope;
 
                         if (var17[1] - var22 > var5) {

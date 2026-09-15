@@ -41,10 +41,10 @@ class WorldGenMetadataFlowers extends WorldGenerator {
             } catch (Exception e) {
                 LogHelper.severe("We stopped a crash in the flower generator.");
                 LogHelper.severe(
-                        "BlockName: %d, World: %s, Line: %d",
-                        block.getUnlocalizedName(),
-                        (world == null) ? "null" : world.toString(),
-                        e.getStackTrace()[0].getLineNumber());
+                    "BlockName: %d, World: %s, Line: %d",
+                    block.getUnlocalizedName(),
+                    (world == null) ? "null" : world.toString(),
+                    e.getStackTrace()[0].getLineNumber());
             }
         }
 

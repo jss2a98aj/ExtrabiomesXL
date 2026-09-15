@@ -23,7 +23,8 @@ public class ItemFlower extends MultiItemBlock {
 
         // LogHelper.finer("ItemFlower - " + id + ", " + ( b != null ? b : "null" ) + ", group = " + group);
 
-        max_meta = this.block.getGroupTypes().size();
+        max_meta = this.block.getGroupTypes()
+            .size();
     }
 
     @Override
@@ -33,7 +34,7 @@ public class ItemFlower extends MultiItemBlock {
 
     @Override
     public void addInformation(ItemStack itemForTooltip, EntityPlayer playerViewingToolTip, List listOfLines,
-            boolean sneaking) {
+        boolean sneaking) {
         block.addInformation(itemForTooltip.getItemDamage(), listOfLines);
     }
 

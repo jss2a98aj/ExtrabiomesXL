@@ -31,22 +31,22 @@ public class CustomFenceRender implements ISimpleBlockRenderingHandler {
 
             if (k == 2) {
                 renderer.setRenderBounds(
-                        (0.5F - f2),
-                        (1.0F - f2 * 3.0F),
-                        (-f2 * 2.0F),
-                        (0.5F + f2),
-                        (1.0F - f2),
-                        (1.0F + f2 * 2.0F));
+                    (0.5F - f2),
+                    (1.0F - f2 * 3.0F),
+                    (-f2 * 2.0F),
+                    (0.5F + f2),
+                    (1.0F - f2),
+                    (1.0F + f2 * 2.0F));
             }
 
             if (k == 3) {
                 renderer.setRenderBounds(
-                        (0.5F - f2),
-                        (0.5F - f2 * 3.0F),
-                        (-f2 * 2.0F),
-                        (0.5F + f2),
-                        (0.5F - f2),
-                        (1.0F + f2 * 2.0F));
+                    (0.5F - f2),
+                    (0.5F - f2 * 3.0F),
+                    (-f2 * 2.0F),
+                    (0.5F + f2),
+                    (0.5F - f2),
+                    (1.0F + f2 * 2.0F));
             }
 
             GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
@@ -82,7 +82,7 @@ public class CustomFenceRender implements ISimpleBlockRenderingHandler {
 
     @Override
     public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId,
-            RenderBlocks renderer) {
+        RenderBlocks renderer) {
         boolean flag;
         float f = 0.375F;
         float f1 = 0.625F;
@@ -93,12 +93,12 @@ public class CustomFenceRender implements ISimpleBlockRenderingHandler {
         boolean flag2 = false;
 
         if (((BlockFence) block).canConnectFenceTo(world, x - 1, y, z)
-                || ((BlockFence) block).canConnectFenceTo(world, x + 1, y, z)) {
+            || ((BlockFence) block).canConnectFenceTo(world, x + 1, y, z)) {
             flag1 = true;
         }
 
         if (((BlockFence) block).canConnectFenceTo(world, x, y, z - 1)
-                || ((BlockFence) block).canConnectFenceTo(world, x, y, z + 1)) {
+            || ((BlockFence) block).canConnectFenceTo(world, x, y, z + 1)) {
             flag2 = true;
         }
 

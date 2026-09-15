@@ -74,7 +74,7 @@ public class BlockNewLog extends BlockLog {
         int type = metadata & 3;
         if (type > 3) type = 0;
         if (orientation == 0 && (side == 1 || side == 0) || orientation == 4 && (side == 5 || side == 4)
-                || orientation == 8 && (side == 2 || side == 3)) {
+            || orientation == 8 && (side == 2 || side == 3)) {
             // return texturesMap.get(index + 16 + type);
             return textures[(type * 2) + 1];
         }
@@ -100,12 +100,12 @@ public class BlockNewLog extends BlockLog {
         if (block == this) {
             final Block wood = Blocks.log;
             event.world.playSoundEffect(
-                    event.x + 0.5F,
-                    event.y + 0.5F,
-                    event.z + 0.5F,
-                    wood.stepSound.soundName,
-                    (wood.stepSound.getVolume() + 1.0F) / 2.0F,
-                    wood.stepSound.getPitch() * 1.55F);
+                event.x + 0.5F,
+                event.y + 0.5F,
+                event.z + 0.5F,
+                wood.stepSound.soundName,
+                (wood.stepSound.getVolume() + 1.0F) / 2.0F,
+                wood.stepSound.getPitch() * 1.55F);
 
             if (!event.world.isRemote) {
                 final int metadata = event.world.getBlockMetadata(event.x, event.y, event.z);

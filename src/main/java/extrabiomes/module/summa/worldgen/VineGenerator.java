@@ -37,7 +37,10 @@ public class VineGenerator implements IWorldGenerator {
         final BiomeSettings settings = BiomeSettings.findBiomeSettings(biome.biomeID);
         if (settings != null) {
             for (final BiomeSettings goodBiome : biomeList) {
-                if (settings == goodBiome) return settings.getBiome().isPresent() && biome == settings.getBiome().get();
+                if (settings == goodBiome) return settings.getBiome()
+                    .isPresent()
+                    && biome == settings.getBiome()
+                        .get();
             }
         }
         return false;
@@ -45,7 +48,7 @@ public class VineGenerator implements IWorldGenerator {
 
     @Override
     public void generate(Random rand, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator,
-            IChunkProvider chunkProvider) {
+        IChunkProvider chunkProvider) {
         chunkX = chunkX << 4;
         chunkZ = chunkZ << 4;
         final BiomeGenBase biome = world.getBiomeGenForCoords(chunkX, chunkZ);

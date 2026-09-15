@@ -40,9 +40,8 @@ enum Module {
                     break;
             }
 
-            LogHelper.info(
-                    module.enabled ? "Module %s is enabled." : "Module %s is disabled, skipping.",
-                    module.toString());
+            LogHelper
+                .info(module.enabled ? "Module %s is enabled." : "Module %s is disabled, skipping.", module.toString());
 
             // skip disabled modules
             if (!module.enabled) continue;

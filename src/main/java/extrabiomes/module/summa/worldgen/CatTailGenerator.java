@@ -26,12 +26,15 @@ public class CatTailGenerator implements IWorldGenerator {
 
     @Override
     public void generate(Random rand, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator,
-            IChunkProvider chunkProvider) {
+        IChunkProvider chunkProvider) {
         chunkX = chunkX << 4;
         chunkZ = chunkZ << 4;
         final BiomeGenBase biome = world.getBiomeGenForCoords(chunkX, chunkX);
 
-        if (BiomeSettings.GREENSWAMP.getBiome().isPresent() && biome == BiomeSettings.GREENSWAMP.getBiome().get())
+        if (BiomeSettings.GREENSWAMP.getBiome()
+            .isPresent()
+            && biome == BiomeSettings.GREENSWAMP.getBiome()
+                .get())
             for (int i = 0; i < 20; i++) {
                 final int x = chunkX + rand.nextInt(16) + 8;
                 final int z = chunkZ + rand.nextInt(16) + 8;

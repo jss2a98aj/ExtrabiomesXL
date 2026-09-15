@@ -39,7 +39,8 @@ public class Api {
     }
 
     public static void registerPlugin(Object plugin) {
-        if (pluginBus.isPresent()) pluginBus.get().register(plugin);
+        if (pluginBus.isPresent()) pluginBus.get()
+            .register(plugin);
     }
 
 }

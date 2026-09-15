@@ -63,10 +63,11 @@ public class BlockCatTail extends BlockFlower {
 
         y--;
 
-        for (int offset = -1; offset < 2; offset += 2)
-            if (world.getBlock(x + offset, y, z).getMaterial() == Material.water
-                    || world.getBlock(x, y, z + offset).getMaterial() == Material.water)
-                return true;
+        for (int offset = -1; offset < 2; offset += 2) if (world.getBlock(x + offset, y, z)
+            .getMaterial() == Material.water
+            || world.getBlock(x, y, z + offset)
+                .getMaterial() == Material.water)
+            return true;
 
         return false;
     }

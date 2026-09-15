@@ -28,14 +28,14 @@ public class ItemSapling extends MultiItemBlock {
         itemstack = itemstack.copy();
         itemstack.setItemDamage(metadata);
         return super.getUnlocalizedName() + "."
-                + BlockCustomSapling.BlockType.values()[metadata & METADATA_BITMASK].toString()
-                        .toLowerCase(Locale.ENGLISH);
+            + BlockCustomSapling.BlockType.values()[metadata & METADATA_BITMASK].toString()
+                .toLowerCase(Locale.ENGLISH);
         // return super.getUnlocalizedName(itemstack);
     }
 
     @Override
     public void addInformation(ItemStack itemForTooltip, EntityPlayer playerViewingToolTip, List listOfLines,
-            boolean sneaking) {
+        boolean sneaking) {
         BlockCustomSapling.addInformation(itemForTooltip.getItemDamage(), listOfLines);
     }
 }

@@ -96,7 +96,8 @@ public class BlockCropBasic extends BlockFlower {
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister iconRegister) {
         ArrayList<IIcon> IIcons = Lists.newArrayListWithCapacity(MAX_GROWTH_STAGE + 1);
-        final String name = cropType.name().toLowerCase();
+        final String name = cropType.name()
+            .toLowerCase();
         for (int k = 0; k <= MAX_GROWTH_STAGE; ++k) {
             int l = (k != (MAX_GROWTH_STAGE - 1)) ? k : k - 1;
 
@@ -154,7 +155,7 @@ public class BlockCropBasic extends BlockFlower {
      */
     public void fertilize(World world, int x, int y, int z) {
         int meta = world.getBlockMetadata(x, y, z)
-                + MathHelper.getRandomIntegerInRange(world.rand, MIN_FERTILIZER, MAX_FERTILIZER);
+            + MathHelper.getRandomIntegerInRange(world.rand, MIN_FERTILIZER, MAX_FERTILIZER);
 
         if (meta > MAX_GROWTH_STAGE) {
             meta = MAX_GROWTH_STAGE;
@@ -244,7 +245,9 @@ public class BlockCropBasic extends BlockFlower {
 
     @Override
     public Item getItemDropped(int meta, Random rand, int fortune) {
-        return meta >= MAX_GROWTH_STAGE ? this.getCropItem() : this.getSeedItem().getItem();
+        return meta >= MAX_GROWTH_STAGE ? this.getCropItem()
+            : this.getSeedItem()
+                .getItem();
     }
 
     @Override

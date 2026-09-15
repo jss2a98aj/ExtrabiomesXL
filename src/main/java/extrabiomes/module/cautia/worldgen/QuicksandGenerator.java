@@ -25,11 +25,14 @@ public class QuicksandGenerator implements IWorldGenerator {
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator,
-            IChunkProvider chunkProvider) {
+        IChunkProvider chunkProvider) {
         chunkX = chunkX << 4;
         chunkZ = chunkZ << 4;
         final BiomeGenBase biome = world.getBiomeGenForCoords(chunkX, chunkZ);
-        if (!BiomeSettings.MINIJUNGLE.getBiome().isPresent() || biome != BiomeSettings.MINIJUNGLE.getBiome().get())
+        if (!BiomeSettings.MINIJUNGLE.getBiome()
+            .isPresent() || biome
+                != BiomeSettings.MINIJUNGLE.getBiome()
+                    .get())
             return;
 
         // 1 to 3 attempts with a bias toward 2

@@ -82,10 +82,10 @@ public class RecipeManager {
 
     private void addStairsRecipe(ItemStack source, Block target) {
         IRecipe recipe = new ShapedOreRecipe(
-                new ItemStack(target, 4),
-                new String[] { "r  ", "rr ", "rrr" },
-                'r',
-                source);
+            new ItemStack(target, 4),
+            new String[] { "r  ", "rr ", "rrr" },
+            'r',
+            source);
         Extrabiomes.proxy.addRecipe(recipe);
         recipe = new ShapedOreRecipe(new ItemStack(target, 4), new String[] { "  r", " rr", "rrr" }, 'r', source);
         Extrabiomes.proxy.addRecipe(recipe);
@@ -197,9 +197,9 @@ public class RecipeManager {
         }
 
         plankRainbowEucalyptusItem = new ItemStack(
-                event.block,
-                1,
-                BlockCustomWood.BlockType.RAINBOW_EUCALYPTUS.metadata());
+            event.block,
+            1,
+            BlockCustomWood.BlockType.RAINBOW_EUCALYPTUS.metadata());
 
         planks = new ItemStack(event.block, 2, BlockCustomWood.BlockType.SAKURA_BLOSSOM.metadata());
         for (final ItemStack itemstack : sakurablossomLogs) {
@@ -229,25 +229,25 @@ public class RecipeManager {
         redRockBrickItem = new ItemStack(event.block, 1, BlockRedRock.BlockType.RED_ROCK_BRICK.metadata());
 
         IRecipe recipe = new ShapelessOreRecipe(
-                new ItemStack(Items.clay_ball, 4),
-                redCobbleItem,
-                Items.water_bucket,
-                Items.water_bucket,
-                Items.water_bucket);
+            new ItemStack(Items.clay_ball, 4),
+            redCobbleItem,
+            Items.water_bucket,
+            Items.water_bucket,
+            Items.water_bucket);
         proxy.addRecipe(recipe);
 
         recipe = new ShapedOreRecipe(
-                new ItemStack(event.block, 4, BlockRedRock.BlockType.RED_ROCK_BRICK.metadata()),
-                new String[] { "rr", "rr" },
-                'r',
-                redRockItem);
+            new ItemStack(event.block, 4, BlockRedRock.BlockType.RED_ROCK_BRICK.metadata()),
+            new String[] { "rr", "rr" },
+            'r',
+            redRockItem);
         proxy.addRecipe(recipe);
 
         proxy.addSmelting(
-                Item.getItemFromBlock(event.block),
-                BlockRedRock.BlockType.RED_COBBLE.metadata(),
-                redRockItem,
-                0.1F);
+            Item.getItemFromBlock(event.block),
+            BlockRedRock.BlockType.RED_COBBLE.metadata(),
+            redRockItem,
+            0.1F);
     }
 
     @SubscribeEvent
@@ -256,28 +256,28 @@ public class RecipeManager {
 
         if (redRockItem != null) {
             final IRecipe recipe = new ShapedOreRecipe(
-                    new ItemStack(event.block, 6, BlockRedRockSlab.BlockType.REDROCK.metadata()),
-                    new String[] { "rrr" },
-                    'r',
-                    redRockItem);
+                new ItemStack(event.block, 6, BlockRedRockSlab.BlockType.REDROCK.metadata()),
+                new String[] { "rrr" },
+                'r',
+                redRockItem);
             proxy.addRecipe(recipe);
         }
 
         if (redCobbleItem != null) {
             final IRecipe recipe = new ShapedOreRecipe(
-                    new ItemStack(event.block, 6, BlockRedRockSlab.BlockType.REDCOBBLE.metadata()),
-                    new String[] { "rrr" },
-                    'r',
-                    redCobbleItem);
+                new ItemStack(event.block, 6, BlockRedRockSlab.BlockType.REDCOBBLE.metadata()),
+                new String[] { "rrr" },
+                'r',
+                redCobbleItem);
             proxy.addRecipe(recipe);
         }
 
         if (redRockBrickItem != null) {
             final IRecipe recipe = new ShapedOreRecipe(
-                    new ItemStack(event.block, 6, BlockRedRockSlab.BlockType.REDROCKBRICK.metadata()),
-                    new String[] { "rrr" },
-                    'r',
-                    redRockBrickItem);
+                new ItemStack(event.block, 6, BlockRedRockSlab.BlockType.REDROCKBRICK.metadata()),
+                new String[] { "rrr" },
+                'r',
+                redRockBrickItem);
             proxy.addRecipe(recipe);
         }
     }
@@ -294,10 +294,10 @@ public class RecipeManager {
 
         if (redCobbleItem != null) {
             final IRecipe recipe = new ShapedOreRecipe(
-                    new ItemStack(event.block, 6, BlockCustomWall.BlockType.RED_COBBLE.metadata()),
-                    new String[] { "ppp", "ppp" },
-                    'p',
-                    redCobbleItem);
+                new ItemStack(event.block, 6, BlockCustomWall.BlockType.RED_COBBLE.metadata()),
+                new String[] { "ppp", "ppp" },
+                'p',
+                redCobbleItem);
             Extrabiomes.proxy.addRecipe(recipe);
         }
     }
@@ -321,12 +321,12 @@ public class RecipeManager {
     @SubscribeEvent
     public void fenceGateRecipeHandler(FenceGateActiveEvent event) {
         final IRecipe recipe = new ShapedOreRecipe(
-                event.gate,
-                new String[] { "sps", "sps" },
-                'p',
-                event.wood,
-                's',
-                new ItemStack(Items.stick, 1));
+            event.gate,
+            new String[] { "sps", "sps" },
+            'p',
+            event.wood,
+            's',
+            new ItemStack(Items.stick, 1));
         Extrabiomes.proxy.addRecipe(recipe);
 
     }
@@ -335,10 +335,10 @@ public class RecipeManager {
     public void newWoodSlabRecipeHandler(NewWoodSlabActiveEvent event) {
         if (plankSakuraBlossomItem != null) {
             final IRecipe recipe = new ShapedOreRecipe(
-                    new ItemStack(event.block, 6, BlockNewWoodSlab.BlockType.SAKURA_BLOSSOM.metadata()),
-                    new String[] { "ppp" },
-                    'p',
-                    plankSakuraBlossomItem);
+                new ItemStack(event.block, 6, BlockNewWoodSlab.BlockType.SAKURA_BLOSSOM.metadata()),
+                new String[] { "ppp" },
+                'p',
+                plankSakuraBlossomItem);
             Extrabiomes.proxy.addRecipe(recipe);
         }
     }
@@ -348,73 +348,73 @@ public class RecipeManager {
 
         if (plankAcaciaItem != null) {
             final IRecipe recipe = new ShapedOreRecipe(
-                    new ItemStack(event.block, 6, BlockCustomWoodSlab.BlockType.ACACIA.metadata()),
-                    new String[] { "ppp" },
-                    'p',
-                    plankAcaciaItem);
+                new ItemStack(event.block, 6, BlockCustomWoodSlab.BlockType.ACACIA.metadata()),
+                new String[] { "ppp" },
+                'p',
+                plankAcaciaItem);
             Extrabiomes.proxy.addRecipe(recipe);
         }
 
         if (plankFirItem != null) {
             final IRecipe recipe = new ShapedOreRecipe(
-                    new ItemStack(event.block, 6, BlockCustomWoodSlab.BlockType.FIR.metadata()),
-                    new String[] { "ppp" },
-                    'p',
-                    plankFirItem);
+                new ItemStack(event.block, 6, BlockCustomWoodSlab.BlockType.FIR.metadata()),
+                new String[] { "ppp" },
+                'p',
+                plankFirItem);
             Extrabiomes.proxy.addRecipe(recipe);
         }
 
         if (plankRedwoodItem != null) {
             final IRecipe recipe = new ShapedOreRecipe(
-                    new ItemStack(event.block, 6, BlockCustomWoodSlab.BlockType.REDWOOD.metadata()),
-                    new String[] { "ppp" },
-                    'p',
-                    plankRedwoodItem);
+                new ItemStack(event.block, 6, BlockCustomWoodSlab.BlockType.REDWOOD.metadata()),
+                new String[] { "ppp" },
+                'p',
+                plankRedwoodItem);
             Extrabiomes.proxy.addRecipe(recipe);
         }
 
         if (plankBaldCypressItem != null) {
             final IRecipe recipe = new ShapedOreRecipe(
-                    new ItemStack(event.block, 6, BlockCustomWoodSlab.BlockType.BALD_CYPRESS.metadata()),
-                    new String[] { "ppp" },
-                    'p',
-                    plankBaldCypressItem);
+                new ItemStack(event.block, 6, BlockCustomWoodSlab.BlockType.BALD_CYPRESS.metadata()),
+                new String[] { "ppp" },
+                'p',
+                plankBaldCypressItem);
             Extrabiomes.proxy.addRecipe(recipe);
         }
 
         if (plankCypressItem != null) {
             final IRecipe recipe = new ShapedOreRecipe(
-                    new ItemStack(event.block, 6, BlockCustomWoodSlab.BlockType.CYPRESS.metadata()),
-                    new String[] { "ppp" },
-                    'p',
-                    plankCypressItem);
+                new ItemStack(event.block, 6, BlockCustomWoodSlab.BlockType.CYPRESS.metadata()),
+                new String[] { "ppp" },
+                'p',
+                plankCypressItem);
             Extrabiomes.proxy.addRecipe(recipe);
         }
 
         if (plankAutumnItem != null) {
             final IRecipe recipe = new ShapedOreRecipe(
-                    new ItemStack(event.block, 6, BlockCustomWoodSlab.BlockType.AUTUMN.metadata()),
-                    new String[] { "ppp" },
-                    'p',
-                    plankAutumnItem);
+                new ItemStack(event.block, 6, BlockCustomWoodSlab.BlockType.AUTUMN.metadata()),
+                new String[] { "ppp" },
+                'p',
+                plankAutumnItem);
             Extrabiomes.proxy.addRecipe(recipe);
         }
 
         if (plankJapaneseMapleItem != null) {
             final IRecipe recipe = new ShapedOreRecipe(
-                    new ItemStack(event.block, 6, BlockCustomWoodSlab.BlockType.JAPANESE_MAPLE.metadata()),
-                    new String[] { "ppp" },
-                    'p',
-                    plankJapaneseMapleItem);
+                new ItemStack(event.block, 6, BlockCustomWoodSlab.BlockType.JAPANESE_MAPLE.metadata()),
+                new String[] { "ppp" },
+                'p',
+                plankJapaneseMapleItem);
             Extrabiomes.proxy.addRecipe(recipe);
         }
 
         if (plankRainbowEucalyptusItem != null) {
             final IRecipe recipe = new ShapedOreRecipe(
-                    new ItemStack(event.block, 6, BlockCustomWoodSlab.BlockType.RAINBOW_EUCALYPTUS.metadata()),
-                    new String[] { "ppp" },
-                    'p',
-                    plankRainbowEucalyptusItem);
+                new ItemStack(event.block, 6, BlockCustomWoodSlab.BlockType.RAINBOW_EUCALYPTUS.metadata()),
+                new String[] { "ppp" },
+                'p',
+                plankRainbowEucalyptusItem);
             Extrabiomes.proxy.addRecipe(recipe);
         }
     }

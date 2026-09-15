@@ -37,7 +37,8 @@ public enum ItemSettings {
          * itemID).getInt(0); } else { itemID = configuration.getItem(toString() + ".id", itemID).getInt(0); }
          */
 
-        this.enabled = configuration.get("item", toString() + ".enabled", this.enabled).getBoolean();
+        this.enabled = configuration.get("item", toString() + ".enabled", this.enabled)
+            .getBoolean();
     }
 
     @Override

@@ -25,8 +25,9 @@ public class ItemNewQuarterLog extends ItemBlock {
 
     @Override
     public void addInformation(ItemStack itemForTooltip, EntityPlayer playerViewingToolTip, List listOfLines,
-            boolean sneaking) {
-        String line = LanguageRegistry.instance().getStringLocalization("extrabiomes.cornerlog.crafting");
+        boolean sneaking) {
+        String line = LanguageRegistry.instance()
+            .getStringLocalization("extrabiomes.cornerlog.crafting");
 
         if (!line.equals("extrabiomes.cornerlog.crafting")) {
             if (listOfLines.size() > 0 && ((String) listOfLines.get(0)).length() > 20) {

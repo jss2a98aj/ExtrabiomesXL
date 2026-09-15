@@ -25,19 +25,25 @@ public class LegendOakGenerator implements IWorldGenerator {
 
     @Override
     public void generate(Random rand, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator,
-            IChunkProvider chunkProvider) {
+        IChunkProvider chunkProvider) {
         chunkX = chunkX << 4;
         chunkZ = chunkZ << 4;
         int rarity = 0;
         final BiomeGenBase biome = world.getBiomeGenForCoords(chunkX, chunkX);
 
         if (biome == BiomeGenBase.forest || biome == BiomeGenBase.forestHills
-                || BiomeSettings.FORESTEDHILLS.getBiome().isPresent()
-                        && biome == BiomeSettings.FORESTEDHILLS.getBiome().get()
-                || BiomeSettings.FORESTEDISLAND.getBiome().isPresent()
-                        && biome == BiomeSettings.FORESTEDISLAND.getBiome().get()
-                || BiomeSettings.RAINFOREST.getBiome().isPresent()
-                        && biome == BiomeSettings.RAINFOREST.getBiome().get()) {
+            || BiomeSettings.FORESTEDHILLS.getBiome()
+                .isPresent()
+                && biome == BiomeSettings.FORESTEDHILLS.getBiome()
+                    .get()
+            || BiomeSettings.FORESTEDISLAND.getBiome()
+                .isPresent()
+                && biome == BiomeSettings.FORESTEDISLAND.getBiome()
+                    .get()
+            || BiomeSettings.RAINFOREST.getBiome()
+                .isPresent()
+                && biome == BiomeSettings.RAINFOREST.getBiome()
+                    .get()) {
             rarity = 100;
         }
 

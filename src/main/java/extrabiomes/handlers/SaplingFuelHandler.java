@@ -21,7 +21,8 @@ public class SaplingFuelHandler implements IFuelHandler {
 
     @Override
     public int getBurnTime(ItemStack fuel) {
-        if (fuel.getItem().equals(Item.getItemFromBlock(this.saplingBlock))) return 100;
+        if (fuel.getItem()
+            .equals(Item.getItemFromBlock(this.saplingBlock))) return 100;
         return 0;
     }
 

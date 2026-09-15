@@ -95,8 +95,8 @@ public enum BiomeSettings {
     private boolean enabled = true;
     private boolean allowVillages = true;
 
-    private final Optional<? extends Class<? extends BiomeGenBase>> biomeClass;
-    private Optional<? extends BiomeGenBase> biome = Optional.absent();
+    private final Class<? extends BiomeGenBase> biomeClass;
+    private BiomeGenBase biome;
 
     static {
         EXTREMEJUNGLE.allowVillages = false;
@@ -129,7 +129,7 @@ public enum BiomeSettings {
     private BiomeSettings(int defaultID, Class<? extends BiomeGenBase> biomeClass) {
         this.defaultID = defaultID;
         this.biomeID = this.defaultID;
-        this.biomeClass = Optional.fromNullable(biomeClass);
+        this.biomeClass = biomeClass;
     }
 
     private BiomeSettings(int defaultID, Class<? extends BiomeGenBase> biomeClass, Weights defaultWeight) {
@@ -157,14 +157,15 @@ public enum BiomeSettings {
     }
 
     public void createBiome() throws Exception {
-        if (biomeClass.isPresent() && !biome.isPresent()) {
-            biome = Optional.of(biomeClass.get().newInstance());
+        if (biomeClass != null && biome == null) {
+            biome = biomeClass.getDeclaredConstructor()
+                .newInstance();
         }
     }
 
     public void postLoad() {
-        if (!isVanilla() && biome.isPresent()) {
-            final ExtrabiomeGenBase egb = (ExtrabiomeGenBase) biome.get();
+        if (!isVanilla() && biome != null) {
+            final ExtrabiomeGenBase egb = (ExtrabiomeGenBase) biome;
             BiomeDictionary.registerBiomeType(egb, egb.getBiomeTypeFlags());
             LogHelper.fine("registering " + this.name() + " with dictionary");
 
@@ -190,7 +191,7 @@ public enum BiomeSettings {
     }
 
     public Optional<? extends BiomeGenBase> getBiome() {
-        return biome;
+        return Optional.fromNullable(biome);
     }
 
     public int getID() {
@@ -202,7 +203,7 @@ public enum BiomeSettings {
     }
 
     public boolean isVanilla() {
-        return !biomeClass.isPresent();
+        return biomeClass == null;
     }
 
     private String keyWeight() {

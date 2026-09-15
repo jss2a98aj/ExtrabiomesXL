@@ -80,7 +80,7 @@ public class Extrabiomes {
                 PluginThaumcraft4.postInit();
             } catch (Exception e) {
                 LogHelper.warning(
-                        "ExtrabiomesXL's Thaumcraft API implementation is most likely out of date. Feel free to let us know.");
+                    "ExtrabiomesXL's Thaumcraft API implementation is most likely out of date. Feel free to let us know.");
             }
         }
 
@@ -112,7 +112,7 @@ public class Extrabiomes {
         }
 
         final EnhancedConfiguration config = ConfigurationHandler
-                .init(new File(event.getModConfigurationDirectory(), "/extrabiomes.cfg"), false);
+            .init(new File(event.getModConfigurationDirectory(), "/extrabiomes.cfg"), false);
 
         BiomeHandler.init();
 
@@ -145,7 +145,8 @@ public class Extrabiomes {
         if (GeneralSettings.consoleCommandsDisabled) return;
 
         // Gets the command manager to use for server
-        ICommandManager command = MinecraftServer.getServer().getCommandManager();
+        ICommandManager command = MinecraftServer.getServer()
+            .getCommandManager();
         // Turns it into another form to use
         ServerCommandManager serverCommand = ((ServerCommandManager) command);
 

@@ -26,7 +26,7 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void registerScarecrowRendering() {
         RenderingRegistry
-                .registerEntityRenderingHandler(EntityScarecrow.class, new RenderScarecrow(new ModelScarecrow(), 0.4F));
+            .registerEntityRenderingHandler(EntityScarecrow.class, new RenderScarecrow(new ModelScarecrow(), 0.4F));
     }
 
 }

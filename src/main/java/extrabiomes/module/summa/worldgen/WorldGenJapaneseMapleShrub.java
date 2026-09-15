@@ -94,25 +94,24 @@ public class WorldGenJapaneseMapleShrub extends WorldGenNewTreeBase {
 
         // Make sure that all the needed chunks are loaded
         if (!world.checkChunksExist(
-                x - chunkCheck,
-                y - chunkCheck,
-                z - chunkCheck,
-                x + chunkCheck,
-                y + chunkCheck,
-                z + chunkCheck))
-            return false;
+            x - chunkCheck,
+            y - chunkCheck,
+            z - chunkCheck,
+            x + chunkCheck,
+            y + chunkCheck,
+            z + chunkCheck)) return false;
 
         // Draw the main trunk
         if (place1x1Trunk(x, y, z, (int) (height * TRUNK_HEIGHT_PERCENT), TreeBlock.TRUNK.get(), world)) {
             // Generate the branches
             generateBranches(
-                    world,
-                    rand,
-                    x,
-                    y + (int) (height * TRUNK_HEIGHT_PERCENT),
-                    z,
-                    height - (int) (height * TRUNK_HEIGHT_PERCENT) - 2,
-                    radius);
+                world,
+                rand,
+                x,
+                y + (int) (height * TRUNK_HEIGHT_PERCENT),
+                z,
+                height - (int) (height * TRUNK_HEIGHT_PERCENT) - 2,
+                radius);
 
             return true;
         }
@@ -212,13 +211,13 @@ public class WorldGenJapaneseMapleShrub extends WorldGenNewTreeBase {
         // Place the branch tips
         for (int[] cluster : branches) {
             generateLeafCluster(
-                    world,
-                    cluster[0],
-                    cluster[1],
-                    cluster[2],
-                    1 + rand.nextInt(2),
-                    2,
-                    TreeBlock.LEAVES.get());
+                world,
+                cluster[0],
+                cluster[1],
+                cluster[2],
+                1 + rand.nextInt(2),
+                2,
+                TreeBlock.LEAVES.get());
         }
 
         // Calculate the center position
@@ -241,7 +240,7 @@ public class WorldGenJapaneseMapleShrub extends WorldGenNewTreeBase {
     }
 
     public void generateCanopy(World world, Random rand, double x, double y, double z, double radius, int height,
-            ItemStack leaves) {
+        ItemStack leaves) {
         int layers = height + 2;
         for (int y1 = (int) y, layer = 0; layer < layers; layer++, y1++) {
             double layerRadius = radius * Math.cos((layer) / (height / 1.3));
@@ -273,7 +272,7 @@ public class WorldGenJapaneseMapleShrub extends WorldGenNewTreeBase {
     }
 
     public void generateCanopyLayer(World world, Random rand, double x, double y, double z, double radius,
-            int skipChance, ItemStack leaves) {
+        int skipChance, ItemStack leaves) {
         double minDist = (radius - 2 > 0) ? ((radius - 2) * (radius - 2)) : -1;
         double maxDist = radius * radius;
 

@@ -26,17 +26,27 @@ public class LeafPileGenerator implements IWorldGenerator {
 
     @Override
     public void generate(Random rand, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator,
-            IChunkProvider chunkProvider) {
+        IChunkProvider chunkProvider) {
         chunkX = chunkX << 4;
         chunkZ = chunkZ << 4;
         final BiomeGenBase biome = world.getBiomeGenForCoords(chunkX, chunkZ);
 
-        if (BiomeSettings.GREENSWAMP.getBiome().isPresent() && biome == BiomeSettings.GREENSWAMP.getBiome().get()
-                || BiomeSettings.MOUNTAINRIDGE.getBiome().isPresent()
-                        && biome == BiomeSettings.MOUNTAINRIDGE.getBiome().get()
-                || BiomeSettings.REDWOODLUSH.getBiome().isPresent()
-                        && biome == BiomeSettings.REDWOODLUSH.getBiome().get()
-                || BiomeSettings.WOODLANDS.getBiome().isPresent() && biome == BiomeSettings.WOODLANDS.getBiome().get())
+        if (BiomeSettings.GREENSWAMP.getBiome()
+            .isPresent()
+            && biome == BiomeSettings.GREENSWAMP.getBiome()
+                .get()
+            || BiomeSettings.MOUNTAINRIDGE.getBiome()
+                .isPresent()
+                && biome == BiomeSettings.MOUNTAINRIDGE.getBiome()
+                    .get()
+            || BiomeSettings.REDWOODLUSH.getBiome()
+                .isPresent()
+                && biome == BiomeSettings.REDWOODLUSH.getBiome()
+                    .get()
+            || BiomeSettings.WOODLANDS.getBiome()
+                .isPresent()
+                && biome == BiomeSettings.WOODLANDS.getBiome()
+                    .get())
             for (int i = 0; i < 2; i++) {
                 final int x = chunkX + rand.nextInt(16) + 8;
                 final int y = rand.nextInt(128);

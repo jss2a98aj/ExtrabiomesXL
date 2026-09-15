@@ -92,12 +92,12 @@ public class BlockLeafEbxl extends BlockLeaves {
             int searchX;
 
             if (world.checkChunksExist(
-                    x - searchRange,
-                    y - searchRange,
-                    z - searchRange,
-                    x + searchRange,
-                    y + searchRange,
-                    z + searchRange)) {
+                x - searchRange,
+                y - searchRange,
+                z - searchRange,
+                x + searchRange,
+                y + searchRange,
+                z + searchRange)) {
                 int searchY;
                 int searchZ;
 
@@ -106,9 +106,9 @@ public class BlockLeafEbxl extends BlockLeaves {
                         for (searchZ = -decayRange; searchZ <= decayRange; ++searchZ) {
                             Block block = world.getBlock(x + searchX, y + searchY, z + searchZ);
                             int position = (searchX + halfSearchRangeMax) * SearchRangeSquared
-                                    + (searchY + halfSearchRangeMax) * searchRangeMax
-                                    + searchZ
-                                    + halfSearchRangeMax;
+                                + (searchY + halfSearchRangeMax) * searchRangeMax
+                                + searchZ
+                                + halfSearchRangeMax;
                             if (!block.canSustainLeaves(world, x + searchX, y + searchY, z + searchZ)) {
                                 if (block.isLeaves(world, x + searchX, y + searchY, z + searchZ)) {
                                     field_150128_a[position] = -2;
@@ -127,48 +127,48 @@ public class BlockLeafEbxl extends BlockLeaves {
                         for (searchZ = -decayRange; searchZ <= decayRange; ++searchZ) {
                             for (int i = -decayRange; i <= decayRange; ++i) {
                                 if (field_150128_a[(searchY + halfSearchRangeMax) * SearchRangeSquared
+                                    + (searchZ + halfSearchRangeMax) * searchRangeMax
+                                    + i
+                                    + halfSearchRangeMax] == searchX - 1) {
+                                    int position = (searchY + halfSearchRangeMax - 1) * SearchRangeSquared
                                         + (searchZ + halfSearchRangeMax) * searchRangeMax
                                         + i
-                                        + halfSearchRangeMax] == searchX - 1) {
-                                    int position = (searchY + halfSearchRangeMax - 1) * SearchRangeSquared
-                                            + (searchZ + halfSearchRangeMax) * searchRangeMax
-                                            + i
-                                            + halfSearchRangeMax;
+                                        + halfSearchRangeMax;
                                     if (field_150128_a[position] == -2) {
                                         field_150128_a[position] = searchX;
                                     }
                                     position = (searchY + halfSearchRangeMax + 1) * SearchRangeSquared
-                                            + (searchZ + halfSearchRangeMax) * searchRangeMax
-                                            + i
-                                            + halfSearchRangeMax;
+                                        + (searchZ + halfSearchRangeMax) * searchRangeMax
+                                        + i
+                                        + halfSearchRangeMax;
                                     if (field_150128_a[position] == -2) {
                                         field_150128_a[position] = searchX;
                                     }
                                     position = (searchY + halfSearchRangeMax) * SearchRangeSquared
-                                            + (searchZ + halfSearchRangeMax - 1) * searchRangeMax
-                                            + i
-                                            + halfSearchRangeMax;
+                                        + (searchZ + halfSearchRangeMax - 1) * searchRangeMax
+                                        + i
+                                        + halfSearchRangeMax;
                                     if (field_150128_a[position] == -2) {
                                         field_150128_a[position] = searchX;
                                     }
                                     position = (searchY + halfSearchRangeMax) * SearchRangeSquared
-                                            + (searchZ + halfSearchRangeMax + 1) * searchRangeMax
-                                            + i
-                                            + halfSearchRangeMax;
+                                        + (searchZ + halfSearchRangeMax + 1) * searchRangeMax
+                                        + i
+                                        + halfSearchRangeMax;
                                     if (field_150128_a[position] == -2) {
                                         field_150128_a[position] = searchX;
                                     }
                                     position = (searchY + halfSearchRangeMax) * SearchRangeSquared
-                                            + (searchZ + halfSearchRangeMax) * searchRangeMax
-                                            + (i + halfSearchRangeMax - 1);
+                                        + (searchZ + halfSearchRangeMax) * searchRangeMax
+                                        + (i + halfSearchRangeMax - 1);
                                     if (field_150128_a[position] == -2) {
                                         field_150128_a[position] = searchX;
                                     }
                                     position = (searchY + halfSearchRangeMax) * SearchRangeSquared
-                                            + (searchZ + halfSearchRangeMax) * searchRangeMax
-                                            + i
-                                            + halfSearchRangeMax
-                                            + 1;
+                                        + (searchZ + halfSearchRangeMax) * searchRangeMax
+                                        + i
+                                        + halfSearchRangeMax
+                                        + 1;
                                     if (field_150128_a[position] == -2) {
                                         field_150128_a[position] = searchX;
                                     }
@@ -180,7 +180,7 @@ public class BlockLeafEbxl extends BlockLeaves {
             }
 
             searchX = field_150128_a[halfSearchRangeMax * SearchRangeSquared + halfSearchRangeMax * searchRangeMax
-                    + halfSearchRangeMax];
+                + halfSearchRangeMax];
 
             if (searchX >= 0) {
                 world.setBlockMetadataWithNotify(x, y, z, meta & -9, 4);

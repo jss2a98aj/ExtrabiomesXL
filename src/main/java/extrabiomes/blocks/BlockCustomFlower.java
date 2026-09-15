@@ -186,7 +186,7 @@ public class BlockCustomFlower extends Block implements IPlantable {
     @Override
     public boolean canBlockStay(World world, int x, int y, int z) {
         return (world.getFullBlockLightValue(x, y, z) >= 8 || world.canBlockSeeTheSky(x, y, z))
-                && canThisPlantGrowOnThisBlock(world.getBlock(x, y - 1, z));
+            && canThisPlantGrowOnThisBlock(world.getBlock(x, y - 1, z));
     }
 
     @Override
@@ -197,10 +197,13 @@ public class BlockCustomFlower extends Block implements IPlantable {
     private boolean canThisPlantGrowOnThisBlock(Block block) {
         // TODO: separate rules for edge cases (like cactus)
         return block.equals(Blocks.grass) || block.equals(Blocks.dirt)
-                || block.equals(Blocks.farmland)
-                || block.equals(Blocks.sand)
-                || (BiomeSettings.MOUNTAINRIDGE.getBiome().isPresent()
-                        && block.equals(BiomeSettings.MOUNTAINRIDGE.getBiome().get().topBlock));
+            || block.equals(Blocks.farmland)
+            || block.equals(Blocks.sand)
+            || (BiomeSettings.MOUNTAINRIDGE.getBiome()
+                .isPresent()
+                && block.equals(
+                    BiomeSettings.MOUNTAINRIDGE.getBiome()
+                        .get().topBlock));
     }
 
     private void checkFlowerChange(World world, int x, int y, int z) {
@@ -302,9 +305,12 @@ public class BlockCustomFlower extends Block implements IPlantable {
             return;
         }
         String unlocalizedName = getUnlocalizedName() + "."
-                + groupMap.get(metadata).name().toLowerCase(Locale.ENGLISH)
-                + ".description";
-        String localizedName = LanguageRegistry.instance().getStringLocalization(unlocalizedName);
+            + groupMap.get(metadata)
+                .name()
+                .toLowerCase(Locale.ENGLISH)
+            + ".description";
+        String localizedName = LanguageRegistry.instance()
+            .getStringLocalization(unlocalizedName);
 
         if (!localizedName.equals(unlocalizedName)) {
             if (tooltip.isEmpty() || ((String) tooltip.get(0)).length() <= 20) {
@@ -318,7 +324,10 @@ public class BlockCustomFlower extends Block implements IPlantable {
 
     public String getUnlocalizedName(int metaData) {
         if (groupMap.containsKey(metaData)) {
-            return getUnlocalizedName() + "." + groupMap.get(metaData).name().toLowerCase(Locale.ENGLISH);
+            return getUnlocalizedName() + "."
+                + groupMap.get(metaData)
+                    .name()
+                    .toLowerCase(Locale.ENGLISH);
         } else {
             return "";
         }

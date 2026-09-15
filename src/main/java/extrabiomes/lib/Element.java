@@ -140,7 +140,8 @@ public enum Element {
     }
 
     public String getID() {
-        return stack != null ? GameData.getItemRegistry().getNameForObject(stack.getItem()) : null;
+        return stack != null ? GameData.getItemRegistry()
+            .getNameForObject(stack.getItem()) : null;
     }
 
     public int getMetadata() {

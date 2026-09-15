@@ -48,14 +48,14 @@ public class Fabrica {
             ItemScarecrow.ID = (String) EntityList.classToStringMapping.get(EntityScarecrow.class);
 
             final IRecipe recipe = new ShapedOreRecipe(
-                    Stuff.scarecrow.get(),
-                    new String[] { " p ", "sms", " s " },
-                    'p',
-                    Blocks.pumpkin,
-                    'm',
-                    Blocks.melon_block,
-                    's',
-                    Items.stick);
+                Stuff.scarecrow.get(),
+                new String[] { " p ", "sms", " s " },
+                'p',
+                Blocks.pumpkin,
+                'm',
+                Blocks.melon_block,
+                's',
+                Items.stick);
             Extrabiomes.proxy.addRecipe(recipe);
         }
 
@@ -65,11 +65,11 @@ public class Fabrica {
                 Extrabiomes.proxy.addRecipe(recipe);
 
                 recipe = new ShapelessOreRecipe(
-                        Stuff.paste.get(),
-                        Element.TINY_CACTUS.get(),
-                        Element.TINY_CACTUS.get(),
-                        Element.TINY_CACTUS.get(),
-                        Element.TINY_CACTUS.get());
+                    Stuff.paste.get(),
+                    Element.TINY_CACTUS.get(),
+                    Element.TINY_CACTUS.get(),
+                    Element.TINY_CACTUS.get(),
+                    Element.TINY_CACTUS.get());
                 Extrabiomes.proxy.addRecipe(recipe);
 
                 Extrabiomes.proxy.addSmelting(Stuff.paste.get(), 0, new ItemStack(Items.dye, 1, 2), 0.2F);
@@ -88,8 +88,9 @@ public class Fabrica {
         }
 
         if (ItemSettings.PASTE.getEnabled()) {
-            Stuff.paste = Optional
-                    .of(new ItemPaste().setUnlocalizedName("extrabiomes.paste").setCreativeTab(Extrabiomes.tabsEBXL));
+            Stuff.paste = Optional.of(
+                new ItemPaste().setUnlocalizedName("extrabiomes.paste")
+                    .setCreativeTab(Extrabiomes.tabsEBXL));
             GameRegistry.registerItem(Stuff.paste.get(), "extrabiomes.paste", Reference.MOD_ID);
         }
     }

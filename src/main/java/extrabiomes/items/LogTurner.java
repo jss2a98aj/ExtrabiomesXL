@@ -43,7 +43,7 @@ public class LogTurner extends ItemTool {
 
     @Override
     public boolean onItemUse(ItemStack itemUsed, EntityPlayer player, World world, int x, int y, int z, int side,
-            float xOffset, float yOffset, float zOffset) {
+        float xOffset, float yOffset, float zOffset) {
         if (!player.canPlayerEdit(x, y, z, side, itemUsed)) return false;
 
         final UseLogTurnerEvent event = new UseLogTurnerEvent(player, itemUsed, world, x, y, z);
@@ -69,12 +69,12 @@ public class LogTurner extends ItemTool {
         final Block wood = Blocks.log;
 
         world.playSoundEffect(
-                x + 0.5F,
-                y + 0.5F,
-                z + 0.5F,
-                wood.stepSound.getStepResourcePath(),
-                (wood.stepSound.getVolume() + 1.0F) / 2.0F,
-                wood.stepSound.getPitch() * 1.55F);
+            x + 0.5F,
+            y + 0.5F,
+            z + 0.5F,
+            wood.stepSound.getStepResourcePath(),
+            (wood.stepSound.getVolume() + 1.0F) / 2.0F,
+            wood.stepSound.getPitch() * 1.55F);
 
         if (!world.isRemote) {
             int orientation = metadata & 12;
@@ -89,7 +89,8 @@ public class LogTurner extends ItemTool {
     @Override
     public void addInformation(ItemStack stack, EntityPlayer player, List tooltip, boolean sneaking) {
         String unlocalizedName = getUnlocalizedName() + ".description";
-        String localizedName = LanguageRegistry.instance().getStringLocalization(unlocalizedName);
+        String localizedName = LanguageRegistry.instance()
+            .getStringLocalization(unlocalizedName);
 
         if (!localizedName.equals(unlocalizedName)) {
             if (tooltip.isEmpty() || ((String) tooltip.get(0)).length() <= 20) {

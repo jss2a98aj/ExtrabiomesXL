@@ -69,11 +69,17 @@ public class BlockCustomTallGrass extends BlockFlower implements IShearable {
     @Override
     protected boolean canPlaceBlockOn(Block block) {
 
-        return (BiomeSettings.MOUNTAINRIDGE.getBiome().isPresent()
-                && block.equals(BiomeSettings.MOUNTAINRIDGE.getBiome().get().topBlock))
-                || (BiomeSettings.WASTELAND.getBiome().isPresent()
-                        && block.equals(BiomeSettings.WASTELAND.getBiome().get().topBlock))
-                || super.canPlaceBlockOn(block);
+        return (BiomeSettings.MOUNTAINRIDGE.getBiome()
+            .isPresent()
+            && block.equals(
+                BiomeSettings.MOUNTAINRIDGE.getBiome()
+                    .get().topBlock))
+            || (BiomeSettings.WASTELAND.getBiome()
+                .isPresent()
+                && block.equals(
+                    BiomeSettings.WASTELAND.getBiome()
+                        .get().topBlock))
+            || super.canPlaceBlockOn(block);
     }
 
     @Override
@@ -89,8 +95,7 @@ public class BlockCustomTallGrass extends BlockFlower implements IShearable {
         final ArrayList<ItemStack> ret = new ArrayList<>();
         int rarity = 8;
         if (metadata == BlockType.DEAD.metadata() || metadata == BlockType.DEAD_TALL.metadata()
-                || metadata == BlockType.DEAD_YELLOW.metadata())
-            rarity *= 2;
+            || metadata == BlockType.DEAD_YELLOW.metadata()) rarity *= 2;
         if (world.rand.nextInt(rarity) != 0) return ret;
 
         final ItemStack item = Extrabiomes.proxy.getGrassSeed(world);

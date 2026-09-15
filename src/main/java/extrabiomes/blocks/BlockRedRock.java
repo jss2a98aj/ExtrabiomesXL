@@ -73,7 +73,7 @@ public class BlockRedRock extends Block {
     public IIcon getIcon(int side, int metadata) {
         if (metadata > 2) metadata = 2;
         return metadata == RED_ROCK_BRICK.metadata() ? textures[2]
-                : metadata == RED_COBBLE.metadata() ? textures[1] : textures[0];
+            : metadata == RED_COBBLE.metadata() ? textures[1] : textures[0];
     }
 
     @SideOnly(Side.CLIENT)

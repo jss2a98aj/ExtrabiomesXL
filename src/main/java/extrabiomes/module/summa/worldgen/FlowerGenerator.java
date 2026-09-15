@@ -232,16 +232,20 @@ public class FlowerGenerator implements IWorldGenerator {
     public void registerCrop(Element element) {
         if (element.isPresent()) {
             final WorldGenerator gen = new WorldGenMetadataFlowers(
-                    Block.getBlockFromItem(element.get().getItem()),
-                    BlockCropBasic.MAX_GROWTH_STAGE);
+                Block.getBlockFromItem(
+                    element.get()
+                        .getItem()),
+                BlockCropBasic.MAX_GROWTH_STAGE);
             cropGens.put(element, gen);
         }
     }
 
     protected void registerFlower(BiomeSettings settings, BlockType type) {
-        if (!settings.getBiome().isPresent()) return;
+        if (!settings.getBiome()
+            .isPresent()) return;
 
-        BiomeGenBase biome = settings.getBiome().get();
+        BiomeGenBase biome = settings.getBiome()
+            .get();
         final CommonProxy proxy = Extrabiomes.proxy;
         proxy.addGrassPlant(type.block(), type.metadata(), type.weight(), biome);
 
@@ -288,12 +292,15 @@ public class FlowerGenerator implements IWorldGenerator {
     }
 
     protected boolean biomeCheck(BiomeSettings settings, BiomeGenBase biome) {
-        return settings.getBiome().isPresent() && biome == settings.getBiome().get();
+        return settings.getBiome()
+            .isPresent()
+            && biome == settings.getBiome()
+                .get();
     }
 
     @Override
     public void generate(Random rand, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator,
-            IChunkProvider chunkProvider) {
+        IChunkProvider chunkProvider) {
         chunkX = chunkX << 4;
         chunkZ = chunkZ << 4;
         final BiomeGenBase biome = world.getBiomeGenForCoords(chunkX, chunkZ);
@@ -301,7 +308,8 @@ public class FlowerGenerator implements IWorldGenerator {
         final BiomeSettings settings = BiomeSettings.findBiomeSettings(biome.biomeID);
         if (settings != null && biomeCheck(settings, biome) && flowerMaps.containsKey(settings)) {
             final ExtrabiomeGenBase eBiome = (ExtrabiomeGenBase) biome;
-            final int maxFlowers = eBiome.getDecorationSettings().getSetting(Decoration.NEW_FLOWERS);
+            final int maxFlowers = eBiome.getDecorationSettings()
+                .getSetting(Decoration.NEW_FLOWERS);
             if (maxFlowers > 0) {
                 List<BlockType> map = flowerMaps.get(settings);
                 // LogHelper.finer("[FG] "+eBiome.getDecorationSettings()+" = "+maxFlowers+", "+map.size()+"
@@ -322,16 +330,16 @@ public class FlowerGenerator implements IWorldGenerator {
         }
 
         if (biomeCheck(BiomeSettings.AUTUMNWOODS, biome) || biomeCheck(BiomeSettings.PINEFOREST, biome)
-                || biomeCheck(BiomeSettings.TEMPORATERAINFOREST, biome)) {
+            || biomeCheck(BiomeSettings.TEMPORATERAINFOREST, biome)) {
             applyGenerator(BlockType.TOADSTOOL, world, chunkX, chunkZ, rand, 2);
         }
 
         if (biomeCheck(BiomeSettings.GREENHILLS, biome) || biomeCheck(BiomeSettings.FORESTEDHILLS, biome)
-                || biomeCheck(BiomeSettings.FORESTEDISLAND, biome)
-                || biomeCheck(BiomeSettings.BIRCHFOREST, biome)
-                || biomeCheck(BiomeSettings.PINEFOREST, biome)
-                || biomeCheck(BiomeSettings.MEADOW, biome)
-                || biomeCheck(BiomeSettings.WOODLANDS, biome)) {
+            || biomeCheck(BiomeSettings.FORESTEDISLAND, biome)
+            || biomeCheck(BiomeSettings.BIRCHFOREST, biome)
+            || biomeCheck(BiomeSettings.PINEFOREST, biome)
+            || biomeCheck(BiomeSettings.MEADOW, biome)
+            || biomeCheck(BiomeSettings.WOODLANDS, biome)) {
             final WorldGenerator gen = cropGens.get(Element.PLANT_STRAWBERRY);
             for (int x = 0; x < 4; ++x) applyGenerator(gen, world, chunkX, chunkZ, rand);
         }

@@ -90,12 +90,13 @@ public class WorldGenFirTreeHuge extends WorldGenAbstractTree {
             int checkRamp = (checkY - originY < trunkClearHeight) ? 0 : leafSlopeHalfMax;
             for (int checkX = originX - checkRamp; checkX <= originX + checkRamp; ++checkX) {
                 for (int checkZ = originZ - checkRamp; checkZ <= originZ + checkRamp; ++checkZ) {
-                    if (!world.getChunkProvider().chunkExists(checkX >> 4, checkZ >> 4)) {
+                    if (!world.getChunkProvider()
+                        .chunkExists(checkX >> 4, checkZ >> 4)) {
                         return false;
                     }
                     final Block block = world.getBlock(checkX, checkY, checkZ);
                     if (!block.isLeaves(world, checkX, checkY, checkZ)
-                            && !block.isReplaceable(world, checkX, checkY, checkZ)) {
+                        && !block.isReplaceable(world, checkX, checkY, checkZ)) {
                         return false;
                     }
                 }
@@ -112,23 +113,23 @@ public class WorldGenFirTreeHuge extends WorldGenAbstractTree {
         final int randomTrunkHeightReduction = rand.nextInt(3);
         final Block trunk = TreeBlock.TRUNK.getBlock();
         for (int relativeTrunkLevel = 0; relativeTrunkLevel
-                < height - randomTrunkHeightReduction; ++relativeTrunkLevel) {
+            < height - randomTrunkHeightReduction; ++relativeTrunkLevel) {
             final int actualTrunkLevel = originY + relativeTrunkLevel;
             final Block other = world.getBlock(originX, actualTrunkLevel, originZ);
             if (other.isLeaves(world, originX, actualTrunkLevel, originZ)
-                    || other.isReplaceable(world, originX, actualTrunkLevel, originZ)) {
+                || other.isReplaceable(world, originX, actualTrunkLevel, originZ)) {
                 setBlockAndNotifyAdequately(world, originX, actualTrunkLevel, originZ, trunk, 2);
             }
             if (other.isLeaves(world, originX - 1, actualTrunkLevel, originZ)
-                    || other.isReplaceable(world, originX - 1, actualTrunkLevel, originZ)) {
+                || other.isReplaceable(world, originX - 1, actualTrunkLevel, originZ)) {
                 setBlockAndNotifyAdequately(world, originX - 1, actualTrunkLevel, originZ, trunk, 3);
             }
             if (other.isLeaves(world, originX, actualTrunkLevel, originZ - 1)
-                    || other.isReplaceable(world, originX, actualTrunkLevel, originZ - 1)) {
+                || other.isReplaceable(world, originX, actualTrunkLevel, originZ - 1)) {
                 setBlockAndNotifyAdequately(world, originX, actualTrunkLevel, originZ - 1, trunk, 1);
             }
             if (other.isLeaves(world, originX - 1, actualTrunkLevel, originZ - 1)
-                    || other.isReplaceable(world, originX - 1, actualTrunkLevel, originZ - 1)) {
+                || other.isReplaceable(world, originX - 1, actualTrunkLevel, originZ - 1)) {
                 setBlockAndNotifyAdequately(world, originX - 1, actualTrunkLevel, originZ - 1, trunk, 0);
             }
         }
@@ -168,14 +169,14 @@ public class WorldGenFirTreeHuge extends WorldGenAbstractTree {
                         if (cornerCheckX == cornerLimit - 2) ++counter;
                         if (cornerCheckZ == cornerLimit - 2) ++counter;
                         if (counter >= 2 && (other.isLeaves(world, originX, actualY, originZ)
-                                || other.isReplaceable(world, originX, actualY, originZ))) {
+                            || other.isReplaceable(world, originX, actualY, originZ))) {
                             setBlockAndNotifyAdequately(world, actualX, actualY, actualZ, arms, armsMeta);
                             continue;
                         }
                     }
                     // Leaves
                     if (other.isAir(world, actualX, actualY, actualZ)
-                            || other.canBeReplacedByLeaves(world, actualX, actualY, actualZ)) {
+                        || other.canBeReplacedByLeaves(world, actualX, actualY, actualZ)) {
                         setBlockAndNotifyAdequately(world, actualX, actualY, actualZ, leaves, leavesMeta);
                     }
                 }

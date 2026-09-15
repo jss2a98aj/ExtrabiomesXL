@@ -22,7 +22,7 @@ import extrabiomes.Extrabiomes;
 public class RenderScarecrow extends RenderLiving {
 
     private static final ResourceLocation model_resource = new ResourceLocation(
-            Extrabiomes.TEXTURE_PATH + "textures/models/scarecrow.png");
+        Extrabiomes.TEXTURE_PATH + "textures/models/scarecrow.png");
 
     public RenderScarecrow(ModelBase modelbase, float f) {
         super(modelbase, f);

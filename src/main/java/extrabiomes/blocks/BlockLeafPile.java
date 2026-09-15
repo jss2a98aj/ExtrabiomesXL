@@ -66,7 +66,8 @@ public class BlockLeafPile extends Block {
     @Override
     @SideOnly(Side.CLIENT)
     public int colorMultiplier(IBlockAccess iBlockAccess, int x, int y, int z) {
-        return iBlockAccess.getBiomeGenForCoords(x, z).getBiomeFoliageColor(x, y, z);
+        return iBlockAccess.getBiomeGenForCoords(x, z)
+            .getBiomeFoliageColor(x, y, z);
     }
 
     @Override

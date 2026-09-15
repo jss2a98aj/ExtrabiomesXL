@@ -30,13 +30,13 @@ public class ItemNewSapling extends MultiItemBlock {
         itemstack = itemstack.copy();
         itemstack.setItemDamage(metadata);
         return super.getUnlocalizedName() + "."
-                + BlockNewSapling.BlockType.values()[metadata & METADATA_BITMASK].toString()
-                        .toLowerCase(Locale.ENGLISH);
+            + BlockNewSapling.BlockType.values()[metadata & METADATA_BITMASK].toString()
+                .toLowerCase(Locale.ENGLISH);
     }
 
     @Override
     public void addInformation(ItemStack itemForTooltip, EntityPlayer playerViewingToolTip, List listOfLines,
-            boolean sneaking) {
+        boolean sneaking) {
         BlockNewSapling.addInformation(itemForTooltip.getItemDamage(), listOfLines);
     }
 

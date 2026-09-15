@@ -41,7 +41,10 @@ public class BlockCustomWall extends BlockWall {
     private IIcon texture;
 
     public BlockCustomWall() {
-        super(Block.getBlockFromItem(Element.RED_COBBLE.get().getItem()));
+        super(
+            Block.getBlockFromItem(
+                Element.RED_COBBLE.get()
+                    .getItem()));
         setCreativeTab(Extrabiomes.tabsEBXL);
     }
 

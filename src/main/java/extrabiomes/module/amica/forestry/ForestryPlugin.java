@@ -113,26 +113,26 @@ public class ForestryPlugin {
             try {
                 for (final ItemStack sapling : ForestryModHelper.getSaplings()) {
                     fermenterAddRecipe.invoke(
-                            fermenterManager,
-                            sapling,
-                            BIOMASS_SAPLINGS,
-                            1.0f,
-                            getFluidStack("biomass"),
-                            getFluidStack("water"));
+                        fermenterManager,
+                        sapling,
+                        BIOMASS_SAPLINGS,
+                        1.0f,
+                        getFluidStack("biomass"),
+                        getFluidStack("water"));
                     fermenterAddRecipe.invoke(
-                            fermenterManager,
-                            sapling,
-                            BIOMASS_SAPLINGS,
-                            1.5f,
-                            getFluidStack("biomass"),
-                            getFluidStack("juice"));
+                        fermenterManager,
+                        sapling,
+                        BIOMASS_SAPLINGS,
+                        1.5f,
+                        getFluidStack("biomass"),
+                        getFluidStack("juice"));
                     fermenterAddRecipe.invoke(
-                            fermenterManager,
-                            sapling,
-                            BIOMASS_SAPLINGS,
-                            1.5f,
-                            getFluidStack("biomass"),
-                            getFluidStack("honey"));
+                        fermenterManager,
+                        sapling,
+                        BIOMASS_SAPLINGS,
+                        1.5f,
+                        getFluidStack("biomass"),
+                        getFluidStack("honey"));
                 }
             } catch (Exception e) {
                 LogHelper.severe("The forestry API changed in reguards to fluids/liquids.");
@@ -144,12 +144,12 @@ public class ForestryPlugin {
         try {
             if (carpenterAddRecipe != null && Element.RED_COBBLE.isPresent()) {
                 carpenterAddRecipe.invoke(
-                        carpenterManager,
-                        10,
-                        getFluidStack("water", 3000),
-                        null,
-                        new ItemStack(Items.clay_ball, 4),
-                        new Object[] { "#", '#', Element.RED_COBBLE.get() });
+                    carpenterManager,
+                    10,
+                    getFluidStack("water", 3000),
+                    null,
+                    new ItemStack(Items.clay_ball, 4),
+                    new Object[] { "#", '#', Element.RED_COBBLE.get() });
             }
         } catch (Exception e) {
             LogHelper.severe("The forestry API changed for the carpenter.");
@@ -169,11 +169,12 @@ public class ForestryPlugin {
     private static void addSaplings() {
         for (ItemStack sapling : ForestryModHelper.getSaplings()) {
             Block blockSapling = Block.getBlockFromItem(sapling.getItem());
-            String saplingName = GameData.getBlockRegistry().getNameForObject(blockSapling);
+            String saplingName = GameData.getBlockRegistry()
+                .getNameForObject(blockSapling);
             FMLInterModComms.sendMessage(
-                    "Forestry",
-                    "add-farmable-sapling",
-                    String.format("farmArboreal@%s.%s", saplingName, sapling.getItemDamage()));
+                "Forestry",
+                "add-farmable-sapling",
+                String.format("farmArboreal@%s.%s", saplingName, sapling.getItemDamage()));
         }
     }
 
@@ -224,7 +225,7 @@ public class ForestryPlugin {
                 flowerRegistry = fld.get(null);
                 cls = Class.forName("forestry.api.genetics.IFlowerRegistry");
                 registerFlower = cls
-                        .getMethod("registerPlantableFlower", Block.class, int.class, double.class, String[].class);
+                    .getMethod("registerPlantableFlower", Block.class, int.class, double.class, String[].class);
             }
 
             cls = Class.forName("forestry.api.storage.BackpackManager");
@@ -232,21 +233,11 @@ public class ForestryPlugin {
             backpackItems = (ArrayList[]) fld.get(null);
 
             cls = Class.forName("forestry.api.recipes.IFermenterManager");
-            fermenterAddRecipe = cls.getMethod(
-                    "addRecipe",
-                    ItemStack.class,
-                    int.class,
-                    float.class,
-                    FluidStack.class,
-                    FluidStack.class);
+            fermenterAddRecipe = cls
+                .getMethod("addRecipe", ItemStack.class, int.class, float.class, FluidStack.class, FluidStack.class);
             cls = Class.forName("forestry.api.recipes.ICarpenterManager");
-            carpenterAddRecipe = cls.getMethod(
-                    "addRecipe",
-                    int.class,
-                    FluidStack.class,
-                    ItemStack.class,
-                    ItemStack.class,
-                    Object[].class);
+            carpenterAddRecipe = cls
+                .getMethod("addRecipe", int.class, FluidStack.class, ItemStack.class, ItemStack.class, Object[].class);
 
             cls = Class.forName("forestry.api.core.ForestryAPI");
             fld = cls.getField("activeMode");

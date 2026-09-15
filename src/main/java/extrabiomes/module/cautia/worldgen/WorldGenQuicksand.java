@@ -22,7 +22,8 @@ class WorldGenQuicksand extends WorldGenerator {
 
     @Override
     public boolean generate(World world, Random rand, int x, int y, int z) {
-        while ((world.isAirBlock(x, y, z) || !world.getBlock(x, y, z).isNormalCube(world, x, y, z)) && y > 2) y--;
+        while ((world.isAirBlock(x, y, z) || !world.getBlock(x, y, z)
+            .isNormalCube(world, x, y, z)) && y > 2) y--;
 
         final Block block = world.getBlock(x, y, z);
         if (!block.equals(Blocks.grass) && !block.equals(Blocks.sand)) return false;

@@ -80,7 +80,8 @@ public abstract class BiomeManager {
         checkNotNull(biome, "Biome is required.");
         checkNotNull(grassGen, "Grass generator is required.");
         checkArgument(weight > 0, "Weight must be greater than zero.");
-        instance.get().addBiomeGen(GenType.GRASS, biome, grassGen, weight);
+        instance.get()
+            .addBiomeGen(GenType.GRASS, biome, grassGen, weight);
     }
 
     /**
@@ -96,7 +97,8 @@ public abstract class BiomeManager {
         checkNotNull(biome, "Biome is required.");
         checkNotNull(treeGen, "Tree Generator is required.");
         checkArgument(weight > 0, "Weight must be greater than zero.");
-        instance.get().addBiomeGen(GenType.TREE, biome, treeGen, weight);
+        instance.get()
+            .addBiomeGen(GenType.TREE, biome, treeGen, weight);
     }
 
     /**
@@ -106,7 +108,8 @@ public abstract class BiomeManager {
      * @return the selected grass generator.
      */
     public static Optional<? extends WorldGenerator> chooseRandomGrassGenforBiome(Random rand, BiomeGenBase biome) {
-        return instance.get().chooseBiomeRandomGen(GenType.GRASS, rand, biome);
+        return instance.get()
+            .chooseBiomeRandomGen(GenType.GRASS, rand, biome);
     }
 
     /**
@@ -116,7 +119,8 @@ public abstract class BiomeManager {
      * @return the selected tree generator.
      */
     public static Optional<? extends WorldGenerator> chooseRandomTreeGenforBiome(Random rand, BiomeGenBase biome) {
-        return instance.get().chooseBiomeRandomGen(GenType.TREE, rand, biome);
+        return instance.get()
+            .chooseBiomeRandomGen(GenType.TREE, rand, biome);
     }
 
     /**
@@ -124,7 +128,8 @@ public abstract class BiomeManager {
      */
     public static Collection<BiomeGenBase> getBiomes() {
         checkArgument(instance.isPresent(), "Biome list not available until after API is initialized.");
-        return instance.get().getBiomeCollection();
+        return instance.get()
+            .getBiomeCollection();
     }
 
     /**
@@ -133,7 +138,8 @@ public abstract class BiomeManager {
      */
     public static int getTotalGrassWeightForBiome(BiomeGenBase biome) {
         checkNotNull(biome, "Biome is required.");
-        return instance.get().getBiomeTotalWeight(GenType.GRASS, biome);
+        return instance.get()
+            .getBiomeTotalWeight(GenType.GRASS, biome);
     }
 
     /**
@@ -142,7 +148,8 @@ public abstract class BiomeManager {
      */
     public static int getTotalTreeWeightForBiome(BiomeGenBase biome) {
         checkNotNull(biome, "Biome is required.");
-        return instance.get().getBiomeTotalWeight(GenType.TREE, biome);
+        return instance.get()
+            .getBiomeTotalWeight(GenType.TREE, biome);
     }
 
     static boolean isActive() {
@@ -152,7 +159,7 @@ public abstract class BiomeManager {
     protected abstract void addBiomeGen(GenType genType, BiomeGenBase biome, WorldGenerator treeGen, int weight);
 
     protected abstract Optional<? extends WorldGenerator> chooseBiomeRandomGen(GenType genType, Random rand,
-            BiomeGenBase biome);
+        BiomeGenBase biome);
 
     protected abstract Collection<BiomeGenBase> getBiomeCollection();
 

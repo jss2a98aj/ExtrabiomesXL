@@ -25,7 +25,7 @@ public class IC2Plugin {
     private IC2API api;
 
     private void addBiomeBonus(Collection<Optional<? extends BiomeGenBase>> biomes, int humidityBonus,
-            int nutrientsBonus) {
+        int nutrientsBonus) {
         for (final Optional<? extends BiomeGenBase> biome : biomes) addBiomeBonus(biome, humidityBonus, nutrientsBonus);
     }
 
@@ -37,30 +37,30 @@ public class IC2Plugin {
     private void addBiomeBonuses() {
         addBiomeBonus(BiomeSettings.GREENSWAMP.getBiome(), 2, 2);
         addBiomeBonus(
-                Lists.newArrayList(
-                        BiomeSettings.AUTUMNWOODS.getBiome(),
-                        BiomeSettings.BIRCHFOREST.getBiome(),
-                        BiomeSettings.FORESTEDHILLS.getBiome(),
-                        BiomeSettings.FORESTEDISLAND.getBiome(),
-                        BiomeSettings.PINEFOREST.getBiome(),
-                        BiomeSettings.RAINFOREST.getBiome(),
-                        BiomeSettings.REDWOODFOREST.getBiome(),
-                        BiomeSettings.REDWOODLUSH.getBiome(),
-                        BiomeSettings.TEMPORATERAINFOREST.getBiome(),
-                        BiomeSettings.WOODLANDS.getBiome()),
-                1,
-                1);
+            Lists.newArrayList(
+                BiomeSettings.AUTUMNWOODS.getBiome(),
+                BiomeSettings.BIRCHFOREST.getBiome(),
+                BiomeSettings.FORESTEDHILLS.getBiome(),
+                BiomeSettings.FORESTEDISLAND.getBiome(),
+                BiomeSettings.PINEFOREST.getBiome(),
+                BiomeSettings.RAINFOREST.getBiome(),
+                BiomeSettings.REDWOODFOREST.getBiome(),
+                BiomeSettings.REDWOODLUSH.getBiome(),
+                BiomeSettings.TEMPORATERAINFOREST.getBiome(),
+                BiomeSettings.WOODLANDS.getBiome()),
+            1,
+            1);
         addBiomeBonus(
-                Lists.newArrayList(BiomeSettings.EXTREMEJUNGLE.getBiome(), BiomeSettings.MINIJUNGLE.getBiome()),
-                1,
-                2);
+            Lists.newArrayList(BiomeSettings.EXTREMEJUNGLE.getBiome(), BiomeSettings.MINIJUNGLE.getBiome()),
+            1,
+            2);
         addBiomeBonus(
-                Lists.newArrayList(
-                        BiomeSettings.MOUNTAINDESERT.getBiome(),
-                        BiomeSettings.MOUNTAINRIDGE.getBiome(),
-                        BiomeSettings.WASTELAND.getBiome()),
-                0,
-                0);
+            Lists.newArrayList(
+                BiomeSettings.MOUNTAINDESERT.getBiome(),
+                BiomeSettings.MOUNTAINRIDGE.getBiome(),
+                BiomeSettings.WASTELAND.getBiome()),
+            0,
+            0);
     }
 
     @SubscribeEvent

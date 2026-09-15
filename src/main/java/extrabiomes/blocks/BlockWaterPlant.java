@@ -168,11 +168,11 @@ public class BlockWaterPlant extends Block {
 
     public void addInformation(int metaData, List listOfLines) {
         if (metaData < subBlocks.length && subBlocks[metaData] != null) {
-            String line = I18n.format(
-                    this.getUnlocalizedName() + "." + subBlocks[metaData].getUnlocalizedName() + ".description");
+            String line = I18n
+                .format(this.getUnlocalizedName() + "." + subBlocks[metaData].getUnlocalizedName() + ".description");
 
-            if (!line.equals(
-                    this.getUnlocalizedName() + "." + subBlocks[metaData].getUnlocalizedName() + ".description")) {
+            if (!line
+                .equals(this.getUnlocalizedName() + "." + subBlocks[metaData].getUnlocalizedName() + ".description")) {
                 if (listOfLines.size() > 0 && ((String) listOfLines.get(0)).length() > 20) {
                     ToolTipStringFormatter.Format(line, listOfLines, ((String) listOfLines.get(0)).length() + 5);
                 } else {

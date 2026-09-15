@@ -118,9 +118,9 @@ public enum BlockManager {
             proxy.setBlockHarvestLevel(thisBlock, "axe", 0);
             ItemNewWoodSlab.setSlabs((BlockSlab) Stuff.newslabWood.get(), (BlockSlab) Stuff.newslabWoodDouble.get());
             proxy.registerBlock(
-                    Stuff.newslabWood.get(),
-                    extrabiomes.module.fabrica.block.ItemNewWoodSlab.class,
-                    "woodslab2");
+                Stuff.newslabWood.get(),
+                extrabiomes.module.fabrica.block.ItemNewWoodSlab.class,
+                "woodslab2");
             proxy.registerBlock(thisBlock, extrabiomes.module.fabrica.block.ItemNewWoodSlab.class, "double_woodslab2");
 
             proxy.registerOreInAllSubblocks("slabWood", Stuff.newslabWood.get());
@@ -190,7 +190,7 @@ public enum BlockManager {
         @Override
         protected void create() {
             Stuff.stairsRedwood = Optional
-                    .of(new BlockWoodStairs(Stuff.planks.get(), BlockCustomWood.BlockType.REDWOOD.metadata()));
+                .of(new BlockWoodStairs(Stuff.planks.get(), BlockCustomWood.BlockType.REDWOOD.metadata()));
         }
 
         @Override
@@ -216,7 +216,7 @@ public enum BlockManager {
         @Override
         protected void create() {
             Stuff.stairsFir = Optional
-                    .of(new BlockWoodStairs(Stuff.planks.get(), BlockCustomWood.BlockType.FIR.metadata()));
+                .of(new BlockWoodStairs(Stuff.planks.get(), BlockCustomWood.BlockType.FIR.metadata()));
         }
 
         @Override
@@ -242,7 +242,7 @@ public enum BlockManager {
         @Override
         protected void create() {
             Stuff.stairsAcacia = Optional
-                    .of(new BlockWoodStairs(Stuff.planks.get(), BlockCustomWood.BlockType.ACACIA.metadata()));
+                .of(new BlockWoodStairs(Stuff.planks.get(), BlockCustomWood.BlockType.ACACIA.metadata()));
         }
 
         @Override
@@ -267,8 +267,8 @@ public enum BlockManager {
 
         @Override
         protected void create() {
-            Stuff.stairsRainbowEucalyptus = Optional.of(
-                    new BlockWoodStairs(Stuff.planks.get(), BlockCustomWood.BlockType.RAINBOW_EUCALYPTUS.metadata()));
+            Stuff.stairsRainbowEucalyptus = Optional
+                .of(new BlockWoodStairs(Stuff.planks.get(), BlockCustomWood.BlockType.RAINBOW_EUCALYPTUS.metadata()));
         }
 
         @Override
@@ -294,7 +294,7 @@ public enum BlockManager {
         @Override
         protected void create() {
             Stuff.stairsCypress = Optional
-                    .of(new BlockWoodStairs(Stuff.planks.get(), BlockCustomWood.BlockType.CYPRESS.metadata()));
+                .of(new BlockWoodStairs(Stuff.planks.get(), BlockCustomWood.BlockType.CYPRESS.metadata()));
         }
 
         @Override
@@ -320,7 +320,7 @@ public enum BlockManager {
         @Override
         protected void create() {
             Stuff.stairsBaldCypress = Optional
-                    .of(new BlockWoodStairs(Stuff.planks.get(), BlockCustomWood.BlockType.BALD_CYPRESS.metadata()));
+                .of(new BlockWoodStairs(Stuff.planks.get(), BlockCustomWood.BlockType.BALD_CYPRESS.metadata()));
         }
 
         @Override
@@ -346,7 +346,7 @@ public enum BlockManager {
         @Override
         protected void create() {
             Stuff.stairsJapaneseMaple = Optional
-                    .of(new BlockWoodStairs(Stuff.planks.get(), BlockCustomWood.BlockType.JAPANESE_MAPLE.metadata()));
+                .of(new BlockWoodStairs(Stuff.planks.get(), BlockCustomWood.BlockType.JAPANESE_MAPLE.metadata()));
         }
 
         @Override
@@ -372,7 +372,7 @@ public enum BlockManager {
         @Override
         protected void create() {
             Stuff.stairsAutumn = Optional
-                    .of(new BlockWoodStairs(Stuff.planks.get(), BlockCustomWood.BlockType.AUTUMN.metadata()));
+                .of(new BlockWoodStairs(Stuff.planks.get(), BlockCustomWood.BlockType.AUTUMN.metadata()));
         }
 
         @Override
@@ -398,7 +398,7 @@ public enum BlockManager {
         @Override
         protected void create() {
             Stuff.stairsSakuraBlossom = Optional
-                    .of(new BlockWoodStairs(Stuff.planks.get(), BlockCustomWood.BlockType.SAKURA_BLOSSOM.metadata()));
+                .of(new BlockWoodStairs(Stuff.planks.get(), BlockCustomWood.BlockType.SAKURA_BLOSSOM.metadata()));
         }
 
         @Override
@@ -462,13 +462,11 @@ public enum BlockManager {
             proxy.setBlockHarvestLevel(thisBlock, "pickaxe", 0);
             ItemRedRockSlab.setSlabs((BlockSlab) Stuff.slabRedRock.get(), (BlockSlab) Stuff.slabRedRockDouble.get());
             proxy.registerBlock(
-                    Stuff.slabRedRock.get(),
-                    extrabiomes.module.fabrica.block.ItemRedRockSlab.class,
-                    "slabRedRock");
-            proxy.registerBlock(
-                    thisBlock,
-                    extrabiomes.module.fabrica.block.ItemRedRockSlab.class,
-                    "double_slabRedRock");
+                Stuff.slabRedRock.get(),
+                extrabiomes.module.fabrica.block.ItemRedRockSlab.class,
+                "slabRedRock");
+            proxy
+                .registerBlock(thisBlock, extrabiomes.module.fabrica.block.ItemRedRockSlab.class, "double_slabRedRock");
 
             Extrabiomes.postInitEvent(new RedRockSlabActiveEvent(Stuff.slabRedRock.get()));
         }
@@ -478,9 +476,12 @@ public enum BlockManager {
         @Override
         protected void create() {
             Stuff.stairsRedCobble = Optional.of(
-                    new BlockCustomStairs(
-                            Block.getBlockFromItem(Element.RED_COBBLE.get().getItem()),
-                            Element.RED_COBBLE.get().getItemDamage()));
+                new BlockCustomStairs(
+                    Block.getBlockFromItem(
+                        Element.RED_COBBLE.get()
+                            .getItem()),
+                    Element.RED_COBBLE.get()
+                        .getItemDamage()));
         }
 
         @Override
@@ -505,9 +506,12 @@ public enum BlockManager {
         @Override
         protected void create() {
             Stuff.stairsRedRockBrick = Optional.of(
-                    new BlockCustomStairs(
-                            Block.getBlockFromItem(Element.RED_ROCK_BRICK.get().getItem()),
-                            Element.RED_ROCK_BRICK.get().getItemDamage()));
+                new BlockCustomStairs(
+                    Block.getBlockFromItem(
+                        Element.RED_ROCK_BRICK.get()
+                            .getItem()),
+                    Element.RED_ROCK_BRICK.get()
+                        .getItemDamage()));
         }
 
         @Override
@@ -601,9 +605,9 @@ public enum BlockManager {
             // ItemStack stack = new ItemStack(Stuff.planks.get(), 3,
             // BlockCustomWood.BlockType.REDWOOD.metadata());
             Extrabiomes.postInitEvent(
-                    new WoodDoorActiveEvent(
-                            new ItemStack(Stuff.doorAcacia.get(), GeneralSettings.useMC18Doors ? 3 : 1),
-                            new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.ACACIA.metadata())));
+                new WoodDoorActiveEvent(
+                    new ItemStack(Stuff.doorAcacia.get(), GeneralSettings.useMC18Doors ? 3 : 1),
+                    new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.ACACIA.metadata())));
         }
     },
     AUTUMNDOOR(Stuff.doorAutumn, true) {
@@ -632,9 +636,9 @@ public enum BlockManager {
             // ItemStack stack = new ItemStack(Stuff.planks.get(), 3,
             // BlockCustomWood.BlockType.REDWOOD.metadata());
             Extrabiomes.postInitEvent(
-                    new WoodDoorActiveEvent(
-                            new ItemStack(Stuff.doorAutumn.get(), GeneralSettings.useMC18Doors ? 3 : 1),
-                            new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.AUTUMN.metadata())));
+                new WoodDoorActiveEvent(
+                    new ItemStack(Stuff.doorAutumn.get(), GeneralSettings.useMC18Doors ? 3 : 1),
+                    new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.AUTUMN.metadata())));
         }
     },
     BALDCYPRESSDOOR(Stuff.doorBaldcypress, true) {
@@ -663,9 +667,9 @@ public enum BlockManager {
             // ItemStack stack = new ItemStack(Stuff.planks.get(), 3,
             // BlockCustomWood.BlockType.REDWOOD.metadata());
             Extrabiomes.postInitEvent(
-                    new WoodDoorActiveEvent(
-                            new ItemStack(Stuff.doorBaldcypress.get(), GeneralSettings.useMC18Doors ? 3 : 1),
-                            new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.BALD_CYPRESS.metadata())));
+                new WoodDoorActiveEvent(
+                    new ItemStack(Stuff.doorBaldcypress.get(), GeneralSettings.useMC18Doors ? 3 : 1),
+                    new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.BALD_CYPRESS.metadata())));
         }
     },
     CYPRESSDOOR(Stuff.doorCypress, true) {
@@ -694,9 +698,9 @@ public enum BlockManager {
             // ItemStack stack = new ItemStack(Stuff.planks.get(), 3,
             // BlockCustomWood.BlockType.REDWOOD.metadata());
             Extrabiomes.postInitEvent(
-                    new WoodDoorActiveEvent(
-                            new ItemStack(Stuff.doorCypress.get(), GeneralSettings.useMC18Doors ? 3 : 1),
-                            new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.CYPRESS.metadata())));
+                new WoodDoorActiveEvent(
+                    new ItemStack(Stuff.doorCypress.get(), GeneralSettings.useMC18Doors ? 3 : 1),
+                    new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.CYPRESS.metadata())));
         }
     },
     FIRDOOR(Stuff.doorFir, true) {
@@ -725,9 +729,9 @@ public enum BlockManager {
             // ItemStack stack = new ItemStack(Stuff.planks.get(), 3,
             // BlockCustomWood.BlockType.REDWOOD.metadata());
             Extrabiomes.postInitEvent(
-                    new WoodDoorActiveEvent(
-                            new ItemStack(Stuff.doorFir.get(), GeneralSettings.useMC18Doors ? 3 : 1),
-                            new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.FIR.metadata())));
+                new WoodDoorActiveEvent(
+                    new ItemStack(Stuff.doorFir.get(), GeneralSettings.useMC18Doors ? 3 : 1),
+                    new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.FIR.metadata())));
         }
     },
     JAPANESEMAPLEDOOR(Stuff.doorJapaneseMaple, true) {
@@ -757,9 +761,9 @@ public enum BlockManager {
             // ItemStack stack = new ItemStack(Stuff.planks.get(), 3,
             // BlockCustomWood.BlockType.REDWOOD.metadata());
             Extrabiomes.postInitEvent(
-                    new WoodDoorActiveEvent(
-                            new ItemStack(Stuff.doorJapaneseMaple.get(), GeneralSettings.useMC18Doors ? 3 : 1),
-                            new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.JAPANESE_MAPLE.metadata())));
+                new WoodDoorActiveEvent(
+                    new ItemStack(Stuff.doorJapaneseMaple.get(), GeneralSettings.useMC18Doors ? 3 : 1),
+                    new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.JAPANESE_MAPLE.metadata())));
         }
     },
     RAINBOWEUCALYPTUSDOOR(Stuff.doorRainbowEucalyptus, true) {
@@ -789,12 +793,9 @@ public enum BlockManager {
             // ItemStack stack = new ItemStack(Stuff.planks.get(), 3,
             // BlockCustomWood.BlockType.REDWOOD.metadata());
             Extrabiomes.postInitEvent(
-                    new WoodDoorActiveEvent(
-                            new ItemStack(Stuff.doorRainbowEucalyptus.get(), GeneralSettings.useMC18Doors ? 3 : 1),
-                            new ItemStack(
-                                    Stuff.planks.get(),
-                                    1,
-                                    BlockCustomWood.BlockType.RAINBOW_EUCALYPTUS.metadata())));
+                new WoodDoorActiveEvent(
+                    new ItemStack(Stuff.doorRainbowEucalyptus.get(), GeneralSettings.useMC18Doors ? 3 : 1),
+                    new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.RAINBOW_EUCALYPTUS.metadata())));
         }
     },
     REDWOODDOOR(Stuff.doorRedwood, true) {
@@ -825,9 +826,9 @@ public enum BlockManager {
             // ItemStack stack = new ItemStack(Stuff.planks.get(), 3,
             // BlockCustomWood.BlockType.REDWOOD.metadata());
             Extrabiomes.postInitEvent(
-                    new WoodDoorActiveEvent(
-                            new ItemStack(Stuff.doorRedwood.get(), GeneralSettings.useMC18Doors ? 3 : 1),
-                            new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.REDWOOD.metadata())));
+                new WoodDoorActiveEvent(
+                    new ItemStack(Stuff.doorRedwood.get(), GeneralSettings.useMC18Doors ? 3 : 1),
+                    new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.REDWOOD.metadata())));
         }
     },
     SAKURADOOR(Stuff.doorSakura, true) {
@@ -856,9 +857,9 @@ public enum BlockManager {
             // ItemStack stack = new ItemStack(Stuff.planks.get(), 3,
             // BlockCustomWood.BlockType.REDWOOD.metadata());
             Extrabiomes.postInitEvent(
-                    new WoodDoorActiveEvent(
-                            new ItemStack(Stuff.doorSakura.get(), GeneralSettings.useMC18Doors ? 3 : 1),
-                            new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.SAKURA_BLOSSOM.metadata())));
+                new WoodDoorActiveEvent(
+                    new ItemStack(Stuff.doorSakura.get(), GeneralSettings.useMC18Doors ? 3 : 1),
+                    new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.SAKURA_BLOSSOM.metadata())));
         }
     },
 
@@ -885,9 +886,9 @@ public enum BlockManager {
 
             // Add the recipe for the gate
             Extrabiomes.postInitEvent(
-                    new FenceGateActiveEvent(
-                            new ItemStack(Stuff.gateAcacia.get(), 1),
-                            new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.ACACIA.metadata())));
+                new FenceGateActiveEvent(
+                    new ItemStack(Stuff.gateAcacia.get(), 1),
+                    new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.ACACIA.metadata())));
         }
     },
     AUTUMNGATE(Stuff.gateAutumn, true) {
@@ -913,9 +914,9 @@ public enum BlockManager {
 
             // Add the recipe for the gate
             Extrabiomes.postInitEvent(
-                    new FenceGateActiveEvent(
-                            new ItemStack(Stuff.gateAutumn.get(), 1),
-                            new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.AUTUMN.metadata())));
+                new FenceGateActiveEvent(
+                    new ItemStack(Stuff.gateAutumn.get(), 1),
+                    new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.AUTUMN.metadata())));
         }
     },
     BALDCYPRESSGATE(Stuff.gateSakura, true) {
@@ -941,9 +942,9 @@ public enum BlockManager {
 
             // Add the recipe for the gate
             Extrabiomes.postInitEvent(
-                    new FenceGateActiveEvent(
-                            new ItemStack(Stuff.gateBaldcypress.get(), 1),
-                            new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.BALD_CYPRESS.metadata())));
+                new FenceGateActiveEvent(
+                    new ItemStack(Stuff.gateBaldcypress.get(), 1),
+                    new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.BALD_CYPRESS.metadata())));
         }
     },
     CYPRESSGATE(Stuff.gateCypress, true) {
@@ -969,9 +970,9 @@ public enum BlockManager {
 
             // Add the recipe for the gate
             Extrabiomes.postInitEvent(
-                    new FenceGateActiveEvent(
-                            new ItemStack(Stuff.gateCypress.get(), 1),
-                            new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.CYPRESS.metadata())));
+                new FenceGateActiveEvent(
+                    new ItemStack(Stuff.gateCypress.get(), 1),
+                    new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.CYPRESS.metadata())));
         }
     },
     FIRGATE(Stuff.gateFir, true) {
@@ -997,9 +998,9 @@ public enum BlockManager {
 
             // Add the recipe for the gate
             Extrabiomes.postInitEvent(
-                    new FenceGateActiveEvent(
-                            new ItemStack(Stuff.gateFir.get(), 1),
-                            new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.FIR.metadata())));
+                new FenceGateActiveEvent(
+                    new ItemStack(Stuff.gateFir.get(), 1),
+                    new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.FIR.metadata())));
         }
     },
     JAPANESEMAPLEGATE(Stuff.gateJapaneseMaple, true) {
@@ -1025,9 +1026,9 @@ public enum BlockManager {
 
             // Add the recipe for the gate
             Extrabiomes.postInitEvent(
-                    new FenceGateActiveEvent(
-                            new ItemStack(Stuff.gateJapaneseMaple.get(), 1),
-                            new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.JAPANESE_MAPLE.metadata())));
+                new FenceGateActiveEvent(
+                    new ItemStack(Stuff.gateJapaneseMaple.get(), 1),
+                    new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.JAPANESE_MAPLE.metadata())));
         }
     },
     RAINBOWEUCALYPTUSGATE(Stuff.gateRainbowEucalyptus, true) {
@@ -1053,12 +1054,9 @@ public enum BlockManager {
 
             // Add the recipe for the gate
             Extrabiomes.postInitEvent(
-                    new FenceGateActiveEvent(
-                            new ItemStack(Stuff.gateRainbowEucalyptus.get(), 1),
-                            new ItemStack(
-                                    Stuff.planks.get(),
-                                    1,
-                                    BlockCustomWood.BlockType.RAINBOW_EUCALYPTUS.metadata())));
+                new FenceGateActiveEvent(
+                    new ItemStack(Stuff.gateRainbowEucalyptus.get(), 1),
+                    new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.RAINBOW_EUCALYPTUS.metadata())));
         }
     },
     REDWOODGATE(Stuff.gateRedwood, true) {
@@ -1084,9 +1082,9 @@ public enum BlockManager {
 
             // Add the recipe for the gate
             Extrabiomes.postInitEvent(
-                    new FenceGateActiveEvent(
-                            new ItemStack(Stuff.gateRedwood.get(), 1),
-                            new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.REDWOOD.metadata())));
+                new FenceGateActiveEvent(
+                    new ItemStack(Stuff.gateRedwood.get(), 1),
+                    new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.REDWOOD.metadata())));
         }
     },
     SAKURAGATE(Stuff.gateSakura, true) {
@@ -1112,21 +1110,22 @@ public enum BlockManager {
 
             // Add the recipe for the gate
             Extrabiomes.postInitEvent(
-                    new FenceGateActiveEvent(
-                            new ItemStack(Stuff.gateSakura.get(), 1),
-                            new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.SAKURA_BLOSSOM.metadata())));
+                new FenceGateActiveEvent(
+                    new ItemStack(Stuff.gateSakura.get(), 1),
+                    new ItemStack(Stuff.planks.get(), 1, BlockCustomWood.BlockType.SAKURA_BLOSSOM.metadata())));
         }
     };
 
     private static void createBlocks() throws Exception {
-        for (final BlockManager block : BlockManager.values()) if (block.getSettings().getEnabled()) {
-            try {
-                block.create();
-            } catch (final Exception e) {
-                throw e;
+        for (final BlockManager block : BlockManager.values()) if (block.getSettings()
+            .getEnabled()) {
+                try {
+                    block.create();
+                } catch (final Exception e) {
+                    throw e;
+                }
+                block.blockCreated = true;
             }
-            block.blockCreated = true;
-        }
     }
 
     public static void init() throws InstantiationException, IllegalAccessException {

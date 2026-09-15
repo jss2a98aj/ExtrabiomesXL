@@ -30,8 +30,10 @@ public abstract class BiomeHelper {
     private static ArrayList<BiomeGenBase> activeBiomes = null;
 
     public static void addTerrainBlockstoBiome(BiomeSettings biome, Block topBlock, Block fillerBlock) {
-        if (!biome.getBiome().isPresent()) return;
-        final BiomeGenBase baseBiome = biome.getBiome().get();
+        if (!biome.getBiome()
+            .isPresent()) return;
+        final BiomeGenBase baseBiome = biome.getBiome()
+            .get();
         baseBiome.topBlock = topBlock;
         baseBiome.fillerBlock = fillerBlock;
     }
@@ -50,11 +52,11 @@ public abstract class BiomeHelper {
     public static void createBiome(BiomeSettings setting) throws Exception {
         if (BiomeGenBase.getBiomeGenArray()[setting.getID()] != null) {
             throw new IllegalArgumentException(
-                    String.format(
-                            "Biome id %d is already in use by %s when adding %s. Please review the configuration file.",
-                            setting.getID(),
-                            BiomeGenBase.getBiomeGenArray()[setting.getID()].biomeName,
-                            setting));
+                String.format(
+                    "Biome id %d is already in use by %s when adding %s. Please review the configuration file.",
+                    setting.getID(),
+                    BiomeGenBase.getBiomeGenArray()[setting.getID()].biomeName,
+                    setting));
         }
 
         setting.createBiome();
@@ -76,7 +78,8 @@ public abstract class BiomeHelper {
             worldTypes.add(WorldType.DEFAULT);
             worldTypes.add(WorldType.LARGE_BIOMES);
             final DiscoverWorldTypesEvent event = new DiscoverWorldTypesEvent(worldTypes);
-            Api.getExtrabiomesXLEventBus().post(event);
+            Api.getExtrabiomesXLEventBus()
+                .post(event);
         }
         return ImmutableSet.copyOf(worldTypes);
     }
@@ -103,8 +106,11 @@ public abstract class BiomeHelper {
         if (activeBiomes == null) {
             activeBiomes = new ArrayList<>(BiomeSettings.values().length);
             for (final BiomeSettings setting : BiomeSettings.values()) {
-                if (setting.getBiome().isPresent() && !setting.isVanilla()) {
-                    activeBiomes.add(setting.getBiome().get());
+                if (setting.getBiome()
+                    .isPresent() && !setting.isVanilla()) {
+                    activeBiomes.add(
+                        setting.getBiome()
+                            .get());
                 }
             }
             activeBiomes.trimToSize();
@@ -131,8 +137,10 @@ public abstract class BiomeHelper {
             case OCEAN:
                 return BiomeGenBase.ocean;
             default:
-                if (setting.getBiome().isPresent()) {
-                    return setting.getBiome().get();
+                if (setting.getBiome()
+                    .isPresent()) {
+                    return setting.getBiome()
+                        .get();
                 }
         }
         return null;

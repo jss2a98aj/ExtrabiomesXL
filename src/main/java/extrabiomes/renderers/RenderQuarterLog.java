@@ -71,7 +71,7 @@ public class RenderQuarterLog implements ISimpleBlockRenderingHandler {
 
     @Override
     public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId,
-            RenderBlocks renderer) {
+        RenderBlocks renderer) {
         final int metadata = world.getBlockMetadata(x, y, z);
         final int orientation = metadata & 12;
 

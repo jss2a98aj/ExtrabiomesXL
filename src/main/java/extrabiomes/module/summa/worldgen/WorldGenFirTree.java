@@ -86,12 +86,13 @@ public class WorldGenFirTree extends WorldGenAbstractTree {
             int checkRamp = (checkY - originY < trunkClearHeight) ? 0 : leafSlopeHalfMax;
             for (int checkX = originX - checkRamp; checkX <= originX + checkRamp; ++checkX) {
                 for (int checkZ = originZ - checkRamp; checkZ <= originZ + checkRamp; ++checkZ) {
-                    if (!world.getChunkProvider().chunkExists(checkX >> 4, checkZ >> 4)) {
+                    if (!world.getChunkProvider()
+                        .chunkExists(checkX >> 4, checkZ >> 4)) {
                         return false;
                     }
                     final Block block = world.getBlock(checkX, checkY, checkZ);
                     if (!block.isLeaves(world, checkX, checkY, checkZ)
-                            && !block.isReplaceable(world, checkX, checkY, checkZ)) {
+                        && !block.isReplaceable(world, checkX, checkY, checkZ)) {
                         return false;
                     }
                 }
@@ -106,11 +107,11 @@ public class WorldGenFirTree extends WorldGenAbstractTree {
         final int trunkMeta = TreeBlock.TRUNK.getMetadata();
         final int randomTrunkHeightReduction = rand.nextInt(3);
         for (int relativeTrunkLevel = 0; relativeTrunkLevel
-                < height - randomTrunkHeightReduction; relativeTrunkLevel++) {
+            < height - randomTrunkHeightReduction; relativeTrunkLevel++) {
             final int actualTrunkLevel = originY + relativeTrunkLevel;
             final Block block = world.getBlock(originX, actualTrunkLevel, originZ);
             if (block.isLeaves(world, originX, actualTrunkLevel, originZ)
-                    || block.isReplaceable(world, originX, actualTrunkLevel, originZ)) {
+                || block.isReplaceable(world, originX, actualTrunkLevel, originZ)) {
                 setBlockAndNotifyAdequately(world, originX, actualTrunkLevel, originZ, trunk, trunkMeta);
             }
         }
@@ -130,23 +131,22 @@ public class WorldGenFirTree extends WorldGenAbstractTree {
                     final int cornerCheckZ = actualZ - originZ;
                     // Corner skip
                     if (cornerLimit > 0
-                            && (Math.abs(cornerCheckX) == cornerLimit && Math.abs(cornerCheckZ) == cornerLimit)) {
+                        && (Math.abs(cornerCheckX) == cornerLimit && Math.abs(cornerCheckZ) == cornerLimit)) {
                         continue;
                     }
                     // Arms
                     final Block other = world.getBlock(actualX, actualY, actualZ);
                     if (cornerLimit < leafSlopeHalf && relativeY < minLeafHeight
-                            && (Math.abs(cornerCheckX) == cornerLimit - 2
-                                    && Math.abs(cornerCheckZ) == cornerLimit - 2)) {
+                        && (Math.abs(cornerCheckX) == cornerLimit - 2 && Math.abs(cornerCheckZ) == cornerLimit - 2)) {
                         if (other.isLeaves(world, originX, actualY, originZ)
-                                || other.isReplaceable(world, originX, actualY, originZ)) {
+                            || other.isReplaceable(world, originX, actualY, originZ)) {
                             setBlockAndNotifyAdequately(world, actualX, actualY, actualZ, trunk, trunkMeta);
                             continue;
                         }
                     }
                     // Leaves
                     if (other.isAir(world, actualX, actualY, actualZ)
-                            || other.canBeReplacedByLeaves(world, actualX, actualY, actualZ)) {
+                        || other.canBeReplacedByLeaves(world, actualX, actualY, actualZ)) {
                         setBlockAndNotifyAdequately(world, actualX, actualY, actualZ, leaves, leavesMeta);
                     }
                 }

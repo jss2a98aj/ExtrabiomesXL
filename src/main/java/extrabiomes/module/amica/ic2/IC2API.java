@@ -25,7 +25,8 @@ class IC2API {
         Class<?> cls;
         try {
             cls = Class.forName("ic2.api.crops.Crops");
-            ic2CropsInstance = cls.getField("instance").get(null);
+            ic2CropsInstance = cls.getField("instance")
+                .get(null);
             addBiomeBonus = cls.getMethod("addBiomeBonus", BiomeGenBase.class, Integer.TYPE, Integer.TYPE);
         } catch (final Exception e) {
             LogHelper.fine("Found incompatible IC2 version.", e);

@@ -64,8 +64,10 @@ public class BlockCustomFence extends BlockFence {
         textures = new IIcon[BlockType.values().length];
 
         for (final BlockType blockType : BlockType.values()) {
-            blockType.texture = iconRegister
-                    .registerIcon(Extrabiomes.TEXTURE_PATH + "planks" + blockType.name().toLowerCase(Locale.ENGLISH));
+            blockType.texture = iconRegister.registerIcon(
+                Extrabiomes.TEXTURE_PATH + "planks"
+                    + blockType.name()
+                        .toLowerCase(Locale.ENGLISH));
         }
     }
 
@@ -106,10 +108,8 @@ public class BlockCustomFence extends BlockFence {
 
         boolean flag = !(block instanceof BlockFenceGate);
 
-        return block != this && flag
-                ? (block.getMaterial().isOpaque() && block.renderAsNormalBlock() ? block.getMaterial() != Material.gourd
-                        : false)
-                : true;
+        return block != this && flag ? (block.getMaterial()
+            .isOpaque() && block.renderAsNormalBlock() ? block.getMaterial() != Material.gourd : false) : true;
     }
 
     // public Item getItemDropped(int par1, Random par2Random, int par3)
